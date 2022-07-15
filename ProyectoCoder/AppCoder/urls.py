@@ -5,9 +5,8 @@ from AppCoder import views
 urlpatterns = [
    
     path('', views.start, name="Start"),
-    path('books', views.newBook, name="Books"),
-    path('authors', views.newAuthor, name="Authors"),
-    path('editorials', views.editorials, name="Editorials"),
-    path('bookshops', views.bookshops, name="Bookshops"),
-    # path('getBookByGenre/', views.getBookByGenre),
+    # path('patients', views.patients, name="patients"),
+    # path('doctors', views.doctors, name="doctors"),
+    # path('departments', views.departments, name="departments"),
+    # path('histories', views.histories, name="histories"),
 ]
