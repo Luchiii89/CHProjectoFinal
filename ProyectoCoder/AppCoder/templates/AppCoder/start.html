@@ -1,0 +1,41 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Este es el título del Inicio que cambio</h1>
+  
+
+    <h3>Podes buscar una camada:</h3>
+
+    <form action="/AppCoder/buscar/" method="GET">
+
+        <input type="string" name="name" id="name">
+
+        <input type="submit" value="Buscar">
+
+
+
+
+    </form>
+
+    
+
+    {% if patients %}
+
+    <p>Estamos buscando el: {{name}}</p>
+
+    <ul>
+	{% for patient in patients %}
+		<li> {{patient.name}} </li>
+		<li> {{patient.surname}} </li>
+	{% endfor %}
+
+    </ul>
+
+    {% endif %}
+
+{% endblock %}

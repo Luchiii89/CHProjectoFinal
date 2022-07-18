@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Listado de pacientes</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+	<div class="container-fluid">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Documento</th>
+					<th>Nombres y Apellidos</th>
+					<!-- <th>Telefono</th>
+					<th>Dirección</th> -->
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for patient in object_list %}
+				<tr>
+					<td>{{patient.IdNumber}}</td>
+					<td>{{patient.name}}{{patient.surname}}</td>
+					<!-- <td>{{patient.tel}}</td>
+					<td>{{patient.address}}</td> -->
+					<td class="clearfix">
+						<a class="btn btn-primary btn-xs">Ver</a>
+						<a class="btn btn-success btn-xs">Modificar</a>
+						<a class="btn btn-danger btn-xs">Eliminar</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

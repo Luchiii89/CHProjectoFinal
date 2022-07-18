@@ -1,37 +1,42 @@
+from django.views.generic import ListView
 from django.shortcuts import render, HttpResponse
 from django.http.request import QueryDict
 from django.http import HttpResponse
 from AppCoder.models import Patient, Department, Doctor, History
-from AppCoder.forms import PatientForm
+from AppCoder.forms import PatientForm, DepartmentForm, DoctorForm
 
 # Create your views here.
 
-# def book(request):
-#     book = Book(title="El Hobbit", genre="Fantasy novel", author="J. R. R. Tolkien", year=1937)
-#     book.save()
+def start(request):
+    return render(request, "AppCoder/index.html")
+
+
+def patients(request):
+    return render(request, "AppCoder/patients.html")
+
+
+def saludo_personalizado(request):
+    context = {}
+    return(request, "AppCoder/index.html",context)
+
+
+def doctors(request):
+    return render(request, "AppCoder/doctors.html")
+
+
+def departments(request):
+    return render(request, "AppCoder/departments.html")
+
+
+def histories(request):
+    return render(request, "AppCoder/histories.html")
+
+
+# def patient(request):
+#     patient = Patient(title="El Hobbit", genre="Fantasy novel", author="J. R. R. Tolkien", year=1937)
+#     patient.save()
 #     txtDocument = f"---> Título: {book.title}  Género: {book.genre}  Autor: {book.author}  Año: {book.year}  "
 #     return HttpResponse(txtDocument)
-
-
-def start(request):
-    return render(request, "AppCoder/start.html")
-
-
-# def patients(request):
-#     return render(request, "AppCoder/patients.html")
-
-
-# def doctors(request):
-#     return render(request, "AppCoder/doctors.html")
-
-
-# def departments(request):
-#     return render(request, "AppCoder/departments.html")
-
-
-# def histories(request):
-#     return render(request, "AppCoder/histories.html")
-
 
 # def newBook(request):
 #     if request.method == 'POST':
@@ -70,3 +75,24 @@ def start(request):
 #     else: 
 #         respuesta = "No enviaste datos"
 #     return HttpResponse(respuesta)
+
+def buscar_paciente(request):
+
+    if  request.GET["name"]:
+
+        #respuesta = f"Estoy buscando la camada nro: {request.GET['camada'] }" 
+        name = request.GET['name'] 
+        patient = Patient.objects.filter(name__icontains=name)
+
+        return render(request, "AppCoder/inicio.html", {"paciente":name, "surname":surname})
+
+    else: 
+
+        respuesta = "No enviaste datos"
+
+    #No olvidar from django.http import HttpResponse
+    return HttpResponse(respuesta)
+
+class ListadoPacientesListView(ListView):
+	model = Patient
+	template_name = 'totalPacientes.html'
