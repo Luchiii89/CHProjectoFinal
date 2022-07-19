@@ -14,14 +14,16 @@
         <thead>
         <th>Name</th>
         <th>Surname</th>
-        <th>XXX</th>
-        <th>XXX</th>
+        <th>Genre</th>
+        <th>Doctor Id</th>
         </thead>
         <tbody>      
             {% for doc in doctor %}  
             <tr>
                 <td>{{doctor.name}}</td>
-                <td>{{doctor.surname}}</td>                
+                <td>{{doctor.surname}}</td>
+                <td>{{doctor.genre}}</td>  
+                <td>{{doctor.docId}}</td>    
             </tr>
             {% endfor %}
         </tbody>
