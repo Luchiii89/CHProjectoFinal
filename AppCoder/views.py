@@ -17,26 +17,63 @@ def start(request):
     return render(request, 'AppCoder\index.html', {})
 
 
+# def newDoctor(request):
+#     if request.method == 'POST':
+#         newForm = DoctorForm(request.POST) 
+#         print(newForm)
+#         if newForm.is_valid:   
+#             data = newForm.cleaned_data
+#             book = Doctor(name=data['name'], surname=data['surname'], genre=data['genre'], docId=data['docId'],
+#             license=data['license'], mail=data['mail'], tel=data['tel'],
+#             address=data['address'], specialization=data['specialization']) 
+#             book.save()
+#             return render(request, "AppCoder/index.html")
+#     else: 
+#         newForm = DoctorForm() 
+#     return render(request, "AppCoder/newDoctor.html", {"DoctorForm":DoctorForm})
+
 def newDoctor(request):
+
     if request.method == 'POST':
-        newForm = DoctorForm(request.POST) 
-        print(newForm)
-        if newForm.is_valid:   
-            data = newForm.cleaned_data
-            book = Doctor(name=data['name'], surname=data['surname'], genre=data['genre'], docId=data['docId'],
-            license=data['license'], mail=data['mail'], tel=data['tel'],
-            address=data['address'], specialization=data['specialization']) 
-            book.save()
-            return render(request, "AppCoder/index.html")
+
+        miFormulario = DoctorForm(request.POST) #aquí mellega toda la información del html
+
+        print(miFormulario)
+
+        if miFormulario.is_valid:   #Si pasó la validación de Django
+
+            informacion = miFormulario.cleaned_data
+
+            doctor = Doctor(name=informacion['name'], 
+                        surname=informacion['surname'], 
+                        genre=informacion['genre'], 
+                        docId=informacion['docId'],
+                        license=informacion['license'],
+                        mail=informacion['mail'],
+                        tel=informacion['tel'],
+                        address=informacion['address'],
+                        specialization=informacion['specialization']) 
+    
+            doctor.save()
+
+            return render(request, "AppCoder/index.html") #Vuelvo al inicio o a donde quieran
+
     else: 
-        newForm = DoctorForm() 
-    return render(request, "AppCoder/newDoctor.html", {"DoctorForm":DoctorForm})
+
+        miFormulario= DoctorForm() #Formulario vacio para construir el html
+
+    return render(request, "AppCoder/newDoctor.html", {"miFormulario":miFormulario})
 
 
 def listDoctor(request): 
     context = {}
     context["doctor"] = Doctor.objects.all()
     return render(request, "AppCoder/listDoctor.html",context) 
+
+def listPatient(request): 
+    context = {}
+    context["patient"] = Patient.objects.all()
+    return render(request, "AppCoder/listPatient.html",context) 
 
 # def patients(request):
 #     return render(request, "AppCoder/patients.html")

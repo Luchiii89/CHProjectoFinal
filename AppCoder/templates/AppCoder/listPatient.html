@@ -16,18 +16,20 @@
         <th>Apellido</th>
         <th>Género</th>
         <th>DNI</th>
-        <th>Matrícula</th>
-        <th>Especialidad</th>
+        <th>E-mail</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
         </thead>
         <tbody>      
-            {% for doc in doctor %}  
+            {% for pac in patient %}  
             <tr>
-                <td>{{doc.name}}</td>
-                <td>{{doc.surname}}</td>
-                <td>{{doc.genre}}</td>  
-                <td>{{doc.docId}}</td>    
-                <td>{{doc.license}}</td>  
-                <td>{{doc.specialization}}</td>  
+                <td>{{pac.name}}</td>
+                <td>{{pac.surname}}</td>
+                <td>{{pac.genre}}</td>  
+                <td>{{pac.patId}}</td>    
+                <td>{{pac.mail}}</td>  
+                <td>{{pac.tel}}</td>  
+                <td>{{pac.address}}</td>
             </tr>
             {% endfor %}
         </tbody>
