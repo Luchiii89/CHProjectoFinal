@@ -9,10 +9,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
 </head>
 <body>
-    <ul>
-    {% for doc in doctor %}
-        <li>{{doctor.name}}, {{doctor.surname}}</li>
-    {% endfor %}
-    </ul>
+
+    <table class="table table-bordered table-striped">        
+        <thead>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>XXX</th>
+        <th>XXX</th>
+        </thead>
+        <tbody>      
+            {% for doc in doctor %}  
+            <tr>
+                <td>{{doctor.name}}</td>
+                <td>{{doctor.surname}}</td>                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>   
 </body>
 </html>
