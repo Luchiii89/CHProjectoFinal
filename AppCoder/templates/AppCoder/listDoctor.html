@@ -22,14 +22,12 @@
         <tbody>      
             {% for doc in doctor %}  
             <tr>
-                <td>{{doc.id}}</td>>
                 <td>{{doc.name}}</td>
                 <td>{{doc.surname}}</td>
                 <td>{{doc.genre}}</td>  
                 <td>{{doc.docId}}</td>    
                 <td>{{doc.license}}</td>  
                 <td>{{doc.specialization}}</td>
-                <a href="{% url 'AppCoder:deleteDoctor' doc.id %}">Borrar</a>               
             </tr>
             {% endfor %}
         </tbody>

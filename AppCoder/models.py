@@ -10,9 +10,10 @@ class Patient(models.Model):
     
     genre = [
         ('F', 'Femenino'),
-        ('M', 'Masculino')
+        ('M', 'Masculino'),
+        ('O', 'Otro')
     ]
-    genre = forms.ChoiceField(required=True, label="Seleccione su género")
+    genre = models.CharField(max_length=1,choices=genre, default='Otro')
 
     patId = models.IntegerField()
     mail = models.EmailField()
@@ -40,9 +41,10 @@ class Doctor(models.Model):
 
     genre = [
         ('F', 'Femenino'),
-        ('M', 'Masculino')
+        ('M', 'Masculino'),
+        ('O', 'Otro')
     ]
-    genre = models.CharField(max_length=1,choices=genre, default='F')
+    genre = models.CharField(max_length=1,choices=genre, default='Otro')
 
     docId = models.IntegerField(primary_key=True)
     license = models.CharField(max_length=20)
