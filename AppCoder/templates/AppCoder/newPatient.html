@@ -1,5 +1,4 @@
 
-
 {% load static %}
 
 {% block contenidoQueCambia %}
@@ -9,7 +8,8 @@
     <p style="color: red;"> Están mal los datos, revisar</p>
 
     {% endif %}
-    <form action="" method="POST">{% csrf_token %}
+    <form action="" method="POST">
+        {% csrf_token %}
 
         <!-- Acá está la magia de Django-->
         
@@ -17,12 +17,12 @@
             {{ miFormulario.as_table }}
         </table>
 
-        <input type="submit", value="Enviar">
+        <input type="submit", value="Enviar"> 
         <button type="button">
             <a href="{% url 'Start' %}">Return</a>
         </button>
-        
+
     </form>
+    
 
 {% endblock %}
-

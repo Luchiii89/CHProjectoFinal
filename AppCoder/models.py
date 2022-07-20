@@ -1,4 +1,5 @@
 from telnetlib import DO
+from django import forms
 from django.db import models
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Patient(models.Model):
         ('F', 'Femenino'),
         ('M', 'Masculino')
     ]
-    genre = models.CharField(max_length=1,choices=genre, default='F')
+    genre = forms.ChoiceField(required=True, label="Seleccione su género")
 
     patId = models.IntegerField()
     mail = models.EmailField()
@@ -43,7 +44,7 @@ class Doctor(models.Model):
     ]
     genre = models.CharField(max_length=1,choices=genre, default='F')
 
-    docId = models.IntegerField()
+    docId = models.IntegerField(primary_key=True)
     license = models.CharField(max_length=20)
     mail = models.EmailField()
     tel = models.IntegerField()

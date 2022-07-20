@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from pydoc import Doc
+from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from django.http.request import QueryDict
 from django.http import HttpResponse
 from AppCoder.models import Patient, Department, Doctor, History
@@ -15,22 +16,6 @@ from AppCoder.forms import *
 
 def start(request):
     return render(request, 'AppCoder\index.html', {})
-
-
-# def newDoctor(request):
-#     if request.method == 'POST':
-#         newForm = DoctorForm(request.POST) 
-#         print(newForm)
-#         if newForm.is_valid:   
-#             data = newForm.cleaned_data
-#             book = Doctor(name=data['name'], surname=data['surname'], genre=data['genre'], docId=data['docId'],
-#             license=data['license'], mail=data['mail'], tel=data['tel'],
-#             address=data['address'], specialization=data['specialization']) 
-#             book.save()
-#             return render(request, "AppCoder/index.html")
-#     else: 
-#         newForm = DoctorForm() 
-#     return render(request, "AppCoder/newDoctor.html", {"DoctorForm":DoctorForm})
 
 def newDoctor(request):
 
@@ -64,6 +49,25 @@ def newDoctor(request):
 
     return render(request, "AppCoder/newDoctor.html", {"miFormulario":miFormulario})
 
+def newPatient(request):
+
+    if request.method == 'POST':
+        miFormulario = PatientForm(request.POST) #aquí mellega toda la información del html
+        print(miFormulario)
+        if miFormulario.is_valid:   #Si pasó la validación de Django
+            informacion = miFormulario.cleaned_data
+            patient = Patient(name=informacion['name'], 
+                        surname=informacion['surname'], 
+                        genre=informacion['genre'], 
+                        patId=informacion['patId'],
+                        mail=informacion['mail'],
+                        tel=informacion['tel'],
+                        address=informacion['address'],)     
+            patient.save()
+            return render(request, "AppCoder/index.html") #Vuelvo al inicio o a donde quieran
+    else: 
+        miFormulario= PatientForm() #Formulario vacio para construir el html
+    return render(request, "AppCoder/newPatient.html", {"miFormulario":miFormulario})
 
 def listDoctor(request): 
     context = {}
@@ -75,21 +79,13 @@ def listPatient(request):
     context["patient"] = Patient.objects.all()
     return render(request, "AppCoder/listPatient.html",context) 
 
-# def patients(request):
-#     return render(request, "AppCoder/patients.html")
-
-
-# def doctors(request):
-#     return render(request, "AppCoder/doctors.html")
-
-
-# def departments(request):
-#     return render(request, "AppCoder/departments.html")
-
-
-# def histories(request):
-#     return render(request, "AppCoder/histories.html")
-
+#-------------------------------------------
+def deleteDoctor(request, pk):
+    doctor = get_object_or_404(Doctor,id=pk)
+    doctor.delete()
+    return render(request,"AppCoder/listDoctor.html")
+#-------------------------------------------   
+  
 
 # def newBook(request):
 #     if request.method == 'POST':

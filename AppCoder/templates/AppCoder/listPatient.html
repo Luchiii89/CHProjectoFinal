@@ -24,15 +24,17 @@
             {% for pac in patient %}  
             <tr>
                 <td>{{pac.name}}</td>
-                <td>{{pac.surname}}</td>
-                <td>{{pac.genre}}</td>  
-                <td>{{pac.patId}}</td>    
+                <td>{{pac.surname}}</td>                
+                <td>{{pac.patId}}</td>
                 <td>{{pac.mail}}</td>  
                 <td>{{pac.tel}}</td>  
                 <td>{{pac.address}}</td>
             </tr>
             {% endfor %}
         </tbody>
-    </table>   
+    </table>
+    <button type="button">
+        <a href="{% url 'Start' %}">Return</a>
+    </button>
 </body>
 </html>
