@@ -1,4 +1,4 @@
-from telnetlib import DO
+from django.views.generic import ListView
 from django import forms
 from django.db import models
 
@@ -45,6 +45,9 @@ class Doctor(models.Model):
         ('O', 'Otro')
     ]
     genre = models.CharField(max_length=1,choices=genre, default='Otro')
+    #genre = models.Choices(max_length=1,choices=genre, default='Otro')
+
+    #
 
     docId = models.IntegerField(primary_key=True)
     license = models.CharField(max_length=20)

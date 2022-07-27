@@ -1,19 +1,21 @@
-from django.urls import path
+from operator import imod
+from django.urls import path, include
 from django.views import View
 from AppCoder import views
 from AppCoder.views import *
-
+from .views import ListView
 
 urlpatterns = [
    
-    path('', views.start, name="Start"),
-    path('newDoctor/', views.newDoctor, name="newDoctor"),
+    path('', views.Start.as_view(), name="Start"),
+    path('newDoctor/', views.newDoctor.as_view(), name="newDoctor"),
     path('newPatient/', views.newPatient, name="newPatient"),
     #static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)    
-    path('listDoctor/', views.listDoctor, name="listDoctor"),
-    path('listPatient/', views.listPatient, name="listPatient"),
-    path('getDoctorBySurname/', views.getDoctorBySurname, name="AS"),
-    path('getDoctor/', views.getDoctor, name="getDoctor"),
+    
+    path('listDoctor/', views.ListDoctor.as_view(), name="listDoctor"), #Clase Vista, name="listDoctor" ->tiene que coincidir con el TP
+    path('listPatient/', views.ListPatient.as_view(), name="listPatient"),
+
+    path('getDoctorBySurname/', views.getDoctorBySurname.as_view(), name="AS"),
     #path('app_contactos/', ContactoListar.as_view(template_name = "app_contactos/index.html"), name='listar'),
-    # path('deleteDoctor/<int:pk>', views.deleteDoctor, name="deleteDoctor"), #Eliminamos 
+    #path('deleteDoctor/<int:pk>', views.deleteDoctor, name="deleteDoctor"), #Eliminamos 
 ]
