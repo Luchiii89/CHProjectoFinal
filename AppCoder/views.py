@@ -18,24 +18,44 @@ from AppCoder.forms import *
 
 
 # Create your views here.
-
+def login_request(request):
+    if(request.method == "POST"):
+        form = AuthenticationForm(request, data = request.POST)        
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+            user = authenticate(username = usuario, password = contra)
+            if(user is not None):
+                login(request, user)
+                return render(request, 'AppCoder/index.html',{'mensaje':f'Bienvenido - {usuario}'})
+            else:
+                return render(request, 'AppCoder/index.html',{'mensaje':f'Erro Acceso Denegado'})
+        else:
+            return render(request, 'AppCoder/index.html',{'mensaje':'Erro Formulario Erroneo'})
+    form= AuthenticationForm()
+    return render(request, 'AppCoder/login.html',{'form':form})
 
 class Start(TemplateView):
     template_name = "AppCoder\index.html"
     
 class ListDoctor(ListView):
+    model = Doctor
+    context_object_name = 'surname'
     template_name = "AppCoder/listDoctor.html"
-    queryset = Doctor.objects.all()
+    queryset = Doctor.objects.filter(surname__icontains='surname')
 
     # def get(self, request, *args, **kwargs) -> HttpResponse:
     #     listDoctor = Doctor.objects.all()
     #     return render(request, self.template_name, {"listDoctor":listDoctor})
 
 class newDoctor(CreateView):
+    model = Doctor
     template_name = "AppCoder/newDoctor.html"
+    fields = ['name', 'surname', 'genre', 'docId', 'license', 'mail', 'tel', 'address', 'specialization']
     
 class newPatient(CreateView):
     template_name = "AppCoder/newPatient.html"
+
 
 def newDoctor(request):
     if request.method == 'POST':
@@ -85,4 +105,9 @@ class ListPatient(ListView): #ListPatient es el que se le pasa a URL con el .as_
 
 class getDoctorBySurname(ListView):        #incompleto
     queryset = Doctor.objects.filter(surname__icontains='war')
-    template_name = "AppCoder/doctorBySurname.html"
+    template_name = "AppCoder/getDoctor.html"
+
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        getDoctor = Doctor.objects.filter(surname__icontains='surname')
+        return render(request, self.template_name, {"getDoctor":getDoctor})
+     
