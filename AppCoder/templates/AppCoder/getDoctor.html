@@ -8,13 +8,10 @@
 </head>
 <body>
     <h3>Indique Apellido Doctor</h3>
-    <form action=" {% url 'AS' %}" method="GET">{% csrf_token %}
+    <form action="" method="GET">{% csrf_token %}
         <input type="text" name="surname" id="surname">
-        <input type="submit" value="Buscar">
+        <input type="submit" value="Buscar">        
         
-        <button type="button">
-            <a href="{% url 'Start' %}">Return to Index</a>
-        </button>
     </form>    
 
     {% if doctors %}

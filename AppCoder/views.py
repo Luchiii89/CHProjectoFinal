@@ -4,7 +4,6 @@ from django.shortcuts import get_object_or_404, redirect, render, HttpResponse
 from django.http.request import QueryDict
 from django.http import HttpResponse
 from numpy import result_type
-from yaml import DocumentStartToken
 from AppCoder import models
 from AppCoder.models import Patient, Department, Doctor, History
 from AppCoder.forms import *
@@ -12,25 +11,49 @@ from django.db.models import Q
 from django.views.generic import ListView, View, TemplateView, UpdateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
-
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+from django.urls import reverse_lazy
 
 # Create your views here.
-
+def login_request(request):
+    if(request.method == "POST"):
+        form = AuthenticationForm(request, data = request.POST)        
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contra = form.cleaned_data.get('password')
+            user = authenticate(username = usuario, password = contra)
+            if(user is not None):
+                login(request, user)
+                return render(request, 'AppCoder/index.html',{'mensaje':f'Bienvenido - {usuario}'})
+            else:
+                return render(request, 'AppCoder/index.html',{'mensaje':f'Erro Acceso Denegado'})
+        else:
+            return render(request, 'AppCoder/index.html',{'mensaje':'Erro Formulario Erroneo'})
+    form= AuthenticationForm()
+    return render(request, 'AppCoder/login.html',{'form':form})
 
 class Start(TemplateView):
     template_name = "AppCoder\index.html"
     
 class ListDoctor(ListView):
+    model = Doctor
+    context_object_name = 'surname'
     template_name = "AppCoder/listDoctor.html"
-    queryset = Doctor.objects.all()
+    queryset = Doctor.objects.filter(surname__icontains='surname')
 
     # def get(self, request, *args, **kwargs) -> HttpResponse:
     #     listDoctor = Doctor.objects.all()
     #     return render(request, self.template_name, {"listDoctor":listDoctor})
 
 class newDoctor(CreateView):
+    model = Doctor
     template_name = "AppCoder/newDoctor.html"
+    fields = ['name', 'surname', 'genre', 'docId', 'license', 'mail', 'tel', 'address', 'specialization']
     
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user
+    #     return redirect('/')
 
 
 # def newDoctor(request):
@@ -82,3 +105,8 @@ class ListPatient(ListView): #ListPatient es el que se le pasa a URL con el .as_
 class getDoctorBySurname(ListView):        #incompleto
     queryset = Doctor.objects.filter(surname__icontains='war')
     template_name = "AppCoder/getDoctor.html"
+
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        getDoctor = Doctor.objects.filter(surname__icontains='surname')
+        return render(request, self.template_name, {"getDoctor":getDoctor})
+     
