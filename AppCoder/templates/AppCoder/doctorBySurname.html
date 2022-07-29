@@ -8,7 +8,7 @@
 </head>
 <body>
     <h3>Indique Apellido Doctor</h3>
-    <form action=" {% url 'AS' %}" method="GET">{% csrf_token %}
+    <form action=" {% url 'doctorBySurname' %}" method="GET">{% csrf_token %}
         <input type="text" name="surname" id="surname">
         <input type="submit" value="Buscar">
         
