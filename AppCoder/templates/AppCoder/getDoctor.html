@@ -10,22 +10,10 @@
     <h3>Indique Apellido Doctor</h3>
     <form action="" method="GET">{% csrf_token %}
         <input type="text" name="surname" id="surname">
-        <input type="submit" value="Buscar">        
-        
+        <button type="button">
+            <a href="{% url 'listDoctor' surname %}">Buscar</a>
+        </button>
     </form>    
-
-    {% if doctors %}
-    <P> Estamos buscando doctores con apellido {{surname}} </P>
-    <ul>
-        {% for doc in doctors %}
-            <li>{{doc.name}}</li>
-            <li>{{doc.surname}}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <P> No hay doctores con ese apellido </P>
-{% endif %}
-    <p style="color:red">{{respuesta}}</p>    
 <button type="button">
     <a href="{% url 'Start' %}">Return to Index</a>
 </button>

@@ -19,7 +19,8 @@
         <th>Matrícula</th>
         <th>Especialidad</th>
         </thead>
-        <tbody>      
+        <tbody>
+            {% if object_list %}  
             {% for doc in object_list %}  
             <tr>
                 <td>{{doc.name}}</td>
@@ -30,6 +31,9 @@
                 <td>{{doc.specialization}}</td>
             </tr>
             {% endfor %}
+            {% else %} 
+            <p>No hay</p>
+            {% endif %}  
         </tbody>
     </table>   
     
