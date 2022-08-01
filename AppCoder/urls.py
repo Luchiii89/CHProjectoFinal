@@ -5,19 +5,22 @@ from AppCoder.views import *
 from .views import *
 
 urlpatterns = [   
-    path('', Start.as_view(), name="Start"),
+    path('', Index.as_view(), name="Index"),
+    
     # DOCTOR
-    path('newDoctor/', newDoctor.as_view(), name="newDoctor"),
+    path('newDoctor/', NewDoctor.as_view(), name="newDoctor"),
     path('listDoctor/', ListDoctor.as_view(), name="listDoctor"), 
-    path('doctorBySurname/', getDoctorBySurname.as_view(), name="doctorBySurname"),
-    path('deleteDoctor/<pk>', deleteDoctor.as_view(), name="deleteDoctor"),
-    path('updateDoctor/<pk>', updateDoctor.as_view(), name="updateDoctor"),
+    path('doctor/<pk>', DoctorDetailView.as_view(), name="doctorDetail"),
+    path('doctorBySurname/', GetDoctorBySurname.as_view(), name="doctorBySurname"),
+    path('deleteDoctor/<pk>', DeleteDoctor.as_view(), name="deleteDoctor"),
+    path('updateDoctor/<pk>', UpdateDoctor.as_view(), name="updateDoctor"),
     
     #PATIENT
-    path('newPatient/', newPatient.as_view(), name="newPatient"),
+    path('newPatient/', NewPatient.as_view(), name="newPatient"),
     path('listPatient/', ListPatient.as_view(), name="listPatient"),
-    path('deletePatient/<pk>', deletePatient.as_view(), name="deletePatient"),
-    path('updatePatient/<pk>', updatePatient.as_view(), name="updatePatient"),
+    path('patient/<pk>', PatientDetailView.as_view(), name="patientDetail"),
+    path('deletePatient/<pk>', DeletePatient.as_view(), name="deletePatient"),
+    path('updatePatient/<pk>', UpdatePatient.as_view(), name="updatePatient"),
     
     path('login/', login_request, name='login'),
     #path('app_contactos/', ContactoListar.as_view(template_name = "app_contactos/index.html"), name='listar'),

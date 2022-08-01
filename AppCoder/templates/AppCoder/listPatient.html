@@ -14,28 +14,27 @@
         <thead>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Género</th>
         <th>DNI</th>
-        <th>E-mail</th>
         <th>Teléfono</th>
-        <th>Dirección</th>
+        <th>E-mail</th>
+        <th>Fecha de registro</th>
         </thead>
         <tbody>      
             {% for pac in patients %}  
             <tr>
-                <td>{{pac.name}}</td>
+                <!-- <td>{{pac.name}}</td> -->
+                <td><a href="{% url 'patientDetail' pac.id %}">{{pac.name}}</a></td> <!-- link al patientDetail del paciente-->
                 <td>{{pac.surname}}</td>        
-                <td>{{pac.genre}}</td>        
-                <td>{{pac.patId}}</td>
+                <td>{{pac.DNI}}</td>        
+                <td>{{pac.tel}}</td>
                 <td>{{pac.mail}}</td>  
-                <td>{{pac.tel}}</td>  
-                <td>{{pac.address}}</td>
+                <td>{{pac.register_date}}</td>  
             </tr>
             {% endfor %}
         </tbody>
     </table>
     <button type="button">
-        <a href="{% url 'Start' %}">Return</a>
+        <a href="{% url 'Index' %}">Volver al Inicio</a>
     </button>
 </body>
 </html>

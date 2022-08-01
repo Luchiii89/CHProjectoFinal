@@ -14,21 +14,21 @@
         <thead>
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Género</th>
         <th>DNI</th>
         <th>Matrícula</th>
         <th>Especialidad</th>
+        <th>Email</th>
         </thead>
         <tbody>
             {% if object_list %}  
             {% for doc in object_list %}  
             <tr>
-                <td>{{doc.name}}</td>
+                <td><a href="{% url 'doctorDetail' doc.id %}">{{doc.name}}</a></td> <!-- link al doctorDetail del doctor -->
                 <td>{{doc.surname}}</td>
-                <td>{{doc.genre}}</td>  
-                <td>{{doc.docId}}</td>    
+                <td>{{doc.DNI}}</td>  
                 <td>{{doc.license}}</td>  
-                <td>{{doc.specialization}}</td>
+                <td>{{doc.department.name}}</td>
+                <td>{{doc.mail}}</td>
             </tr>
             {% endfor %}
             {% else %} 
@@ -38,7 +38,7 @@
     </table>   
     
     <button type="button">
-        <a href="{% url 'Start' %}">Return</a>
+        <a href="{% url 'Index' %}">Volver al Inicio</a>
     </button>
     
 </body>
