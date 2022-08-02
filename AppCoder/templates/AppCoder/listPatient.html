@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <table class="table table-bordered table-striped">        
+        <thead>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Teléfono</th>
+        <th>E-mail</th>
+        <th>Fecha de registro</th>
+        <th>Delete</th>
+        <th>Update</th>
+        </thead>
+        <tbody>      
+            {% for pac in patients %}  
+            <tr>
+                <!-- <td>{{pac.name}}</td> -->
+                <td><a href="{% url 'patientDetail' pac.DNI %}">{{pac.name}}</a></td> <!-- link al patientDetail del paciente-->
+                <td>{{pac.surname}}</td>        
+                <td>{{pac.DNI}}</td>        
+                <td>{{pac.tel}}</td>
+                <td>{{pac.mail}}</td>  
+                <td>{{pac.register_date}}</td>  
+                <td><a href="{% url 'deletePatient' pac.DNI %}">Delete</a></td>
+                <td><a href="{% url 'updatePatient' pac.DNI %}">Update </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="button">
+        <a href="{% url 'Index' %}">Volver al Inicio</a>
+    </button>
+</body>
+</html>
