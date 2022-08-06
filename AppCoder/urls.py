@@ -15,7 +15,10 @@ urlpatterns = [
     path('newDoctor/', NewDoctor.as_view(), name="newDoctor"),
     path('listDoctor/', ListDoctor.as_view(), name="listDoctor"), 
     path('doctor/<pk>', DoctorDetailView.as_view(), name="doctorDetail"),
+    
     path('doctorBySurname/<pk>', GetDoctorBySurname.as_view(), name="doctorBySurname"),
+    path('doctorBySurname/', GetDoctorBySurname.as_view(), name="doctorBySurname"), #NO FUNCIONA
+    
     path('deleteDoctor/<pk>', DeleteDoctor.as_view(), name="deleteDoctor"),
     path('updateDoctor/<pk>', UpdateDoctor.as_view(), name="updateDoctor"),
     
