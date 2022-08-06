@@ -93,11 +93,10 @@ class ListPatient(ListView):
 class GetDoctorBySurname(ListView):
     model = Doctor
     template_name = "AppCoder/getDoctor.html"
-    queryset = Doctor.objects.all()
-
-    #def get(self, request, *args, **kwargs) -> HttpResponse:
-    #    getDoctor = Doctor.objects.filter(surname__icontains='surname')
-    #    return render(request, self.template_name, {"getDoctor":getDoctor})
+    
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+       getDoctor = Doctor.objects.filter(surname__icontains='surname')
+       return render(request, self.template_name, {"getDoctor":getDoctor})
 
 
 #ELIMINAR

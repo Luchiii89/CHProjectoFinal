@@ -18,17 +18,24 @@
         <th>Teléfono</th>
         <th>E-mail</th>
         <th>Fecha de registro</th>
+
+        <th>Delete</th>
+        <th>Update</th>
         </thead>
         <tbody>      
             {% for pac in patients %}  
             <tr>
                 <!-- <td>{{pac.name}}</td> -->
-                <td><a href="{% url 'patientDetail' pac.id %}">{{pac.name}}</a></td> <!-- link al patientDetail del paciente-->
+
+                <td><a href="{% url 'patientDetail' pac.DNI %}">{{pac.name}}</a></td> <!-- link al patientDetail del paciente-->
                 <td>{{pac.surname}}</td>        
                 <td>{{pac.DNI}}</td>        
                 <td>{{pac.tel}}</td>
                 <td>{{pac.mail}}</td>  
                 <td>{{pac.register_date}}</td>  
+
+                <td><a href="{% url 'deletePatient' pac.DNI %}">Delete</a></td>
+                <td><a href="{% url 'updatePatient' pac.DNI %}">Update </a></td>
             </tr>
             {% endfor %}
         </tbody>

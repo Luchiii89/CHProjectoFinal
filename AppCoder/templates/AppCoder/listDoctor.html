@@ -18,17 +18,23 @@
         <th>Matrícula</th>
         <th>Especialidad</th>
         <th>Email</th>
+
+        <th>Delete</th>
+        <th>Update</th>
         </thead>
         <tbody>
             {% if object_list %}  
             {% for doc in object_list %}  
             <tr>
-                <td><a href="{% url 'doctorDetail' doc.id %}">{{doc.name}}</a></td> <!-- link al doctorDetail del doctor -->
+
+                <td><a href="{% url 'doctorDetail' doc.DNI %}">{{doc.name}}</a></td> <!-- link al doctorDetail del doctor -->
                 <td>{{doc.surname}}</td>
                 <td>{{doc.DNI}}</td>  
                 <td>{{doc.license}}</td>  
                 <td>{{doc.department.name}}</td>
                 <td>{{doc.mail}}</td>
+                <td><a href="{% url 'deleteDoctor' doc.DNI %}">Delete</a></td>
+                <td><a href="{% url 'updateDoctor' doc.DNI %}">Update</a></td>
             </tr>
             {% endfor %}
             {% else %} 
