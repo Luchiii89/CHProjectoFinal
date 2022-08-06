@@ -28,6 +28,14 @@ urlpatterns = [
     path('patient/<pk>', PatientDetailView.as_view(), name="patientDetail"),
     path('deletePatient/<pk>', DeletePatient.as_view(), name="deletePatient"),
     path('updatePatient/<pk>', UpdatePatient.as_view(), name="updatePatient"),
+
+    #DEPARTMENT
+    path('listDepartment/', ListDepartment.as_view(), name="listDepartment"),
+    path('department/<pk>', DepartmentDetailView.as_view(), name="departmentDetail"),
+    path('deleteDepartment/<pk>', DeleteDepartment.as_view(), name="deleteDepartment"),
+    path('updateDepartment/<pk>', UpdateDepartment.as_view(), name="updateDepartment"),
+    
+    path('ourServices', OurServices.as_view(), name="ourServices"),
     
     #Login
     path('login/', login_request, name='login'), 

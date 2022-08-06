@@ -28,6 +28,8 @@ SECRET_KEY = 'django-insecure-4^=l!b=(d&)t4@7cy=e$_*s+)u(y%7d69vgcsus6fn5j-^nkgz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# CSRF_FAILURE_VIEW = None
+
 ALLOWED_HOSTS = []
 
 

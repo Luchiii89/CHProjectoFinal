@@ -162,6 +162,23 @@ a:hover {
       -ms-flex-pack: inherit;
       justify-content: inherit; } }
 
+.wrapper-logo-new {
+  min-height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  @media screen and (max-width: 767px) {
+    .wrapper-logo-new {
+      -webkit-box-pack: inherit;
+      -ms-flex-pack: inherit;
+      justify-content: inherit; } }
+
 /*MENU DESKTOP*/
 .uni-main-menu {
   float: left;
@@ -1447,6 +1464,22 @@ a:hover {
     width: 215px;
     float: left;
     background: #3f97da;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  .uni-home-2 .uni-main-menu {
+    width: auto; }
+
+  .uni-home-2 .wrapper-logo-new {
+    width: 215px;
+    float: left;
+    background: #ffffff;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6740,6 +6773,9 @@ a:hover {
     background-color: #61ace4; }
   .uni-shortcode-team-1 .owl-theme .owl-dots .owl-dot.active span {
     background-color: #E0E0E0; }
+  .uni-home-2-our-doctor .uni-shortcode-team-1  {
+    background-color: #E0E0E0;
+  }
 
 .uni-shortcode-team-2 {
   padding: 80px 0; }
@@ -7095,3 +7131,6 @@ a:hover {
   .uni-shortcode-pricing-table-2 .panel-profresinal .panel-footer a {
     background-color: #3f97da;
     color: #fff; }
+
+
+

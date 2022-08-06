@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} Listado de Doctores {% endblock %}
+{% block title %} Listado de Departamentos {% endblock %}
 
 {% block principal %}
 
@@ -25,14 +25,14 @@
                                 <nav class="main-navigation uni-menu-text">
                                     <div class="cssmenu">
                                         <ul>
-                                            <li class="has-sub"><a href="{% static '#' %}">Pacientes</a>
+                                            <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
                                                 <ul>
                                                     <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
                                                     <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
                                                     <li><a href="{% url 'listPatient' %}">Buscar paciente</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="has-sub"><a href="{% static '#' %}">Doctores</a>
+                                            <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
                                                 <ul>
                                                     <li><a href="{% url 'listDoctor' %}">Listado de doctores</a></li>
                                                     <li><a href="{% url 'newDoctor' %}">Crear doctor</a></li>
@@ -40,7 +40,7 @@
                                                 </ul>
                                             </li>
                                             <li><a href="{% url 'listPatient' %}">Turnos</a></li>
-                                            <li class="has-sub"><a href="{% static '#' %}">Departamentos</a>
+                                            <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
                                                 <ul>
                                                     <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
                                                     <li><a href="{% url 'listPatient' %}">Crear departmento</a></li>
@@ -97,7 +97,7 @@
                 <!-- Page title -->
                 <div class="page-title">
                     <div class="page-title-inner">
-                        <h1>Doctores</h1>
+                        <h1>Departamentos</h1>
                     </div>
                 </div>
                 <!-- End page title -->
@@ -112,80 +112,78 @@
         </div>
         {% endblock %}
 
-        <div id="main-content" class="site-main-content">
+    <div id="main-content" class="site-main-content">
 
-                <main id="main" class="site-main">
-                    <div class="uni-cart-body">
-                        <div id="post" class="container">
-                            <div class="entry-content">
-                                <div class="woocommerce">
-                                    <form class="woocommerce-cart-form" method="post">
-                                        <table class="woocommerce-cart-form__contents table shop_table_responsive">
-                                            <thead>
-                                            <tr>
-                                                <th class="product-remove"></th>
-                                                <th class="product-name">Nombre</th>
-                                                <th class="product-name">Apellido</th>
-                                                <th class="product-name">Especialidad</th>
-                                                <th class="product-name">Acciones</th>
-                                            </tr>
-                                            </thead>
-                                            {% for doc in doctors %}  
-                                            <tbody>
-                                            <tr class="woocommerce-cart-form__cart-item cart_item">
-                                                <td class="product-remove">
-                                                    <a href="{% url 'doctorDetail' doc.DNI %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                                </td>
-                                                <td class="product-name">
-                                                    {{doc.name}}
-                                                </td>
-                                                <td class="product-name">
-                                                    {{doc.surname}}
-                                                </td>
-                                                <td class="product-name">
-                                                    {{doc.department}}
-                                                </td>
-
-                                                <td class="product-name">
-                                                    <div class="uni-element-buttons-small">
-                                                        <div class="uni-shortcode-button-title">
-                                                            <div class="row">
-                                                                <div class="col-md-4">
-                                                                    <a href="{% url 'updateDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
-                                                                        <span class="title">Editar</span>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <a href="{% url 'deleteDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
-                                                                        <span class="title">Eliminar</span>
-                                                                    </a>
-                                                                </div>
+            <main id="main" class="site-main">
+                <div class="uni-cart-body">
+                    <div id="post" class="container">
+                        <div class="entry-content">
+                            <div class="woocommerce">
+                                <form class="woocommerce-cart-form" method="post">
+                                    <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                        <thead>
+                                        <tr>
+                                            <th class="product-remove"></th>
+                                            <th class="product-name">Nombre</th>
+                                            <th class="product-name">Director</th>
+                                            <th class="product-name">Acciones</th>
+                                        </tr>
+                                        </thead>
+                                        {% for dep in departments %}  
+                                        <tbody>
+                                        <tr class="woocommerce-cart-form__cart-item cart_item">
+                                            <td class="product-remove">
+                                                <a href="{% url 'departmentDetail' dep.id %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            </td>
+                                            <td class="product-name">
+                                                {{dep.name}}
+                                            </td>
+                                            <td class="product-name">
+                                                {{dep.head_of}}
+                                            </td>
+                                            <td class="product-name">
+                                                <div class="uni-element-buttons-small">
+                                                    <div class="uni-shortcode-button-title">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <a href="{% url 'updateDepartment' dep.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                    <span class="title">Editar</span>
+                                                                </a>
                                                             </div>
-
+                                                            <div class="col-md-4">
+                                                                <a href="{% url 'deleteDepartment' dep.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                    <span class="title">Eliminar</span>
+                                                                </a>
+                                                            </div>
                                                         </div>
+
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            {% endfor %}
-                                            </tbody>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
 
-                                        </table>
-                                    </form>
 
-                                    <div class="uni-search-appointment">
-                                        <ul>
-                                            <li class="uni-btn-appointment">
-                                                <a href="{% url 'Index' %}">Volver al Inicio</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+
+                                    </table>
+                                </form>
+
+                                <div class="uni-search-appointment">
+                                    <ul>
+                                        <li class="uni-btn-appointment">
+                                            <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
+                </div>
+            </main>
 
-        </div>
+    </div>
+
     {% endblock %}
 
 {% endblock %}
