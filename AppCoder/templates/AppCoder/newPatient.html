@@ -1,25 +1,76 @@
+{% extends 'AppCoder/listPatient.html' %}
+
 {% load static %}
 
-{% block contenidoQueCambia %}
-    
-    {% if miFormulario.errors %}
+{% block title %} Nuevo paciente {% endblock %}
 
-    <p style="color: red;"> Están mal los datos, revisar</p>
+{% block bannertitle %}<h1>Pacientes</h1>{% endblock %}
 
-    {% endif %}
-    <form action="" method="POST">{% csrf_token %}
+{% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Pacientes</a></li>{% endblock %}
+            
+{% block maincontent %}
+<main id="main" class="clearfix right_sidebar">
+    <div class="uni-checkout-body">
+        <div class="container">
+            <div class="tg-container">
+                <div id="primary">
+                    <div class="entry-thumbnail">
+                        <div class="entry-content-text-wrapper clearfix">
+                            <div class="entry-content-wrapper">
+                                <div class="entry-content">
+                                    <div class="woocommerce">
+                                        <div class="row">
+                                            <div class="vk-checkout-billing-left">
+                                                <div class="col-md-7">
+                                                    <div class="woocommerce-billing-fields">
+                                                        <div class="woocommerce-billing-fields__field-wrapper">
 
-        <!-- Acá está la magia de Django-->
-        
-        <table>
-            {{ form.as_p }}
-        </table>
+                                                            
+                                                            {% block contenido %}
 
-        <input type="submit", value="Enviar"> 
-        <button type="button">
-            <a href="{% url 'Index' %}">Volver al Inicio</a>
-        </button>
+                                                                {% if miFormulario.errors %}
 
-    </form>
-    
+                                                                <p style="color: red;"> Están mal los datos, revisar</p>
+
+                                                                {% endif %}
+                                                                <form action="" method="POST">{% csrf_token %}
+
+                                                                    <h3>Complete el formulario:</h3><br>
+                                                                    
+                                                                    <table>
+                                                                        {{ form.as_p }}
+                                                                    </table>
+
+                                                                    <input type="submit", value="Enviar"> 
+                                                                    <button type="button">
+                                                                        <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                                                    </button>
+
+                                                                </form>
+                                                                
+                                                            {% endblock %}
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div><!-- .entry-content -->
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div> <!-- Primary end -->
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}
+

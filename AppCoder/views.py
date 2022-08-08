@@ -46,6 +46,8 @@ def login_request(request):
 class Index(TemplateView):
     template_name = "AppCoder\index.html"
 
+class OurServices(TemplateView):
+    template_name = "AppCoder\ourServices.html"
     
 # CREAR
 class NewDoctor(CreateView):
@@ -63,14 +65,19 @@ class NewPatient(CreateView):
 #DETALLE
 class DoctorDetailView(DetailView):
       model = Patient
-      template_name = "AppCoder/doctor_detail.html" 
+      template_name = "AppCoder/doctorDetail.html" 
 
     
 class PatientDetailView(DetailView):
       model = Doctor
-      template_name = "AppCoder/patient_detail.html"
+      template_name = "AppCoder/patientDetail.html"
 
-  
+
+class DepartmentDetailView(DetailView):
+      model = Department
+      template_name = "AppCoder/departmentDetail.html"
+      
+
 # LISTAR
 class ListDoctor(ListView):
     model = Doctor
@@ -78,7 +85,6 @@ class ListDoctor(ListView):
     queryset = Doctor.objects.all()
     context_object_name = 'doctors' 
     ordering = ['surname']
-
 
 
 class ListPatient(ListView):
@@ -89,6 +95,14 @@ class ListPatient(ListView):
     ordering = ['surname']
 
 
+class ListDepartment(ListView):
+    model = Department
+    template_name = "AppCoder/listDepartment.html"
+    queryset = Department.objects.all()
+    context_object_name = 'departments' 
+    ordering = ['name']
+    
+
 #BUSCAR
 class GetDoctorBySurname(ListView):
     model = Doctor
@@ -98,16 +112,7 @@ class GetDoctorBySurname(ListView):
        getDoctor = Doctor.objects.filter(surname__icontains='surname')
        return render(request, self.template_name, {"getDoctor":getDoctor})
 
-class GetPatients(ListView):
-    model = Patient
-    template_name = "AppCoder/getPatient.html"    
-    
-    def get(self, request, *args, **kwargs) -> HttpResponse:
-        
-       getPatient = Patient.objects.filter(surname__icontains='surname')
-       return render(request, self.template_name, {"getPatient":getPatient})
-
-
+  
 #ELIMINAR
 class DeleteDoctor(DeleteView):
     model = Doctor
@@ -117,9 +122,15 @@ class DeleteDoctor(DeleteView):
 
 class DeletePatient(DeleteView):
     model = Patient
-    template_name = "AppCoder/deletepatient.html"
+    template_name = "AppCoder/deletePatient.html"
     success_url = reverse_lazy('listPatient')
 
+
+class DeleteDepartment(DeleteView):
+    model = Department
+    template_name = "AppCoder/deleteDepartment.html"
+    success_url = reverse_lazy('listDepartment')
+    
 
 #EDITAR
 class UpdateDoctor(UpdateView):
@@ -131,6 +142,13 @@ class UpdateDoctor(UpdateView):
 
 class UpdatePatient(UpdateView):
     model = Patient
-    fields = ['name', 'surname', 'genre', 'DNI', 'mail', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
+    fields = ['name', 'surname', 'genre', 'DNI', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
     template_name = "AppCoder/newPatient.html"
     success_url = reverse_lazy('listPatient')
+
+
+class UpdateDepartment(UpdateView):
+    model = Department
+    fields = ['mail', 'tel', 'head_of']
+    template_name = "AppCoder/newDepartment.html"
+    success_url = reverse_lazy('listDepartment')

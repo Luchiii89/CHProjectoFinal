@@ -1,35 +1,12 @@
+{% extends 'AppCoder/newPatient.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% block contenidoQueCambia %}
-    
-    {% if miFormulario.errors %}
+{% block title %} Nuevo doctor {% endblock %}
 
-    <p style="color: red;"> Están mal los datos, revisar</p>
+{% block bannertitle %} <h1>Nuevo doctor</h1> {% endblock %}
 
-    {% endif %}
-    <form action="" method="POST">{% csrf_token %}        
-            <table>                     
-                    {{ form.as_p }}                  
-            </table>
-        <input type="submit", value="Agregar">
-        <button type="button">
-            <a href="{% url 'Index' %}">Volver al Inicio</a>
-        </button>
-        
-    </form>
-
-{% endblock %}
-</body>
-</html>
+{% block breadcrumbstitle %}<li><a href="{% url 'listDoctor' %}">Doctores</a></li>{% endblock %}
 
 
 

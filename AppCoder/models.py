@@ -7,7 +7,7 @@ from django.views.generic import ListView
 from django import forms
 from django.db import models
 from django.urls import reverse
-from rsa import PrivateKey
+# from RSA import PrivateKey
 
 # Create your models here.
 class Department(models.Model):
