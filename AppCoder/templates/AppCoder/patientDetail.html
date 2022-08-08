@@ -1,13 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    patient_detail
-    
-</body>
-</html>
+{% extends 'AppCoder/listPatient.html' %}
+
+{% load static %}
+
+{% block title %} Paciente {% endblock %}
+
+{% block bannertitle %}<h1>Detalles del paciente</h1>{% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Pacientes</a></li>{% endblock %}
+            
+{% block maincontent %}
+<div class="uni-cart">
+    <div id="wrapper-container" class="site-wrapper-container">
+<div id="main-content" class="site-main-content">
+    <div class="site-content-area">
+        <main id="main" class="site-main">
+            <div class="uni-cart-body">
+                <div id="post" class="container">
+                    <div class="entry-content">
+                        <div class="woocommerce">
+                            <form class="woocommerce-cart-form" method="post">
+                                <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                    <thead>
+                                    <tr>
+                                        <th class="product-price">Nombre</th>
+                                        <th class="product-price">Apellido</th>
+                                        <th class="product-price">DNI</th>
+                                        <th class="product-price">Género</th>
+                                        <th class="product-price">Dirección</th>
+                                        <th class="product-price">Teléfono</th>
+                                        <th class="product-price">Email</th>
+                                        <th class="product-price">Fecha de nacimiento</th>
+                                        <th class="product-price">Fecha de registro</th>
+                                        <th class="product-quantity">Acciones</th>
+                                    </tr>
+                                    </thead>    
+
+                                    <tbody>
+                                        <tr class="woocommerce-cart-form__cart-item cart_item">                                        
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.name}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.surname}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.DNI}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.genre}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.address}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.tel}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.mail}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.birth_date}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.register_date}}</span></td>
+                                            <td class="product-price">
+                                                <div class="uni-element-buttons-small">
+                                                    <div class="uni-shortcode-button-title">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <a href="{% url 'updatePatient' patient.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                    <span class="title"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <a href="{% url 'deletePatient' patient.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                    <span class="title"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </form>
+
+                            <div class="uni-search-appointment">
+                                <ul>
+                                    <li class="uni-btn-appointment">
+                                        <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                    </li>
+                                    <li class="uni-btn-appointment">
+                                        <a href="{% url 'listPatient' %}">Volver a la lista</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+</div>
+</div>    
+</div>
+</div>
+{% endblock %}

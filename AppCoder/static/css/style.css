@@ -630,7 +630,8 @@ a:hover {
       border: solid 2px #3f97da;
       -webkit-transition: all 0.5s;
       -o-transition: all 0.5s;
-      transition: all 0.5s; }
+      transition: all 0.5s;
+      border-radius: 15px; }
       @media screen and (max-width: 1199px) and (min-width: 992px) {
         .uni-search-appointment ul li.uni-btn-appointment a {
           font-size: 12px;
@@ -4935,7 +4936,7 @@ a:hover {
     font-weight: 600;
     text-transform: uppercase;
     line-height: 2.14;
-    text-align: left;
+    text-align: center;
     color: #22292d;
     border-bottom: none; }
     @media screen and (max-width: 400px) {
@@ -4948,7 +4949,8 @@ a:hover {
 
 .uni-cart .woocommerce tbody tr td {
   vertical-align: middle;
-  border-top: 1px solid #E0E0E0; }
+  border-top: 1px solid #E0E0E0;
+  text-align: center; }
 
 .uni-cart .woocommerce tbody .product-remove {
   text-align: center; }
@@ -5599,7 +5601,9 @@ a:hover {
     color: #6fdd9d !important; }
 
 .bg-e36060 {
-  background: #e36060; }
+  color: white;
+  background: #e36060;
+  border-radius: 15px; }
   .bg-e36060:hover {
     border: 1px solid #e36060;
     color: #e36060 !important; }
@@ -5626,7 +5630,9 @@ a:hover {
     color: #2dda8f !important; }
 
 .bg-3f97da {
-  background: #3f97da; }
+  color: white;
+  background: #3f97da;
+  border-radius: 15px; }
   .bg-3f97da:hover {
     border: 1px solid #3f97da;
     color: #3f97da !important; }

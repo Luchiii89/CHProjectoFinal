@@ -64,18 +64,18 @@ class NewPatient(CreateView):
 
 #DETALLE
 class DoctorDetailView(DetailView):
-      model = Patient
-      template_name = "AppCoder/doctorDetail.html" 
+    model = Doctor
+    template_name = "AppCoder/doctorDetail.html" 
 
     
 class PatientDetailView(DetailView):
-      model = Doctor
-      template_name = "AppCoder/patientDetail.html"
+    model = Patient
+    template_name = "AppCoder/patientDetail.html"
 
 
 class DepartmentDetailView(DetailView):
-      model = Department
-      template_name = "AppCoder/departmentDetail.html"
+    model = Department
+    template_name = "AppCoder/departmentDetail.html"
       
 
 # LISTAR
