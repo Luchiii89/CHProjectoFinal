@@ -98,6 +98,15 @@ class GetDoctorBySurname(ListView):
        getDoctor = Doctor.objects.filter(surname__icontains='surname')
        return render(request, self.template_name, {"getDoctor":getDoctor})
 
+class GetPatients(ListView):
+    model = Patient
+    template_name = "AppCoder/getPatient.html"    
+    
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        
+       getPatient = Patient.objects.filter(surname__icontains='surname')
+       return render(request, self.template_name, {"getPatient":getPatient})
+
 
 #ELIMINAR
 class DeleteDoctor(DeleteView):

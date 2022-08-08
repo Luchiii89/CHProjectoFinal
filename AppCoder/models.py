@@ -2,6 +2,7 @@ from datetime import datetime
 from enum import unique
 from pyexpat import model
 from tabnanny import verbose
+from django.http import HttpResponse
 from django.views.generic import ListView
 from django import forms
 from django.db import models
@@ -92,7 +93,7 @@ class Patient(models.Model):
         """
         Devuelve la url para acceder a una instancia particular de Patient.
         """
-        return reverse('listPatient')
+        return HttpResponse
         #return reverse('model-detail-view', args=[str(self.id)]) LUEGO CAMBIAR POR ALGO SIMILAR A ESTO
 
 

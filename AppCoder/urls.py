@@ -27,10 +27,10 @@ urlpatterns = [
     path('patient/<pk>', PatientDetailView.as_view(), name="patientDetail"),
     path('deletePatient/<pk>', DeletePatient.as_view(), name="deletePatient"),
     path('updatePatient/<pk>', UpdatePatient.as_view(), name="updatePatient"),
-    
+    path("getPatient/<pk>", GetPatients.as_view(), name="getPatient"),
 
     #Login
     path('login/', login_request, name='login'), 
-    path('admin/', admin.site.urls),
-    #path('login/',include('home.urls')), 
+    #path('admin/', admin.site.urls),
+     
 ]
