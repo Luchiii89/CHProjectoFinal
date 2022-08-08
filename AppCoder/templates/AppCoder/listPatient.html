@@ -29,14 +29,14 @@
                                             <nav class="main-navigation uni-menu-text">
                                                 <div class="cssmenu">
                                                     <ul>
-                                                        <li class="has-sub"><a href="{% static '#' %}">Pacientes</a>
+                                                        <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
                                                                 <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
                                                                 <li><a href="{% url 'listPatient' %}">Buscar paciente</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li class="has-sub"><a href="{% static '#' %}">Doctores</a>
+                                                        <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listDoctor' %}">Listado de doctores</a></li>
                                                                 <li><a href="{% url 'newDoctor' %}">Crear doctor</a></li>
@@ -44,13 +44,13 @@
                                                             </ul>
                                                         </li>
                                                         <li><a href="{% url 'listPatient' %}">Turnos</a></li>
-                                                        <li class="has-sub"><a href="{% static '#' %}">Departamentos</a>
+                                                        <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
                                                                 <li><a href="{% url 'listPatient' %}">Crear departmento</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li class="has-sub"><a href="{% static '#' %}">Historias Clínicas</a>
+                                                        <li class="has-sub"><a href="{% url 'Index' %}">Historias Clínicas</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listPatient' %}">Crear historia clínica</a></li>
                                                                 <li><a href="{% url 'listPatient' %}">Buscar historia clínica</a></li>
@@ -69,7 +69,7 @@
                                                     <i class="fa fa-search" aria-hidden="true"></i>
                                                 </li>
                                                 <li class="uni-btn-appointment">
-                                                    <a href="{% static '#' %}">Nuevo turno</a>
+                                                    <a href="{% url 'Index' %}">Nuevo turno</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -229,11 +229,11 @@
                                             <div class="uni-quick-link">
                                                 <ul>
                                                     <li><a href="{% url 'Index' %}"><span>+</span> Inicio</a></li>
-                                                    <li><a href="{% static '#' %}"><span>+</span> Acerca de nosotros</a></li>
-                                                    <li><a href="{% static '#' %}"><span>+</span> Servicios</a></li>
-                                                    <li><a href="{% static '#' %}"><span>+</span> Turnos</a></li>
-                                                    <li><a href="{% static '#' %}"><span>+</span> Notas</a></li>
-                                                    <li><a href="{% static '#' %}"><span>+</span> Contacto</a></li>
+                                                    <li><a href="{% url 'Index' %}"><span>+</span> Acerca de nosotros</a></li>
+                                                    <li><a href="{% url 'Index' %}"><span>+</span> Servicios</a></li>
+                                                    <li><a href="{% url 'Index' %}"><span>+</span> Turnos</a></li>
+                                                    <li><a href="{% url 'Index' %}"><span>+</span> Notas</a></li>
+                                                    <li><a href="{% url 'Index' %}"><span>+</span> Contacto</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -294,12 +294,12 @@
                         <div class="copyright-content">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <p class="copyright-text"> <a href="{% static 'templateshub.net' %}">Templateshub</a></p>
+                                    <p class="copyright-text"> <a href="{% url 'Index' %}">Templateshub</a></p>
                                 </div>
                                 <div class="col-sm-6">
                                     <ul class="copyright-menu">
-                                        <li><a href="{% static '#' %}">Términos de uso</a></li>
-                                        <li><a href="{% static '#' %}">Políticas de privacidad</a></li>
+                                        <li><a href="{% url 'Index' %}">Términos de uso</a></li>
+                                        <li><a href="{% url 'Index' %}">Políticas de privacidad</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -308,7 +308,7 @@
                 </div>
             </footer>
             {% endblock %}
-            
+
         </div>
     </div>
 
