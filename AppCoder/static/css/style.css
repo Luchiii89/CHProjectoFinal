@@ -5120,7 +5120,8 @@ a:hover {
 
 /*CHECK OUT*/
 .uni-checkout .uni-checkout-body {
-  padding: 100px 0; }
+  padding: 10px 0;
+}
   .uni-checkout .uni-checkout-body .checkout-ship-address-checkbox {
     display: none; }
   .uni-checkout .uni-checkout-body .checkbox-create-account-form {

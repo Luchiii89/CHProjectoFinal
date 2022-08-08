@@ -112,7 +112,7 @@ class GetDoctorBySurname(ListView):
        getDoctor = Doctor.objects.filter(surname__icontains='surname')
        return render(request, self.template_name, {"getDoctor":getDoctor})
 
-
+  
 #ELIMINAR
 class DeleteDoctor(DeleteView):
     model = Doctor

@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 
 <html lang="en">
@@ -29,7 +30,7 @@
 
 <body>
 
-<!--load page-->
+{% block loadpage %}
 <div class="load-page">
     <div class="sk-wave">
         <div class="sk-rect sk-rect1"></div>
@@ -39,8 +40,9 @@
         <div class="sk-rect sk-rect5"></div>
     </div>
 </div>
+{% endblock %}
 
-<!-- Mobile nav -->
+{% block mobilenav %}
 <nav class="visible-sm visible-xs mobile-menu-container mobile-nav">
     <div class="menu-mobile-nav navbar-toggle">
         <span class="icon-bar"><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -131,7 +133,7 @@
         <div class="clearfix"></div>
     </div>
 </nav>
-<!-- End mobile menu -->
+{% endblock %}
 
 {% block principal %}
 <div class="uni-home-2">
@@ -165,7 +167,7 @@
                     <div class="uni-medicare-header-main">
                         <!--LOGO-->
                         <div class="wrapper-logo">
-                            <a class="logo-default" href="{% url 'Index' %}"><img src="{% static 'images/logo-home-2.png' %}" alt="" class="img-responsive"></a>
+                            {%block logo %} <a class="logo-default" href="{% url 'Index' %}"><img src="{% static 'images/logo-home-2.png' %}" alt="" class="img-responsive"></a> {% endblock %}
                             <div class="clearfix"></div>
                         </div>
                         <!--MENU TEXT-->
@@ -240,7 +242,6 @@
             <section class="site-content-area">
 
                 <!--BANNER-->
-                {% block banner %}
                 <div class="uni-banner">
                     <div class="uni-owl-one-item owl-carousel owl-theme">
                         <div class="item">
@@ -292,7 +293,6 @@
                         </div>
                     </div>
                 </div>
-                {% endblock %}
 
                 <!--BOOK APPOINTMENTS-->
                 <div class="uni-home-2-book-appointment uni-background-3">
@@ -428,7 +428,42 @@
                     </div>
                 </div>
 
-
+                <!--HOME 2 COUNTER-->
+                <div class="uni-home-2-counter">
+                    <div class="uni-shortcode-counter-2 uni-background-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="uni-shortcode-counter-default">
+                                        <ul>
+                                            <li class="counter-icons"><i class="fa fa-user-md" aria-hidden="true"></i></li>
+                                            <li class="counter-number counter"> 183 </li>
+                                            <li class="counter-text"> doctores</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="uni-shortcode-counter-default">
+                                        <ul>
+                                            <li class="counter-icons"><i class="fa fa-smile-o" aria-hidden="true"></i></li>
+                                            <li class="counter-number counter"> 1150 </li>
+                                            <li class="counter-text"> pacientes felices</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="uni-shortcode-counter-default">
+                                        <ul>
+                                            <li class="counter-icons"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></li>
+                                            <li class="counter-number counter"> 40 </li>
+                                            <li class="counter-text"> años de experiencia </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!--OUR DOCTOR-->
                 <div class="uni-home-2-our-doctor">
@@ -568,318 +603,6 @@
                     </div>
                 </div>
 
-                                <!--OUR SERVICES-->
-                                <div class="uni-home-our-services">
-                                    <div class="uni-shortcode-icons-box-5">
-                                        <div class="container">
-                
-                                            <div class="uni-home-title">
-                                                <h3>Nuestros servicios</h3>
-                                                <div class="uni-underline"></div>
-                                            </div>
-                
-                                            <div class="row">
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="uni-shortcode-icons-box-5-default">
-                                                        <div class="item-icons-title">
-                                                            <div class="col-md-4 uni-clear-padding">
-                                                                <div class="item-icons">
-                                                                    <img src="images/icons_box/icon_4/icon-5.png" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8 uni-clear-padding">
-                                                                <div class="item-title">
-                                                                    <h4>Cirugía de trasplante de córnea</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption">
-                                                            <p>
-                                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                                fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-                                                                ultricies eget...
-                                                            </p>
-                                                            <a href="#" class="readmore">Leer más</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="uni-shortcode-icons-box-5-default">
-                                                        <div class="item-icons-title">
-                                                            <div class="col-md-4 uni-clear-padding">
-                                                                <div class="item-icons">
-                                                                    <img src="images/icons_box/icon_4/icon-4.png" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8 uni-clear-padding">
-                                                                <div class="item-title">
-                                                                    <h4>Cirugía cardiotorácica</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption">
-                                                            <p>
-                                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                                fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-                                                                ultricies eget...
-                                                            </p>
-                                                            <a href="#" class="readmore">Leer más</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="uni-shortcode-icons-box-5-default">
-                                                        <div class="item-icons-title">
-                                                            <div class="col-md-4 uni-clear-padding">
-                                                                <div class="item-icons">
-                                                                    <img src="images/icons_box/icon_4/icon-3.png" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8 uni-clear-padding">
-                                                                <div class="item-title">
-                                                                    <h4>Chequeo general de salud</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption">
-                                                            <p>
-                                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                                fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-                                                                ultricies eget...
-                                                            </p>
-                                                            <a href="#" class="readmore">Leer más</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="uni-shortcode-icons-box-5-default">
-                                                        <div class="item-icons-title">
-                                                            <div class="col-md-4 uni-clear-padding">
-                                                                <div class="item-icons">
-                                                                    <img src="images/icons_box/icon_4/icon-2.png" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8 uni-clear-padding">
-                                                                <div class="item-title">
-                                                                    <h4>Diagnóstico y &amp; <br> tratamiento de cáncer</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption">
-                                                            <p>
-                                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                                fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-                                                                ultricies eget...
-                                                            </p>
-                                                            <a href="#" class="readmore">Leer más</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="uni-shortcode-icons-box-5-default">
-                                                        <div class="item-icons-title">
-                                                            <div class="col-md-4 uni-clear-padding">
-                                                                <div class="item-icons">
-                                                                    <img src="images/icons_box/icon_4/icon-1.png" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8 uni-clear-padding">
-                                                                <div class="item-title">
-                                                                    <h4>Tratemiento de <br> neumonía</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption">
-                                                            <p>
-                                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                                fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-                                                                ultricies eget...
-                                                            </p>
-                                                            <a href="#" class="readmore">Leer más</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6">
-                                                    <div class="uni-shortcode-icons-box-5-default">
-                                                        <div class="item-icons-title">
-                                                            <div class="col-md-4 uni-clear-padding">
-                                                                <div class="item-icons">
-                                                                    <img src="images/icons_box/icon_4/icon.png" alt="">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-8 uni-clear-padding">
-                                                                <div class="item-title">
-                                                                    <h4>Tratemiento de <br> dermatitis</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="item-caption">
-                                                            <p>
-                                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                                fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
-                                                                ultricies eget...
-                                                            </p>
-                                                            <a href="#" class="readmore">Leer más</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                
-                                            <div class="btn-all-services">
-                                                <a href="#">Todos los servicios +</a>
-                                            </div>
-                
-                                        </div>
-                                    </div>
-                                </div>
-
-                <!--HOME 2 COUNTER-->
-                <div class="uni-home-2-counter">
-                    <div class="uni-shortcode-counter-2 uni-background-3">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="uni-shortcode-counter-default">
-                                        <ul>
-                                            <li class="counter-icons"><i class="fa fa-user-md" aria-hidden="true"></i></li>
-                                            <li class="counter-number counter"> 183 </li>
-                                            <li class="counter-text"> doctores</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="uni-shortcode-counter-default">
-                                        <ul>
-                                            <li class="counter-icons"><i class="fa fa-smile-o" aria-hidden="true"></i></li>
-                                            <li class="counter-number counter"> 1150 </li>
-                                            <li class="counter-text"> pacientes felices</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="uni-shortcode-counter-default">
-                                        <ul>
-                                            <li class="counter-icons"><i class="fa fa-lightbulb-o" aria-hidden="true"></i></li>
-                                            <li class="counter-number counter"> 40 </li>
-                                            <li class="counter-text"> años de experiencia </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--HOME 2 ICON BOXS-->
-                <div class="uni-home-2-icons-box">
-                    <div class="uni-shortcode-icons-box-3">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-user-md" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="item-caption">
-                                            <h4>Médicos calificados</h4>
-                                            <div class="uni-line"></div>
-                                            <p>
-                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                fame ac turpis egestas. Vestibulum tortor quam, feugiat vitae.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="item-caption">
-                                            <h4>
-                                                servicio las 24 horas
-                                            </h4>
-                                            <div class="uni-line"></div>
-                                            <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="item-caption">
-                                            <h4>
-                                                Equipamiento moderno
-                                            </h4>
-                                            <div class="uni-line"></div>
-                                            <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="item-caption">
-                                            <h4>
-                                                médicos de primera línea
-                                            </h4>
-                                            <div class="uni-line"></div>
-                                            <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-ambulance" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="item-caption">
-                                            <h4>
-                                                asistencia inmediata
-                                            </h4>
-                                            <div class="uni-line"></div>
-                                            <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-commenting" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="item-caption">
-                                            <h4>
-                                                apoyo entusiasta
-                                            </h4>
-                                            <div class="uni-line"></div>
-                                            <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!--home 2 custommer say-->
                 <div class="uni-home-2-custommer-say">
                     <div class="uni-shortcode-testimonials-2 uni-background-3">
@@ -1000,146 +723,116 @@
                     </div>
                 </div>
 
-                <!--HOME 2 LATEST POST-->
-                <div class="uni-home-2-latest-post">
-                    <div class="container">
-                        <div class="uni-home-title">
-                            <h3>Latest Post</h3>
-                            <div class="uni-underline"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="blog-grid-item">
-                                    <article class="post type-post">
-                                        <div class="content-inner">
-                                            <div class="uni-entry-top">
-                                                <div class="thumbnail-img">
-                                                    <a href="{% static '#' %}" title="">
-                                                        <img src="{% static 'images/blog_grid/img1.jpg' %}" alt="" title="" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="uni-entry-body">
-                                                <div class="uni-entry-content">
-
-                                                    <header class="uni-entry-header">
-                                                        <h2 class="uni-entry-title">
-                                                            <a href="{% static '#' %}" rel="">Lorem ipsum dolor sit amet, conse tetuer adipiscing elit?</a>
-                                                        </h2>
-                                                    </header>
-
-                                                    <div class="uni-entry-meta">
-                                                        <span class="uni-author">
-                                                            <a href="{% static '#' %}" rel="author"><i class="fa fa-calendar" aria-hidden="true"></i> june 21, 2017</a>
-                                                        </span>
-                                                        <span class="uni-comment-total">
-                                                            <a href="{% static '#' %}" class="comments-link"><i class="fa fa-user" aria-hidden="true"></i> admin</a>
-                                                        </span>
-                                                        <span class="uni-entry-folder"><a href="{% static '#' %}"><i class="fa fa-comment" aria-hidden="true"></i> 2 comments</a></span>
-                                                    </div>
-                                                    <div class="uni-entry-summary">
-                                                        <p>Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada fames ac turpis egestas. Vesti bulum tortor quam vitae...
-                                                            <span class="readmore"><a href="{% static '#' %}">[ Read More ]</a></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                <!--HOME 2 ICON BOXS-->
+                <div class="uni-home-2-icons-box">
+                    <div class="uni-shortcode-icons-box-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-user-md" aria-hidden="true"></i>
                                         </div>
-                                    </article>
+                                        <div class="item-caption">
+                                            <h4>Médicos calificados</h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                equipo de expertos en continua actualización y formación, actividad científica y participación en las principales sociedades científicas.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="blog-grid-item">
-                                    <article class="post type-post">
-                                        <div class="content-inner">
-                                            <div class="uni-entry-top">
-                                                <div class="thumbnail-img">
-                                                    <a href="{% static '#' %}" title="">
-                                                        <img src="{% static 'images/blog_grid/img.jpg' %}" alt="" title="" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="uni-entry-body">
-                                                <div class="uni-entry-content">
-
-                                                    <header class="uni-entry-header">
-                                                        <h2 class="uni-entry-title">
-                                                            <a href="{% static '#' %}" rel="">Lorem ipsum dolor sit amet, conse tetuer adipiscing elit?</a>
-                                                        </h2>
-                                                    </header>
-
-                                                    <div class="uni-entry-meta">
-                                                        <span class="uni-author">
-                                                            <a href="{% static '#' %}" rel="author"><i class="fa fa-calendar" aria-hidden="true"></i> june 21, 2017</a>
-                                                        </span>
-                                                        <span class="uni-comment-total">
-                                                            <a href="{% static '#' %}" class="comments-link"><i class="fa fa-user" aria-hidden="true"></i> admin</a>
-                                                        </span>
-                                                        <span class="uni-entry-folder"><a href="{% static '#' %}"><i class="fa fa-comment" aria-hidden="true"></i> 2 comments</a></span>
-                                                    </div>
-                                                    <div class="uni-entry-summary">
-                                                        <p>Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada fames ac turpis egestas. Vesti bulum tortor quam vitae...
-                                                            <span class="readmore"><a href="{% static '#' %}">[ Read More ]</a></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
                                         </div>
-                                    </article>
+                                        <div class="item-caption">
+                                            <h4>
+                                                servicio las 24 horas
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="blog-grid-item">
-                                    <article class="post type-post">
-                                        <div class="content-inner">
-                                            <div class="uni-entry-top">
-                                                <div class="thumbnail-img">
-                                                    <a href="{% static '#' %}" title="">
-                                                        <img src="{% static 'images/blog_grid/img-1.jpg' %}" alt="" title="" class="img-responsive">
-                                                    </a>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="uni-entry-body">
-                                                <div class="uni-entry-content">
-
-                                                    <header class="uni-entry-header">
-                                                        <h2 class="uni-entry-title">
-                                                            <a href="{% static '#' %}" rel="">Lorem ipsum dolor sit amet, conse tetuer adipiscing elit?</a>
-                                                        </h2>
-                                                    </header>
-
-                                                    <div class="uni-entry-meta">
-                                                        <span class="uni-author">
-                                                            <a href="{% static '#' %}" rel="author"><i class="fa fa-calendar" aria-hidden="true"></i> june 21, 2017</a>
-                                                        </span>
-                                                        <span class="uni-comment-total">
-                                                            <a href="{% static '#' %}" class="comments-link"><i class="fa fa-user" aria-hidden="true"></i> admin</a>
-                                                        </span>
-                                                        <span class="uni-entry-folder"><a href="{% static '#' %}"><i class="fa fa-comment" aria-hidden="true"></i> 2 comments</a></span>
-                                                    </div>
-                                                    <div class="uni-entry-summary">
-                                                        <p>Pellentesque habitant morbi tristique senectus et netus et
-                                                            malesuada fames ac turpis egestas. Vesti bulum tortor quam vitae...
-                                                            <span class="readmore"><a href="{% static '#' %}">[ Read More ]</a></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
                                         </div>
-                                    </article>
+                                        <div class="item-caption">
+                                            <h4>
+                                                Equipamiento moderno
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                médicos de primera línea
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-ambulance" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                asistencia inmediata
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-commenting" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                apoyo entusiasta
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
 
             </section>
         </div>
@@ -1153,17 +846,17 @@
                         <div class="footer-main-content-elements">
                             <div class="footer-main-content-element col-md-3 col-sm-6">
                                 <aside class="widget">
-                                    <div class="widget-title uni-uppercase"><a href="{% static '#' %}"><img src="{% static 'images/logowhite.png' %}" alt="" class="img-responsive"></a></div>
+                                    <div class="widget-title uni-uppercase"><a href="{% url 'Index' %}"><img src="{% static 'images/logowhite.png' %}" alt="" class="img-responsive"></a></div>
                                     <div class="widget-content">
                                         <p>
-                                            Pellentesque habitant morbi tristique senectus et netus et malesuada fame ac
-                                            turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.
+                                            Somos una Institución asistencial creada a principios de los años 60, cuyo objetivo esencial es “asistir y acompañar” a la persona enferma y su entorno.
                                         </p>
+                                        <br>
                                         <div class="uni-info-contact">
                                             <ul>
-                                                <li> <i class="fa fa-map-marker" aria-hidden="true"></i> 45 Queen's Park Rd, Brighton,  UK</li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i> (094) 123 4567 - (094) 123 4568</li>
-                                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> medicareplus@domain.com</li>
+                                                <li> <i class="fa fa-map-marker" aria-hidden="true"></i> Av. San Martín 7845, San Justo</li>
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i> 4553-0120 / 4553-0122</li>
+                                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> medicareplus@medicare.com.ar</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1171,16 +864,16 @@
                             </div>
                             <div class="footer-main-content-element col-md-3 col-sm-6">
                                 <aside class="widget">
-                                    <h3 class="widget-title uni-uppercase">quick links</h3>
+                                    <h3 class="widget-title uni-uppercase">Accesos directos</h3>
                                     <div class="widget-content">
                                         <div class="uni-quick-link">
                                             <ul>
-                                                <li><a href="{% static '#' %}"><span>+</span> Home</a></li>
-                                                <li><a href="{% static '#' %}"><span>+</span> about</a></li>
-                                                <li><a href="{% static '#' %}"><span>+</span> services</a></li>
-                                                <li><a href="{% static '#' %}"><span>+</span> timetable</a></li>
-                                                <li><a href="{% static '#' %}"><span>+</span> blog</a></li>
-                                                <li><a href="{% static '#' %}"><span>+</span> contact</a></li>
+                                                <li><a href="{% url 'Index' %}"><span>+</span> Inicio</a></li>
+                                                <li><a href="{% static '#' %}"><span>+</span> Acerca de nosotros</a></li>
+                                                <li><a href="{% static '#' %}"><span>+</span> Servicios</a></li>
+                                                <li><a href="{% static '#' %}"><span>+</span> Turnos</a></li>
+                                                <li><a href="{% static '#' %}"><span>+</span> Notas</a></li>
+                                                <li><a href="{% static '#' %}"><span>+</span> Contacto</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1188,21 +881,21 @@
                             </div>
                             <div class="footer-main-content-element col-md-3 col-sm-6">
                                 <aside class="widget">
-                                    <h3 class="widget-title uni-uppercase">latest posts</h3>
+                                    <h3 class="widget-title uni-uppercase">Testimonios</h3>
                                     <div class="widget-content">
                                         <div class="uni-footer-latest-post">
                                             <ul>
                                                 <li>
-                                                    <h4><a href="{% static '#' %}">Lorem ipsum dolor sit amet, consectetuer</a></h4>
-                                                    <span class="time">june 12, 2017</span>
+                                                    <h4><a>Excelente atención, amabilidad y calidad humana.</a></h4>
+                                                    <span class="time">Lucía, 12 de Junio de 2020</span>
                                                 </li>
                                                 <li>
-                                                    <h4><a href="{% static '#' %}">Aliquam tincidunt mauris eu risus amet</a></h4>
-                                                    <span class="time">june 12, 2017</span>
+                                                    <h4><a>No puedo describir lo feliz que estoy con el trato que recibí</a></h4>
+                                                    <span class="time">Margos, 23 de Agosto de 2021</span>
                                                 </li>
                                                 <li>
-                                                    <h4><a href="{% static '#' %}">Morbi in sem quis dui placerat ornare column</a></h4>
-                                                    <span class="time">june 12, 2017</span>
+                                                    <h4><a>Muy recomendable, un tramuatólogo de 5 estrellas según mi experiencia.</a></h4>
+                                                    <span class="time">Gregorio, 9 de Enero de 2022</span>
                                                 </li>
                                             </ul>
                                         </div>

@@ -1,26 +1,12 @@
+{% extends 'AppCoder/newPatient.html' %}
+
 {% load static %}
 
-{% block contenidoQueCambia %}
-    
-    {% if miFormulario.errors %}
+{% block title %} Nuevo doctor {% endblock %}
 
-    <p style="color: red;"> Están mal los datos, revisar</p>
+{% block bannertitle %} <h1>Nuevo doctor</h1> {% endblock %}
 
-    {% endif %}
-    <form action="" method="POST">{% csrf_token %}
+{% block breadcrumbstitle %}<li><a href="{% url 'listDoctor' %}">Doctores</a></li>{% endblock %}
 
-        <!-- Acá está la magia de Django-->
-        
-        <table>
-            {{ form.as_p }}
-        </table>
 
-        <input type="submit", value="Enviar">
-        <button type="button">
-            <a href="{% url 'Index' %}">Volver al Inicio</a>
-        </button>
-        
-    </form>
-
-{% endblock %}
 
