@@ -29,11 +29,10 @@
                                             <nav class="main-navigation uni-menu-text">
                                                 <div class="cssmenu">
                                                     <ul>
-                                                        <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
+                                                        <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
                                                             <ul>
-                                                                <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
-                                                                <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
-                                                                <li><a>Buscar paciente</a></li>
+                                                                <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
+                                                                <li><a href="{% url 'newDepartment' %}">Crear departmento</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
@@ -43,11 +42,11 @@
                                                                 <li><a>Buscar doctor</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a>Turnos</a></li>
-                                                        <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
+                                                        <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
                                                             <ul>
-                                                                <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
-                                                                <li><a href="{% url 'newDepartment' %}">Crear departmento</a></li>
+                                                                <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
+                                                                <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
+                                                                <li><a>Buscar paciente</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-sub"><a href="{% url 'listHistory' %}">Historias Clínicas</a>
@@ -57,6 +56,7 @@
                                                                 <li><a>Buscar historia clínica</a></li>
                                                             </ul>
                                                         </li>
+                                                        <li class="has"><a href="{% url 'aboutUs' %}">Nosotros</a>
                                                     </ul>
                                                 </div>
                                             </nav>

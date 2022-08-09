@@ -42,6 +42,7 @@ urlpatterns = [
     path('updateHistory/<pk>', UpdateHistory.as_view(), name="updateHistory"),
 
     path('ourServices', OurServices.as_view(), name="ourServices"),
+    path('aboutUs', About.as_view(), name="aboutUs"),
     
     #Login
     path('login/', login_request, name='login'), 

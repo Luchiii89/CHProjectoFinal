@@ -51,7 +51,7 @@ class OurServices(TemplateView):
     
 
 class About(TemplateView):
-    template_name = "AppCoder\about.html"
+    template_name = "AppCoder\\about.html"
     
 
 # CREAR

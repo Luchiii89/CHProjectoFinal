@@ -1,0 +1,236 @@
+{% extends 'AppCoder/newPatient.html' %}
+
+{% load static %}
+
+{% block title %} Nosotros {% endblock %}
+
+{% block bannertitle %} <h1>Acerca de nosotros</h1> {% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'Index' %}">Nostros</a></li>{% endblock %}
+
+{% block maincontent %}
+<div class="uni-about">
+    <div id="wrapper-container" class="site-wrapper-container">
+
+        <div id="main-content" class="site-main-content">
+            <section class="site-content-area">
+
+                <div class="uni-about-body">
+
+                    <!--WHO WE ARE-->
+                    <div class="uni-about-who-are-you">
+                        <div class="container">
+                            <div class="uni-services-title">
+                                <h3>¿Quiénes somos?</h3>
+                                <div class="uni-underline"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="uni-about-who-are-you-left">
+                                        <img src="images/about/img.jpg" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="uni-about-who-are-you-right">
+                                        <p>
+                                            Pellentesque habitant morbi trPellentesque habitant morbi tristique
+                                            senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
+                                            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+                                            sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat
+                                            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+                                        </p>
+                                        <h4>our missions</h4>
+                                        <ul>
+                                            <li>Lorem ipsum dolor sit amet, consectetuer</li>
+                                            <li>Aliquam tincidunt mauris eu risus</li>
+                                            <li>Vestibulum auctor dapibus neque</li>
+                                            <li>Morbi in sem quis dui placerat ornare</li>
+                                            <li>Donec eu libero sit amet quam egestas semper</li>
+                                            <li>Aliquam tincidunt mauris eu risus</li>
+                                            <li>Vestibulum auctor dapibus neque</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Team 2-->
+                    <div class="uni-shortcode-team-2 uni-background-2">
+                        <div class="container">
+                            <div class="uni-services-title">
+                                <h3>Los desarrolladores</h3>
+                                <div class="uni-underline"></div>
+                            </div>
+                            <div class="uni-owl-four-item owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="uni-team-default">
+                                        <div class="item-img">
+                                            <img src="images/team/img.png" alt="" class="img-responsive">
+                                        </div>
+                                        <div class="item-caption">
+                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                                <div class="item-icons">
+                                                    <img src="images/icons_box/icon_4/icon-5.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                                <div class="item-title">
+                                                    <h4>adam jonson</h4>
+                                                    <span>Cardiologist</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="uni-team-default">
+                                        <div class="item-img">
+                                            <img src="images/team/img1.png" alt="" class="img-responsive">
+                                        </div>
+                                        <div class="item-caption">
+                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                                <div class="item-icons">
+                                                    <img src="images/icons_box/icon_4/icon-4.png" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                                <div class="item-title">
+                                                    <h4>henrik larsson</h4>
+                                                    <span>neurologist</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--ICONS BOX 3-->
+                    <div class="uni-shortcode-icons-box-3">
+                        <div class="container">
+                            <div class="uni-services-title">
+                                <div class="new-title "><h3>Tecnologías utilizadas</h3></div>
+                                <div class="uni-underline"></div><br><br>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="new-title">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>Qualified Doctors</h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
+                                                fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                24 hours service
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                modern equipment
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                conscientious Doctors
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-ambulance" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                call in 10 minutes
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <div class="item-icons">
+                                            <i class="fa fa-commenting" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="item-caption">
+                                            <h4>
+                                                enthusiastic support
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Pellentesque habitant morbi tristique
+                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1757,7 +1757,7 @@ a:hover {
     font-stretch: normal;
     line-height: 1;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #333333;
     text-transform: uppercase; }
   .uni-about-body .uni-services-title .uni-underline {
@@ -7157,4 +7157,7 @@ a:hover {
   border: solid 2px #3f97da;
   transition: all 0.5s;
   border-radius: 15px;
+}
+.new-title {
+  text-align: center;
 }
