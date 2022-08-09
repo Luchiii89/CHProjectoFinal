@@ -1,12 +1,11 @@
 from datetime import datetime
 from enum import unique
-from pyexpat import model
-from tabnanny import verbose
 from django.views.generic import ListView
 from django import forms
 from django.db import models
 from django.urls import reverse
-# from RSA import PrivateKey
+from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Department(models.Model):
@@ -112,3 +111,19 @@ class History(models.Model):
         """
         txt = "{0} //// Doctor: {1} //// Date: {2}"
         return txt.format(self.patient, self.doctor, self.date)
+
+
+class Avatar(models.Model):
+    #vinvulo con el usuario
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #Subcarpeta avatares de media :) 
+    imagen = models.ImageField(upload_to='avatares', null=True, blank = True)
+
+    def __str__(self):
+        return f"Imagen de: {self.user.username}"
+
+
+def get_image_filename(instance, filename):
+    title =  'titulo'
+    slug = slugify(title)
+    return "imagenesAvatares/%s-%s" % (slug, filename)  
