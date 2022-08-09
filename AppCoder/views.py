@@ -40,9 +40,9 @@ def login_request(request):
                 login(request, user)
                 return render(request, 'AppCoder/index.html',{'mensaje':f'Bienvenido - {usuario}'})
             else:
-                return render(request, 'AppCoder/index.html',{'mensaje':f'Error Acceso Denegado'})
+                return render(request, 'AppCoder/login.html',{'mensaje':f'Error Acceso Denegado'})
         else:
-            return render(request, 'AppCoder/index.html',{'mensaje':'Error Formulario Erróneo'})
+            return render(request, 'AppCoder/login.html',{'mensaje':'Error Formulario Erróneo'})
     else:
         form = AuthenticationForm()
         return render(request, 'AppCoder/login.html',{'form':form})
@@ -81,7 +81,30 @@ def editarPerfil(request):
         miFormulario= UserEditForm(initial={ 'email':usuario.email}) 
         return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
+# @login_required()
+# def update_user(request):
 
+#     user = request.user
+
+#     if request.method == "POST":
+#         form = UserEditForm(request.POST)
+
+#         if form.is_valid():
+#             data = form.cleaned_data
+#             user.name = data["name"]
+#             user.email = data["email"]
+#             user.password1 = data["password1"]
+#             user.password2 = data["password2"]
+#             user.save()
+#             return redirect("Home")
+#         else:
+#             form = UserEditForm(initial={"email":user.email})
+#             return render(request, 'accounts/update_user.html', {"title": "Editar usuario", "message": "Editar usuario", "form": form, "errors": ["Datos inválidos"]})
+    
+#     else:
+#         form = UserEditForm(initial={"email":user.email})
+#         return render(request, 'accounts/update_user.html', {"title": "Editar usuario", "message": "Editar usuario", "form": form})
+    
 @login_required
 def agregarAvatar(request):
     if request.method == 'POST':
@@ -95,6 +118,46 @@ def agregarAvatar(request):
         miFormulario= AvatarFormulario()
     return render(request, "AppCoder/addAvatar.html", {"miFormulario":miFormulario})
 
+
+# @login_required()
+# def profile(request):
+
+#     avatar = Avatar.objects.filter(user=request.user)
+
+#     if len(avatar) > 0:
+#         imagen = avatar[0].imagen.url
+#         return render(request, 'accounts/profile.html', {"image_url": imagen})
+
+#     return render (request, 'accounts/profile.html')
+
+# @login_required()
+# def upload_avatar(request):   
+    
+    
+#     if request.method == "POST":
+
+#         formulario = AvatarForm(request.POST,request.FILES)
+
+#         if formulario.is_valid():
+
+#             usuario = request.user
+
+#             avatar = Avatar.objects.filter(user=usuario)
+
+#             if len(avatar) > 0:
+#                 avatar = avatar[0]
+#                 avatar.imagen = formulario.cleaned_data["imagen"]
+#                 avatar.save()
+
+#             else:
+#                 avatar = Avatar(user=usuario, imagen=formulario.cleaned_data["imagen"])
+#                 avatar.save()
+            
+#         return redirect("Home")
+#     else:
+
+#         formulario = AvatarForm()
+#         return render(request, "accounts/upload_avatar.html", {"title": "Cargar avatar", "message": "Cargar avatar","form": formulario})
 
 #INICIO
 @login_required
