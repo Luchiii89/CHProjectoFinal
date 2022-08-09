@@ -5,38 +5,39 @@ class PatientForm(forms.Form):
     name = forms.CharField(max_length=60)
     surname = forms.CharField(max_length=60)
     birth_date = forms.DateInput()
-    genre = forms.CharField(max_length=60)
     DNI = forms.IntegerField()
-    mail = forms.EmailField()
+    genre = forms.CharField(max_length=60)
     tel = forms.IntegerField()
     address = forms.CharField(max_length=60)
-    register_date = forms.DateField()
+    mail = forms.EmailField()
     photo = forms.FileField()
     personal_files = forms.FileField()
+    register_date = forms.DateField()
 
 
 class DepartmentForm(forms.Form):
     name = forms.CharField(max_length=40)
-    mail = forms.EmailField()
-    tel = forms.IntegerField()
     head_of = forms.CharField(max_length=60)
+    tel = forms.IntegerField()
+    mail = forms.EmailField()
 
 
 class DoctorForm(forms.Form):
     name = forms.CharField(max_length=60)
     surname = forms.CharField(max_length=60)
-    genre = forms.CharField(max_length=60)
     DNI = forms.IntegerField()
-    license = forms.CharField(max_length=20)
-    mail = forms.EmailField()
+    genre = forms.CharField(max_length=60)
     tel = forms.IntegerField()
     address = forms.CharField(max_length=60)
+    mail = forms.EmailField()
+    license = forms.CharField(max_length=20)
     department = forms.CharField(max_length=40)
 
 
-# class HistoryForm(forms.Form):
-#     patient = Patient.name
-#     doctor = Doctor.name
-#     numId = models.IntegerField()
+class HistoryForm(forms.Form):
+    date = forms.DateInput()
+    patient = forms.CharField(max_length=60)
+    doctor = forms.CharField(max_length=60)
+    comments = forms.TextInput()
     
     

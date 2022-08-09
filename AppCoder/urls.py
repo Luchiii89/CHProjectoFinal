@@ -15,12 +15,10 @@ urlpatterns = [
     path('newDoctor/', NewDoctor.as_view(), name="newDoctor"),
     path('listDoctor/', ListDoctor.as_view(), name="listDoctor"), 
     path('doctor/<pk>', DoctorDetailView.as_view(), name="doctorDetail"),
-    
-    path('doctorBySurname/<pk>', GetDoctorBySurname.as_view(), name="doctorBySurname"),
-    path('doctorBySurname/', GetDoctorBySurname.as_view(), name="doctorBySurname"), #NO FUNCIONA
-    
     path('deleteDoctor/<pk>', DeleteDoctor.as_view(), name="deleteDoctor"),
     path('updateDoctor/<pk>', UpdateDoctor.as_view(), name="updateDoctor"),
+    # path('doctorBySurname/<pk>', GetDoctorBySurname.as_view(), name="getDoctor"),
+    # path('doctorBySurname/', GetDoctorBySurname.as_view(), name="doctorBySurname"),
     
     #PATIENT
     path('newPatient/', NewPatient.as_view(), name="newPatient"),
@@ -30,11 +28,19 @@ urlpatterns = [
     path('updatePatient/<pk>', UpdatePatient.as_view(), name="updatePatient"),
 
     #DEPARTMENT
+    path('newDepartment/', NewDepartment.as_view(), name="newDepartment"),
     path('listDepartment/', ListDepartment.as_view(), name="listDepartment"),
     path('department/<pk>', DepartmentDetailView.as_view(), name="departmentDetail"),
     path('deleteDepartment/<pk>', DeleteDepartment.as_view(), name="deleteDepartment"),
     path('updateDepartment/<pk>', UpdateDepartment.as_view(), name="updateDepartment"),
-    
+
+    #HISTORIAS CLINICAS
+    path('newHistory/', NewHistory.as_view(), name="newHistory"),
+    path('listHistory/', ListHistory.as_view(), name="listHistory"),
+    path('history/<pk>', HistoryDetailView.as_view(), name="historyDetail"),
+    path('deleteHistory/<pk>', DeleteHistory.as_view(), name="deleteHistory"),
+    path('updateHistory/<pk>', UpdateHistory.as_view(), name="updateHistory"),
+
     path('ourServices', OurServices.as_view(), name="ourServices"),
     
     #Login

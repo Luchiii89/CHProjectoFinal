@@ -22,7 +22,7 @@ class Department(models.Model):
         """
         Cadena para representar el objeto Department
         """
-        txt = "Nombre: {0}"
+        txt = "{0}"
         return txt.format(self.name)
 
 
@@ -49,8 +49,8 @@ class Doctor(models.Model):
         """
         Cadena para representar el objeto Doctor
         """
-        txt = "Apellido y Nombre: {0}, {1} //// DNI: {2} //// Matrícula: {3} //// Department: {4}"
-        return txt.format(self.name, self.surname, self.DNI, self.license, self.department.name)
+        txt = "{0}, {1}"
+        return txt.format(self.surname, self.name)
     
     def get_absolute_url(self):
         """
@@ -85,8 +85,8 @@ class Patient(models.Model):
         """
         Cadena para representar el objeto Patient
         """
-        txt = "Apellido y Nombre: {0}, {1} //// DNI {2} //// Teléfono: {3} //// Mail: {4}"
-        return txt.format(self.surname, self.name, self.DNI, self.tel, self.mail)
+        txt = "{0}, {1}"
+        return txt.format(self.surname, self.name)
     
     def get_absolute_url(self):
         """

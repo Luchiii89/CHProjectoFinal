@@ -29,14 +29,14 @@
                                                 <ul>
                                                     <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
                                                     <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
-                                                    <li><a href="{% url 'listPatient' %}">Buscar paciente</a></li>
+                                                    <li><a>Buscar paciente</a></li>
                                                 </ul>
                                             </li>
                                             <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
                                                 <ul>
                                                     <li><a href="{% url 'listDoctor' %}">Listado de doctores</a></li>
                                                     <li><a href="{% url 'newDoctor' %}">Crear doctor</a></li>
-                                                    <li><a href="{% url 'doctorBySurname' %}">Buscar doctor</a></li>
+                                                    <li><a>Buscar doctor</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="{% url 'listPatient' %}">Turnos</a></li>
@@ -172,6 +172,9 @@
                                 <div class="uni-search-appointment">
                                     <ul>
                                         <li class="uni-btn-appointment">
+                                            <a href="{% url 'newDepartment' %}">Nuevo departamento</a>
+                                        </li>
+                                        <li class="uni-btn-appointment">
                                             <a href="{% url 'Index' %}">Volver al Inicio</a>
                                         </li>
                                     </ul>
@@ -185,5 +188,134 @@
     </div>
 
     {% endblock %}
+
+    {% block banner2 %}
+<div class="uni-banner-default uni-background-1">
+    <div class="container">
+        <!-- Page title -->
+        <div class="page-title">
+            <div class="page-title-inner">
+            </div>
+        </div>
+        <!-- End page title -->
+
+        <!-- Breadcrumbs -->
+        <ul class="breadcrumbs">
+        </ul>
+        <!-- End breadcrumbs -->
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<footer class="site-footer footer-default">
+    <div class="footer-main-content">
+        <div class="container">
+            <div class="row">
+                <div class="footer-main-content-elements">
+                    <div class="footer-main-content-element col-md-3 col-sm-6">
+                        <aside class="widget">
+                            <div class="widget-title uni-uppercase"><a href="{% url 'Index' %}"><img src="{% static 'images/logowhite.png' %}" alt="" class="img-responsive"></a></div>
+                            <div class="widget-content">
+                                <p>
+                                    Somos una Institución asistencial creada a principios de los años 60, cuyo objetivo esencial es “asistir y acompañar” a la persona enferma y su entorno.
+                                </p>
+                                <br>
+                                <div class="uni-info-contact">
+                                    <ul>
+                                        <li> <i class="fa fa-map-marker" aria-hidden="true"></i> Av. San Martín 7845, San Justo</li>
+                                        <li><i class="fa fa-phone" aria-hidden="true"></i> 4553-0120 / 4553-0122</li>
+                                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> medicareplus@medicare.com.ar</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="footer-main-content-element col-md-3 col-sm-6">
+                        <aside class="widget">
+                            <h3 class="widget-title uni-uppercase">Accesos directos</h3>
+                            <div class="widget-content">
+                                <div class="uni-quick-link">
+                                    <ul>
+                                        <li><a href="{% url 'Index' %}"><span>+</span> Inicio</a></li>
+                                        <li><a href="{% url 'Index' %}"><span>+</span> Acerca de nosotros</a></li>
+                                        <li><a href="{% url 'Index' %}"><span>+</span> Servicios</a></li>
+                                        <li><a href="{% url 'Index' %}"><span>+</span> Turnos</a></li>
+                                        <li><a href="{% url 'Index' %}"><span>+</span> Notas</a></li>
+                                        <li><a href="{% url 'Index' %}"><span>+</span> Contacto</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="footer-main-content-element col-md-3 col-sm-6">
+                        <aside class="widget">
+                            <h3 class="widget-title uni-uppercase">Testimonios</h3>
+                            <div class="widget-content">
+                                <div class="uni-footer-latest-post">
+                                    <ul>
+                                        <li>
+                                            <h4><a>Excelente atención, amabilidad y calidad humana.</a></h4>
+                                            <span class="time">Lucía, 12 de Junio de 2020</span>
+                                        </li>
+                                        <li>
+                                            <h4><a>No puedo describir lo feliz que estoy con el trato que recibí</a></h4>
+                                            <span class="time">Margos, 23 de Agosto de 2021</span>
+                                        </li>
+                                        <li>
+                                            <h4><a>Muy recomendable, un tramuatólogo de 5 estrellas según mi experiencia.</a></h4>
+                                            <span class="time">Gregorio, 9 de Enero de 2022</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="footer-main-content-element col-md-3 col-sm-6">
+                        <aside class="widget">
+                            <h3 class="widget-title uni-uppercase">Boletín <span> informativo</span></h3>
+                            <div class="widget-content">
+                                <div class="uni-footer-newletter">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" placeholder="Ingrese su e.mail">
+                                        <button class="btn btn-sub" type="submit">Suscribirse</button>
+                                    </div>
+                                    <div class="uni-social">
+                                        <h4>Seguinos</h4>
+                                        <ul>
+                                            <li><a href="https://facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copyright-content">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="copyright-text"> <a href="{% url 'Index' %}">Templateshub</a></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="copyright-menu">
+                            <li><a href="{% url 'Index' %}">Términos de uso</a></li>
+                            <li><a href="{% url 'Index' %}">Políticas de privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
 
 {% endblock %}

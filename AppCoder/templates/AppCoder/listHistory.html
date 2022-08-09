@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} Listado de Doctores {% endblock %}
+{% block title %} Listado de Historias Clínicas {% endblock %}
 
 {% block principal %}
 
@@ -97,7 +97,7 @@
                 <!-- Page title -->
                 <div class="page-title">
                     <div class="page-title-inner">
-                        <h1>Doctores</h1>
+                        <h1>Historias Clínicas</h1>
                     </div>
                 </div>
                 <!-- End page title -->
@@ -105,7 +105,7 @@
                 <!-- Breadcrumbs -->
                 <ul class="breadcrumbs">
                     <li><a href="{% url 'Index' %}">Inicio</a></li>
-                    <li><a href="{% url 'ourServices' %}">Servicios</a></li>
+                    <li><a href="{% url 'listHistory' %}">Historias Clínicas</a></li>
                 </ul>
                 <!-- End breadcrumbs -->
             </div>
@@ -124,26 +124,30 @@
                                             <thead>
                                             <tr>
                                                 <th class="product-remove"></th>
-                                                <th class="product-name">Nombre</th>
-                                                <th class="product-name">Apellido</th>
-                                                <th class="product-name">Especialidad</th>
+                                                <th class="product-name">Número</th>
+                                                <th class="product-name">Paciente</th>
+                                                <th class="product-name">Médico</th>
+                                                <th class="product-name">Fecha de carga</th>
                                                 <th class="product-name">Acciones</th>
                                             </tr>
                                             </thead>
-                                            {% for doc in doctors %}  
+                                            {% for hc in histories %}  
                                             <tbody>
                                             <tr class="woocommerce-cart-form__cart-item cart_item">
                                                 <td class="product-remove">
-                                                    <a href="{% url 'doctorDetail' doc.DNI %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                    <a href="{% url 'historyDetail' hc.nro %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 </td>
                                                 <td class="product-name">
-                                                    {{doc.name}}
+                                                    {{hc.nro}}
                                                 </td>
                                                 <td class="product-name">
-                                                    {{doc.DNI}}
+                                                    {{hc.patient}}
                                                 </td>
                                                 <td class="product-name">
-                                                    {{doc.department.name}}
+                                                    {{hc.doctor}}
+                                                </td>
+                                                <td class="product-name">
+                                                    {{hc.date}}
                                                 </td>
 
                                                 <td class="product-name">
@@ -151,12 +155,12 @@
                                                         <div class="uni-shortcode-button-title">
                                                             <div class="row">
                                                                 <div class="col-md-4">
-                                                                    <a href="{% url 'updateDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                    <a href="{% url 'updateHistory' hc.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
                                                                         <span class="title">Editar</span>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <a href="{% url 'deleteDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                    <a href="{% url 'deleteHistory' hc.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
                                                                         <span class="title">Eliminar</span>
                                                                     </a>
                                                                 </div>
@@ -175,7 +179,7 @@
                                     <div class="uni-search-appointment">
                                         <ul>
                                             <li class="uni-btn-appointment">
-                                                <a href="{% url 'newDoctor' %}">Nuevo doctor</a>
+                                                <a href="{% url 'newHistory' %}">Nueva Historia</a>
                                             </li>
                                             <li class="uni-btn-appointment">
                                                 <a href="{% url 'Index' %}">Volver al Inicio</a>

@@ -33,28 +33,28 @@
                                                             <ul>
                                                                 <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
                                                                 <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Buscar paciente</a></li>
+                                                                <li><a>Buscar paciente</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listDoctor' %}">Listado de doctores</a></li>
                                                                 <li><a href="{% url 'newDoctor' %}">Crear doctor</a></li>
-                                                                <li><a href="{% url 'doctorBySurname' %}">Buscar doctor</a></li>
+                                                                <li><a>Buscar doctor</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="{% url 'listPatient' %}">Turnos</a></li>
+                                                        <li><a>Turnos</a></li>
                                                         <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Crear departmento</a></li>
+                                                                <li><a href="{% url 'newDepartment' %}">Crear departmento</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li class="has-sub"><a href="{% url 'Index' %}">Historias Clínicas</a>
+                                                        <li class="has-sub"><a href="{% url 'listHistory' %}">Historias Clínicas</a>
                                                             <ul>
-                                                                <li><a href="{% url 'listPatient' %}">Crear historia clínica</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Buscar historia clínica</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Editar historia clínica</a></li>
+                                                                <li><a href="{% url 'listHistory' %}">Listado de departamentos</a></li>
+                                                                <li><a href="{% url 'newHistory' %}">Crear historia clínica</a></li>
+                                                                <li><a>Buscar historia clínica</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -69,7 +69,7 @@
                                                     <i class="fa fa-search" aria-hidden="true"></i>
                                                 </li>
                                                 <li class="uni-btn-appointment">
-                                                    <a href="{% url 'Index' %}">Nuevo turno</a>
+                                                    <a>Nuevo turno</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -183,6 +183,9 @@
                                             <div class="uni-search-appointment">
                                                 <ul>
                                                     <li class="uni-btn-appointment">
+                                                        <a href="{% url 'newPatient' %}">Nuevo paciente</a>
+                                                    </li>
+                                                    <li class="uni-btn-appointment">
                                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                                     </li>
                                                 </ul>
@@ -196,6 +199,24 @@
                 </div>
                 {% endblock %}
 
+            {% endblock %}
+
+            {% block banner2 %}
+            <div class="uni-banner-default uni-background-1">
+                <div class="container">
+                    <!-- Page title -->
+                    <div class="page-title">
+                        <div class="page-title-inner">
+                        </div>
+                    </div>
+                    <!-- End page title -->
+
+                    <!-- Breadcrumbs -->
+                    <ul class="breadcrumbs">
+                    </ul>
+                    <!-- End breadcrumbs -->
+                </div>
+            </div>
             {% endblock %}
 
             {% block footer %}

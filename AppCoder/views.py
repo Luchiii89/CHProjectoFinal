@@ -49,6 +49,11 @@ class Index(TemplateView):
 class OurServices(TemplateView):
     template_name = "AppCoder\ourServices.html"
     
+
+class About(TemplateView):
+    template_name = "AppCoder\about.html"
+    
+
 # CREAR
 class NewDoctor(CreateView):
     model = Doctor
@@ -61,6 +66,18 @@ class NewPatient(CreateView):
     template_name = "AppCoder/newPatient.html"
     fields = ['name', 'surname', 'genre', 'DNI', 'mail', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
 
+
+class NewDepartment(CreateView):
+    model = Department
+    template_name = "AppCoder/NewDepartment.html"
+    fields = ['name', 'mail', 'tel', 'head_of']
+
+
+class NewHistory(CreateView):
+    model = History
+    template_name = "AppCoder/NewHistory.html"
+    fields = ['date', 'patient', 'doctor', 'comments']
+    
 
 #DETALLE
 class DoctorDetailView(DetailView):
@@ -76,7 +93,12 @@ class PatientDetailView(DetailView):
 class DepartmentDetailView(DetailView):
     model = Department
     template_name = "AppCoder/departmentDetail.html"
-      
+
+
+class HistoryDetailView(DetailView):
+    model = History
+    template_name = "AppCoder/historyDetail.html"   
+
 
 # LISTAR
 class ListDoctor(ListView):
@@ -101,7 +123,15 @@ class ListDepartment(ListView):
     queryset = Department.objects.all()
     context_object_name = 'departments' 
     ordering = ['name']
-    
+
+
+class ListHistory(ListView):
+    model = History
+    template_name = "AppCoder/listHistory.html"
+    queryset = History.objects.all()
+    context_object_name = 'histories' 
+    ordering = ['nro']
+
 
 #BUSCAR
 class GetDoctorBySurname(ListView):
@@ -130,6 +160,12 @@ class DeleteDepartment(DeleteView):
     model = Department
     template_name = "AppCoder/deleteDepartment.html"
     success_url = reverse_lazy('listDepartment')
+
+
+class DeleteHistory(DeleteView):
+    model = History
+    template_name = "AppCoder/deleteHistory.html"
+    success_url = reverse_lazy('listHistory')
     
 
 #EDITAR
@@ -152,3 +188,10 @@ class UpdateDepartment(UpdateView):
     fields = ['mail', 'tel', 'head_of']
     template_name = "AppCoder/newDepartment.html"
     success_url = reverse_lazy('listDepartment')
+
+
+class UpdateHistory(UpdateView):
+    model = Department
+    fields = ['comments']
+    template_name = "AppCoder/newHistory.html"
+    success_url = reverse_lazy('listHistory')
