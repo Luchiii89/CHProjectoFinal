@@ -6,7 +6,7 @@
 
 {% block bannertitle %} <h1>Acerca de nosotros</h1> {% endblock %}
 
-{% block breadcrumbstitle %}<li><a href="{% url 'Index' %}">Nostros</a></li>{% endblock %}
+{% block breadcrumbstitle %}<li><a href="{% url 'aboutUs' %}">Nostros</a></li>{% endblock %}
 
 {% block maincontent %}
 <div class="uni-about">
@@ -27,27 +27,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="uni-about-who-are-you-left">
-                                        <img src="images/about/img.jpg" alt="" class="img-responsive">
+                                        <img src="{% static 'images\team\devteam.jpeg' %}" alt="" class="img-responsive">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="uni-about-who-are-you-right">
                                         <p>
-                                            Pellentesque habitant morbi trPellentesque habitant morbi tristique
-                                            senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-                                            quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                                            sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat
-                                            eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+                                            Somos un grupo de entusiastas de Python, que decidió formar parte de este curso en CoderHouse
+                                            para poder seguir aprendiendo herramientas y formas de uso de este lenguaje, 
+                                            y seguir asentando las bases de la programación.
                                         </p>
-                                        <h4>our missions</h4>
+                                        <h4>Nuestro objetivo</h4>
                                         <ul>
-                                            <li>Lorem ipsum dolor sit amet, consectetuer</li>
-                                            <li>Aliquam tincidunt mauris eu risus</li>
-                                            <li>Vestibulum auctor dapibus neque</li>
-                                            <li>Morbi in sem quis dui placerat ornare</li>
-                                            <li>Donec eu libero sit amet quam egestas semper</li>
-                                            <li>Aliquam tincidunt mauris eu risus</li>
-                                            <li>Vestibulum auctor dapibus neque</li>
+                                            <li>Desarrollar una aplicación web de la mano de Python en Django Framework.</li>
+                                            <li>Trabajar con modelos, formularios y templates</li>
+                                            <li> Aplicar los conocimientos de Class-Based-View, login - register - accounts, CRUD y modelforms.</li>
+                                            <li>Poder hacer uso e integrar templates de bootstrap aprovechando la herencia de estilos</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -72,13 +67,13 @@
                                         <div class="item-caption">
                                             <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
                                                 <div class="item-icons">
-                                                    <img src="images/icons_box/icon_4/icon-5.png" alt="">
+                                                    <img src="{% static 'images\team\luprof2.png' %}" alt="" class="img-responsive">
                                                 </div>
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
                                                 <div class="item-title">
-                                                    <h4>adam jonson</h4>
-                                                    <span>Cardiologist</span>
+                                                    <h4>Luciano Grossi</h4>
+                                                    <span>Python Developer</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,13 +87,13 @@
                                         <div class="item-caption">
                                             <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
                                                 <div class="item-icons">
-                                                    <img src="images/icons_box/icon_4/icon-4.png" alt="">
+                                                    <img src="{% static 'images\team\luprof.png' %}" alt="" class="img-responsive">
                                                 </div>
                                             </div>
                                             <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
                                                 <div class="item-title">
-                                                    <h4>henrik larsson</h4>
-                                                    <span>neurologist</span>
+                                                    <h4>Luciana Sande</h4>
+                                                    <span>Python Developer</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,100 +118,107 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-user-md" aria-hidden="true"></i>
-                                        </div>
+                                        <a href="https://docs.python.org/3/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
                                         <div class="item-caption">
-                                            <h4>Qualified Doctors</h4>
+                                            <h4>Python</h4>
                                             <div class="uni-line"></div>
                                             <p>
-                                                Pellentesque habitant morbi tristique senectus et netus et malesuada
-                                                fame ac turpis egestas. Vestibulum tortor quam.
+                                                Lenguaje de programación ampliamente utilizado en las aplicaciones web, el desarrollo de software, la ciencia de datos y ML.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                        </div>
+                                        <a href="https://docs.djangoproject.com/en/4.1/">
+                                            <div class="item-icons">
+                                                
+                                                <i class="fa fa-rocket" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
                                         <div class="item-caption">
                                             <h4>
-                                                24 hours service
+                                                Django
                                             </h4>
                                             <div class="uni-line"></div>
                                             <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                                Framework web de alto nivel que permite el desarrollo rápido de sitios web seguros y mantenibles.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-hospital-o" aria-hidden="true"></i>
-                                        </div>
+                                        <a href="https://www.sqlite.org/docs.html">
+                                            <div class="item-icons">
+                                                <i class="fa fa-database" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
                                         <div class="item-caption">
                                             <h4>
-                                                modern equipment
+                                                SQLite
                                             </h4>
                                             <div class="uni-line"></div>
                                             <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                                Sistema de gestión de bases de datos relacional compatible con ACID, contenida en una relativamente pequeña​ biblioteca escrita en C.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                        </div>
+                                        <a href="https://github.com/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-github" aria-hidden="true" ></i>
+                                            </div>
+                                        </a>
                                         <div class="item-caption">
                                             <h4>
-                                                conscientious Doctors
+                                                GitHub
                                             </h4>
                                             <div class="uni-line"></div>
                                             <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                                Repositorio online gratuito que permite gestionar proyectos y controlar versiones de código utilizando Git.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-ambulance" aria-hidden="true"></i>
-                                        </div>
+                                        <a href="https://www.html6.es/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-html5" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
                                         <div class="item-caption">
                                             <h4>
-                                                call in 10 minutes
+                                                HTML5 - CSS3
                                             </h4>
                                             <div class="uni-line"></div>
                                             <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                                HTML5 permite estructurar las páginas web y las CSS3 permiten darles formato y maquetación.
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="uni-shortcode-icons-box-3-default">
-                                        <div class="item-icons">
-                                            <i class="fa fa-commenting" aria-hidden="true"></i>
-                                        </div>
+                                        <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-laptop" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
                                         <div class="item-caption">
                                             <h4>
-                                                enthusiastic support
+                                                Bootstrap
                                             </h4>
                                             <div class="uni-line"></div>
                                             <p>
-                                                Pellentesque habitant morbi tristique
-                                                senectus et netus et malesuada fame ac turpis egestas. Vestibulum tortor quam.
+                                                Framework front-end utilizado para desarrollar aplicaciones web y sitios mobile first.
                                             </p>
                                         </div>
                                     </div>
