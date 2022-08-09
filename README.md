@@ -40,4 +40,6 @@ Para detener la aplicación, ejecutar el comando CTRL+C en la consola.
 
 ## Vídeo de prueba
 
-Cick [acá](https://youtube.com.ar) para ver una desmotración de la página en funcionamiento 
+Cick [acá](https://youtube.com.ar) para ver una desmotración de la página en funcionamiento
+
+## agrego commit 
