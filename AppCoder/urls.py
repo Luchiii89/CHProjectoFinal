@@ -9,7 +9,14 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [   
-    path('', Index.as_view(), name="Index"),
+    path('', views.Index, name="Index"),
+    
+    #Login
+    path('login/', login_request, name='login'), 
+    path('register/', register, name='register'), 
+    path('logout/', LogoutView.as_view(template_name='AppCoder/logout.html'), name='logout'), 
+    path('editarPerfil/', views.editarPerfil, name="EditarPerfil"),
+    path('agregarAvatar/', views.agregarAvatar, name="AgregarAvatar"),
     
     # DOCTOR
     path('newDoctor/', NewDoctor.as_view(), name="newDoctor"),
@@ -17,8 +24,8 @@ urlpatterns = [
     path('doctor/<pk>', DoctorDetailView.as_view(), name="doctorDetail"),
     path('deleteDoctor/<pk>', DeleteDoctor.as_view(), name="deleteDoctor"),
     path('updateDoctor/<pk>', UpdateDoctor.as_view(), name="updateDoctor"),
-    path('getDoctorBySurname', views.getDoctorBySurname, name="getDoctorBySurname"),
-    path('getDoctor/', views.getDoctor, name="getDoctor"),
+    path('getDoctorBySurname', views.getDoctorBySurname, name="getDoctorBySurname"), #incompleto
+    path('getDoctor/', views.getDoctor, name="getDoctor"), #incompleto
     
     #PATIENT
     path('newPatient/', NewPatient.as_view(), name="newPatient"),
@@ -43,11 +50,4 @@ urlpatterns = [
 
     path('ourServices', OurServices.as_view(), name="ourServices"),
     path('aboutUs', About.as_view(), name="aboutUs"),
-    
-    #Login
-    path('admin/', admin.site.urls),
-    path('login/', login_request, name='login'), 
-    path('register/', register, name='register'), 
-    path('logout/', LogoutView.as_view(template_name='AppCoder/logout.html'), name='logout'), 
-
 ]

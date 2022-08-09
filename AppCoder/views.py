@@ -23,6 +23,7 @@ from django.contrib.auth import login, logout, authenticate
 #Decorador por defecto
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -31,6 +32,7 @@ def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)        
         if form.is_valid():
+            data = form.cleaned_data
             usuario = form.cleaned_data.get('username')
             contra = form.cleaned_data.get('password')
             user = authenticate(username = usuario, password = contra)
@@ -41,8 +43,9 @@ def login_request(request):
                 return render(request, 'AppCoder/index.html',{'mensaje':f'Error Acceso Denegado'})
         else:
             return render(request, 'AppCoder/index.html',{'mensaje':'Error Formulario Erróneo'})
-    form = AuthenticationForm()
-    return render(request, 'AppCoder/login.html',{'form':form})
+    else:
+        form = AuthenticationForm()
+        return render(request, 'AppCoder/login.html',{'form':form})
 
 
 def logout_request(request):
@@ -59,7 +62,7 @@ def register(request):
             return render(request,"AppCoder/index.html" ,  {"mensaje":"Usuario Creado :)"})
     else:
         form = UserRegisterForm()     
-    return render(request,"AppCoder/registro.html" ,  {"form":form})
+    return render(request,"AppCoder/login.html" ,  {"form":form})
   
 
 @login_required
@@ -73,10 +76,10 @@ def editarPerfil(request):
                 usuario.password1 = informacion['password1']
                 usuario.password2 = informacion['password1']
                 usuario.save()
-                return render(request, "AppCoder/inicio.html")
+                return render(request, "AppCoder/index.html")
     else: 
         miFormulario= UserEditForm(initial={ 'email':usuario.email}) 
-    return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+        return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
 
 @login_required
@@ -87,14 +90,16 @@ def agregarAvatar(request):
                 u = User.objects.get(username=request.user)
                 avatar = Avatar(user=u, imagen=miFormulario.cleaned_data['imagen']) 
                 avatar.save()
-                return render(request, "AppCoder/inicio.html") 
+                return render(request, "AppCoder/index.html") 
     else: 
         miFormulario= AvatarFormulario()
-    return render(request, "AppCoder/agregarAvatar.html", {"miFormulario":miFormulario})
+    return render(request, "AppCoder/addAvatar.html", {"miFormulario":miFormulario})
+
 
 #INICIO
-class Index(TemplateView):
-    template_name = "AppCoder\index.html"
+@login_required
+def Index(request):
+    return render(request, "AppCoder/index.html")
 
 
 class OurServices(TemplateView):
@@ -112,19 +117,19 @@ class NewDoctor(CreateView):
     fields = ['name', 'surname', 'genre', 'DNI', 'license', 'mail', 'tel', 'address', 'department']
 
    
-class NewPatient(CreateView):
+class NewPatient(LoginRequiredMixin, CreateView):
     model = Patient
     template_name = "AppCoder/newPatient.html"
     fields = ['name', 'surname', 'genre', 'DNI', 'mail', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
 
 
-class NewDepartment(CreateView):
+class NewDepartment(LoginRequiredMixin, CreateView):
     model = Department
     template_name = "AppCoder/NewDepartment.html"
     fields = ['name', 'mail', 'tel', 'head_of']
 
 
-class NewHistory(CreateView):
+class NewHistory(LoginRequiredMixin, CreateView):
     model = History
     template_name = "AppCoder/NewHistory.html"
     fields = ['date', 'patient', 'doctor', 'comments']
@@ -209,54 +214,54 @@ def getDoctor(request):
   
   
 #ELIMINAR
-class DeleteDoctor(DeleteView):
+class DeleteDoctor(LoginRequiredMixin, DeleteView):
     model = Doctor
     template_name = "AppCoder/deleteDoctor.html"
     success_url = reverse_lazy('listDoctor')
 
 
-class DeletePatient(DeleteView):
+class DeletePatient(LoginRequiredMixin, DeleteView):
     model = Patient
     template_name = "AppCoder/deletePatient.html"
     success_url = reverse_lazy('listPatient')
 
 
-class DeleteDepartment(DeleteView):
+class DeleteDepartment(LoginRequiredMixin, DeleteView):
     model = Department
     template_name = "AppCoder/deleteDepartment.html"
     success_url = reverse_lazy('listDepartment')
 
 
-class DeleteHistory(DeleteView):
+class DeleteHistory(LoginRequiredMixin, DeleteView):
     model = History
     template_name = "AppCoder/deleteHistory.html"
     success_url = reverse_lazy('listHistory')
     
 
 #EDITAR
-class UpdateDoctor(UpdateView):
+class UpdateDoctor(LoginRequiredMixin, UpdateView):
     model = Doctor
     fields = ['name', 'surname', 'genre', 'DNI', 'license', 'mail', 'tel', 'address', 'department']
     template_name = "AppCoder/newDoctor.html"
     success_url = reverse_lazy('listDoctor')
 
 
-class UpdatePatient(UpdateView):
+class UpdatePatient(LoginRequiredMixin, UpdateView):
     model = Patient
     fields = ['name', 'surname', 'genre', 'DNI', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
     template_name = "AppCoder/newPatient.html"
     success_url = reverse_lazy('listPatient')
 
 
-class UpdateDepartment(UpdateView):
+class UpdateDepartment(LoginRequiredMixin, UpdateView):
     model = Department
     fields = ['mail', 'tel', 'head_of']
     template_name = "AppCoder/newDepartment.html"
     success_url = reverse_lazy('listDepartment')
 
 
-class UpdateHistory(UpdateView):
-    model = Department
+class UpdateHistory(LoginRequiredMixin, UpdateView):
+    model = History
     fields = ['comments']
     template_name = "AppCoder/newHistory.html"
     success_url = reverse_lazy('listHistory')
