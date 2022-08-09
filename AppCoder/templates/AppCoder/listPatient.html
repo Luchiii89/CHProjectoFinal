@@ -108,7 +108,7 @@
 
                             <!-- Breadcrumbs -->
                             <ul class="breadcrumbs">
-                                <li><a href="{% url 'Index' %}">Inicio</a></li>
+                                {% block breadcrumbsinit %}<li><a href="{% url 'Index' %}">Inicio</a></li>{% endblock %}
                                 {% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Lista de Pacientes</a></li>{% endblock %}
                             </ul>
                             <!-- End breadcrumbs -->
@@ -226,6 +226,7 @@
                                                 </table>
                                             </form>
                                             
+                                            {% block botonesfinales %}
                                             <div class="uni-search-appointment">
                                                 <ul>
                                                     <li class="uni-btn-appointment">
@@ -234,8 +235,10 @@
                                                     <li class="uni-btn-appointment">
                                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                                     </li>
+                                                    
                                                 </ul>
                                             </div>
+                                            {% endblock %}
                                         </div>
                                     </div>
                                 </div>

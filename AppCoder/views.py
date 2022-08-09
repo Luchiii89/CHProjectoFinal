@@ -25,26 +25,77 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
+#LOGIN
 def login_request(request):
-    if(request.method == "POST"):
+    if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)        
         if form.is_valid():
             usuario = form.cleaned_data.get('username')
             contra = form.cleaned_data.get('password')
             user = authenticate(username = usuario, password = contra)
-            if(user is not None):
+            if user is not None:
                 login(request, user)
                 return render(request, 'AppCoder/index.html',{'mensaje':f'Bienvenido - {usuario}'})
             else:
-                return render(request, 'AppCoder/index.html',{'mensaje':f'Erro Acceso Denegado'})
+                return render(request, 'AppCoder/index.html',{'mensaje':f'Error Acceso Denegado'})
         else:
-            return render(request, 'AppCoder/index.html',{'mensaje':'Erro Formulario Erroneo'})
+            return render(request, 'AppCoder/index.html',{'mensaje':'Error Formulario Erróneo'})
     form = AuthenticationForm()
     return render(request, 'AppCoder/login.html',{'form':form})
+
+
+def logout_request(request):
+    logout(request)
+    return redirect("inicio")
+  
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            form.save()
+            return render(request,"AppCoder/index.html" ,  {"mensaje":"Usuario Creado :)"})
+    else:
+        form = UserRegisterForm()     
+    return render(request,"AppCoder/registro.html" ,  {"form":form})
+  
+
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+    if request.method == 'POST':
+        miFormulario = UserEditForm(request.POST) 
+        if miFormulario.is_valid:
+                informacion = miFormulario.cleaned_data
+                usuario.email = informacion['email']
+                usuario.password1 = informacion['password1']
+                usuario.password2 = informacion['password1']
+                usuario.save()
+                return render(request, "AppCoder/inicio.html")
+    else: 
+        miFormulario= UserEditForm(initial={ 'email':usuario.email}) 
+    return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+
+@login_required
+def agregarAvatar(request):
+    if request.method == 'POST':
+        miFormulario = AvatarFormulario(request.POST, request.FILES) 
+        if miFormulario.is_valid: 
+                u = User.objects.get(username=request.user)
+                avatar = Avatar(user=u, imagen=miFormulario.cleaned_data['imagen']) 
+                avatar.save()
+                return render(request, "AppCoder/inicio.html") 
+    else: 
+        miFormulario= AvatarFormulario()
+    return render(request, "AppCoder/agregarAvatar.html", {"miFormulario":miFormulario})
 
 #INICIO
 class Index(TemplateView):
     template_name = "AppCoder\index.html"
+
 
 class OurServices(TemplateView):
     template_name = "AppCoder\ourServices.html"
@@ -210,24 +261,3 @@ class UpdateHistory(UpdateView):
     template_name = "AppCoder/newHistory.html"
     success_url = reverse_lazy('listHistory')
     
-
-# from django.db.models import 
-
-# def listar_libro(request):
-#     busqueda = request.POST.get("buscar") #Recuperamos la busqueda del usuario 
-#     doctores = Doctor.objects.all() #Traemos TODOS los datos de la tabla autores 
-#     carrito = PedidosCliente.objects.filter(id_cliente = request.user.id)
-
-#     if busqueda: #Preguntando si busqueda está llena 
-#         libro = Doctor.objects.filter(
-#             Q(isbn__icontains = busqueda) |
-#             Q(titulo__icontains = busqueda) |
-#             Q(fecha_pub__icontains = busqueda) |
-#             Q(precio__icontains = busqueda)
-#         )
-#     datos = {
-#         'libros': libro,
-#         'carrito': carrito 
-#     }
-    
-#     return render(request, 'libro.html', datos)  
