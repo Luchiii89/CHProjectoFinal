@@ -37,7 +37,7 @@
                                                                 {% endif %}
                                                                 <form action="" method="POST">{% csrf_token %}
 
-                                                                    <h3>Complete el formulario:</h3><br>
+                                                                    {% block formtitle %} <h3>Complete el formulario:</h3><br> {% endblock %}
                                                                     
                                                                     <table>
                                                                         {{ form.as_p }}
@@ -49,6 +49,7 @@
                                                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                                                     </button>
                                                                 </form>
+                                                                <br>
                                                                 
                                                             {% endblock %}
 
