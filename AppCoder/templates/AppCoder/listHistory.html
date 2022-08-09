@@ -1,8 +1,8 @@
-{% extends 'AppCoder/listPatient.html' %}
+{% extends 'AppCoder/base.html' %}
 
 {% load static %}
 
-{% block title %} Listado de Doctores {% endblock %}
+{% block title %} Listado de Historias Clínicas {% endblock %}
 
 {% block principal %}
 
@@ -97,7 +97,7 @@
                 <!-- Page title -->
                 <div class="page-title">
                     <div class="page-title-inner">
-                        <h1>Doctores</h1>
+                        <h1>Historias Clínicas</h1>
                     </div>
                 </div>
                 <!-- End page title -->
@@ -105,7 +105,7 @@
                 <!-- Breadcrumbs -->
                 <ul class="breadcrumbs">
                     <li><a href="{% url 'Index' %}">Inicio</a></li>
-                    <li><a href="{% url 'ourServices' %}">Servicios</a></li>
+                    <li><a href="{% url 'listHistory' %}">Historias Clínicas</a></li>
                 </ul>
                 <!-- End breadcrumbs -->
             </div>
@@ -121,9 +121,9 @@
                             <div class="col-md-3">
                                 <div class="uni-single-product-left">
                                     <div class="uni-siderbar-left">
-                                        <form action="" method="post" accept-charset="utf-8">
+                                        <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
                                             <div class="vk-newlist-banner-test-search">
-                                                <input type="text" name="seach" placeholder="Buscar...">
+                                                <input type="text" name="seach" placeholder="Search...">
                                                 <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                                             </div>
                                         </form>
@@ -138,9 +138,9 @@
                                         <form class="woocommerce-ordering" method="get">
                                             <select name="orderby" class="orderby">
                                                 <option value="menu_order" selected="selected">Ordenar por</option>
-                                                <option value="popularity">Nombre</option>
-                                                <option value="rating">Apellido</option>
-                                                <option value="date">Especialidad</option>
+                                                <option value="popularity">Paciente</option>
+                                                <option value="rating">Médico</option>
+                                                <option value="date">Fecha de carga</option>
                                             </select>
                                         </form>
                                         <div class="clearfix"></div>
@@ -171,26 +171,30 @@
                                             <thead>
                                             <tr>
                                                 <th class="product-remove"></th>
-                                                <th class="product-name">Nombre</th>
-                                                <th class="product-name">Apellido</th>
-                                                <th class="product-name">Especialidad</th>
+                                                <th class="product-name">Número</th>
+                                                <th class="product-name">Paciente</th>
+                                                <th class="product-name">Médico</th>
+                                                <th class="product-name">Fecha de carga</th>
                                                 <th class="product-name">Acciones</th>
                                             </tr>
                                             </thead>
-                                            {% for doc in doctors %}  
+                                            {% for hc in histories %}  
                                             <tbody>
                                             <tr class="woocommerce-cart-form__cart-item cart_item">
                                                 <td class="product-remove">
-                                                    <a href="{% url 'doctorDetail' doc.DNI %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                    <a href="{% url 'historyDetail' hc.nro %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                                 </td>
                                                 <td class="product-name">
-                                                    Dr. {{doc.name}}
+                                                    {{hc.nro}}
                                                 </td>
                                                 <td class="product-name">
-                                                    {{doc.DNI}}
+                                                    {{hc.patient}}
                                                 </td>
                                                 <td class="product-name">
-                                                    {{doc.department.name}}
+                                                    {{hc.doctor}}
+                                                </td>
+                                                <td class="product-name">
+                                                    {{hc.date}}
                                                 </td>
 
                                                 <td class="product-name">
@@ -198,12 +202,12 @@
                                                         <div class="uni-shortcode-button-title">
                                                             <div class="row">
                                                                 <div class="col-md-4">
-                                                                    <a href="{% url 'updateDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                    <a href="{% url 'updateHistory' hc.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
                                                                         <span class="title">Editar</span>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-md-4">
-                                                                    <a href="{% url 'deleteDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                    <a href="{% url 'deleteHistory' hc.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
                                                                         <span class="title">Eliminar</span>
                                                                     </a>
                                                                 </div>
@@ -222,7 +226,7 @@
                                     <div class="uni-search-appointment">
                                         <ul>
                                             <li class="uni-btn-appointment">
-                                                <a href="{% url 'newDoctor' %}">Nuevo doctor</a>
+                                                <a href="{% url 'newHistory' %}">Nueva Historia</a>
                                             </li>
                                             <li class="uni-btn-appointment">
                                                 <a href="{% url 'Index' %}">Volver al Inicio</a>
@@ -248,133 +252,133 @@
     {% endblock %}
 
     {% block banner2 %}
-<div class="uni-banner-default uni-background-1">
-    <div class="container">
-        <!-- Page title -->
-        <div class="page-title">
-            <div class="page-title-inner">
-            </div>
-        </div>
-        <!-- End page title -->
-
-        <!-- Breadcrumbs -->
-        <ul class="breadcrumbs">
-        </ul>
-        <!-- End breadcrumbs -->
-    </div>
-</div>
-{% endblock %}
-
-{% block footer %}
-<footer class="site-footer footer-default">
-    <div class="footer-main-content">
+    <div class="uni-banner-default uni-background-1">
         <div class="container">
-            <div class="row">
-                <div class="footer-main-content-elements">
-                    <div class="footer-main-content-element col-md-3 col-sm-6">
-                        <aside class="widget">
-                            <div class="widget-title uni-uppercase"><a href="{% url 'Index' %}"><img src="{% static 'images/logowhite.png' %}" alt="" class="img-responsive"></a></div>
-                            <div class="widget-content">
-                                <p>
-                                    Somos una Institución asistencial creada a principios de los años 60, cuyo objetivo esencial es “asistir y acompañar” a la persona enferma y su entorno.
-                                </p>
-                                <br>
-                                <div class="uni-info-contact">
-                                    <ul>
-                                        <li> <i class="fa fa-map-marker" aria-hidden="true"></i> Av. San Martín 7845, San Justo</li>
-                                        <li><i class="fa fa-phone" aria-hidden="true"></i> 4553-0120 / 4553-0122</li>
-                                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> medicareplus@medicare.com.ar</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="footer-main-content-element col-md-3 col-sm-6">
-                        <aside class="widget">
-                            <h3 class="widget-title uni-uppercase">Accesos directos</h3>
-                            <div class="widget-content">
-                                <div class="uni-quick-link">
-                                    <ul>
-                                        <li><a href="{% url 'Index' %}"><span>+</span> Inicio</a></li>
-                                        <li><a href="{% url 'Index' %}"><span>+</span> Acerca de nosotros</a></li>
-                                        <li><a href="{% url 'Index' %}"><span>+</span> Servicios</a></li>
-                                        <li><a href="{% url 'Index' %}"><span>+</span> Turnos</a></li>
-                                        <li><a href="{% url 'Index' %}"><span>+</span> Notas</a></li>
-                                        <li><a href="{% url 'Index' %}"><span>+</span> Contacto</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="footer-main-content-element col-md-3 col-sm-6">
-                        <aside class="widget">
-                            <h3 class="widget-title uni-uppercase">Testimonios</h3>
-                            <div class="widget-content">
-                                <div class="uni-footer-latest-post">
-                                    <ul>
-                                        <li>
-                                            <h4><a>Excelente atención, amabilidad y calidad humana.</a></h4>
-                                            <span class="time">Lucía, 12 de Junio de 2020</span>
-                                        </li>
-                                        <li>
-                                            <h4><a>No puedo describir lo feliz que estoy con el trato que recibí</a></h4>
-                                            <span class="time">Margos, 23 de Agosto de 2021</span>
-                                        </li>
-                                        <li>
-                                            <h4><a>Muy recomendable, un tramuatólogo de 5 estrellas según mi experiencia.</a></h4>
-                                            <span class="time">Gregorio, 9 de Enero de 2022</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
-                    <div class="footer-main-content-element col-md-3 col-sm-6">
-                        <aside class="widget">
-                            <h3 class="widget-title uni-uppercase">Boletín <span> informativo</span></h3>
-                            <div class="widget-content">
-                                <div class="uni-footer-newletter">
-                                    <div class="input-group">
-                                        <input type="email" class="form-control" placeholder="Ingrese su e.mail">
-                                        <button class="btn btn-sub" type="submit">Suscribirse</button>
-                                    </div>
-                                    <div class="uni-social">
-                                        <h4>Seguinos</h4>
+            <!-- Page title -->
+            <div class="page-title">
+                <div class="page-title-inner">
+                </div>
+            </div>
+            <!-- End page title -->
+
+            <!-- Breadcrumbs -->
+            <ul class="breadcrumbs">
+            </ul>
+            <!-- End breadcrumbs -->
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block footer %}
+    <footer class="site-footer footer-default">
+        <div class="footer-main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-main-content-elements">
+                        <div class="footer-main-content-element col-md-3 col-sm-6">
+                            <aside class="widget">
+                                <div class="widget-title uni-uppercase"><a href="{% url 'Index' %}"><img src="{% static 'images/logowhite.png' %}" alt="" class="img-responsive"></a></div>
+                                <div class="widget-content">
+                                    <p>
+                                        Somos una Institución asistencial creada a principios de los años 60, cuyo objetivo esencial es “asistir y acompañar” a la persona enferma y su entorno.
+                                    </p>
+                                    <br>
+                                    <div class="uni-info-contact">
                                         <ul>
-                                            <li><a href="https://facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                            <li> <i class="fa fa-map-marker" aria-hidden="true"></i> Av. San Martín 7845, San Justo</li>
+                                            <li><i class="fa fa-phone" aria-hidden="true"></i> 4553-0120 / 4553-0122</li>
+                                            <li><i class="fa fa-envelope-o" aria-hidden="true"></i> medicareplus@medicare.com.ar</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </aside>
+                            </aside>
+                        </div>
+                        <div class="footer-main-content-element col-md-3 col-sm-6">
+                            <aside class="widget">
+                                <h3 class="widget-title uni-uppercase">Accesos directos</h3>
+                                <div class="widget-content">
+                                    <div class="uni-quick-link">
+                                        <ul>
+                                            <li><a href="{% url 'Index' %}"><span>+</span> Inicio</a></li>
+                                            <li><a href="{% url 'Index' %}"><span>+</span> Acerca de nosotros</a></li>
+                                            <li><a href="{% url 'Index' %}"><span>+</span> Servicios</a></li>
+                                            <li><a href="{% url 'Index' %}"><span>+</span> Turnos</a></li>
+                                            <li><a href="{% url 'Index' %}"><span>+</span> Notas</a></li>
+                                            <li><a href="{% url 'Index' %}"><span>+</span> Contacto</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="footer-main-content-element col-md-3 col-sm-6">
+                            <aside class="widget">
+                                <h3 class="widget-title uni-uppercase">Testimonios</h3>
+                                <div class="widget-content">
+                                    <div class="uni-footer-latest-post">
+                                        <ul>
+                                            <li>
+                                                <h4><a>Excelente atención, amabilidad y calidad humana.</a></h4>
+                                                <span class="time">Lucía, 12 de Junio de 2020</span>
+                                            </li>
+                                            <li>
+                                                <h4><a>No puedo describir lo feliz que estoy con el trato que recibí</a></h4>
+                                                <span class="time">Margos, 23 de Agosto de 2021</span>
+                                            </li>
+                                            <li>
+                                                <h4><a>Muy recomendable, un tramuatólogo de 5 estrellas según mi experiencia.</a></h4>
+                                                <span class="time">Gregorio, 9 de Enero de 2022</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="footer-main-content-element col-md-3 col-sm-6">
+                            <aside class="widget">
+                                <h3 class="widget-title uni-uppercase">Boletín <span> informativo</span></h3>
+                                <div class="widget-content">
+                                    <div class="uni-footer-newletter">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" placeholder="Ingrese su e.mail">
+                                            <button class="btn btn-sub" type="submit">Suscribirse</button>
+                                        </div>
+                                        <div class="uni-social">
+                                            <h4>Seguinos</h4>
+                                            <ul>
+                                                <li><a href="https://facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="https://google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="https://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                                <li><a href="https://instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="copyright-area">
-        <div class="container">
-            <div class="copyright-content">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <p class="copyright-text"> <a href="{% url 'Index' %}">Templateshub</a></p>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="copyright-menu">
-                            <li><a href="{% url 'Index' %}">Términos de uso</a></li>
-                            <li><a href="{% url 'Index' %}">Políticas de privacidad</a></li>
-                        </ul>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="copyright-content">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="copyright-text"> <a href="{% url 'Index' %}">Templateshub</a></p>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="copyright-menu">
+                                <li><a href="{% url 'Index' %}">Términos de uso</a></li>
+                                <li><a href="{% url 'Index' %}">Políticas de privacidad</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
-{% endblock %}
+    </footer>
+    {% endblock %}
 
 {% endblock %}
 

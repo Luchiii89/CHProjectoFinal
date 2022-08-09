@@ -1,0 +1,238 @@
+{% extends 'AppCoder/newPatient.html' %}
+
+{% load static %}
+
+{% block title %} Nosotros {% endblock %}
+
+{% block bannertitle %} <h1>Acerca de nosotros</h1> {% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'aboutUs' %}">Nostros</a></li>{% endblock %}
+
+{% block maincontent %}
+<div class="uni-about">
+    <div id="wrapper-container" class="site-wrapper-container">
+
+        <div id="main-content" class="site-main-content">
+            <section class="site-content-area">
+
+                <div class="uni-about-body">
+
+                    <!--WHO WE ARE-->
+                    <div class="uni-about-who-are-you">
+                        <div class="container">
+                            <div class="uni-services-title">
+                                <h3>¿Quiénes somos?</h3>
+                                <div class="uni-underline"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="uni-about-who-are-you-left">
+                                        <img src="{% static 'images\team\devteam.jpeg' %}" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="uni-about-who-are-you-right">
+                                        <p>
+                                            Somos un grupo de entusiastas de Python, que decidió formar parte de este curso en CoderHouse
+                                            para poder seguir aprendiendo herramientas y formas de uso de este lenguaje, 
+                                            y seguir asentando las bases de la programación.
+                                        </p>
+                                        <h4>Nuestro objetivo</h4>
+                                        <ul>
+                                            <li>Desarrollar una aplicación web de la mano de Python en Django Framework.</li>
+                                            <li>Trabajar con modelos, formularios y templates</li>
+                                            <li> Aplicar los conocimientos de Class-Based-View, login - register - accounts, CRUD y modelforms.</li>
+                                            <li>Poder hacer uso e integrar templates de bootstrap aprovechando la herencia de estilos</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Team 2-->
+                    <div class="uni-shortcode-team-2 uni-background-2">
+                        <div class="container">
+                            <div class="uni-services-title">
+                                <h3>Los desarrolladores</h3>
+                                <div class="uni-underline"></div>
+                            </div>
+                            <div class="uni-owl-four-item owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="uni-team-default">
+                                        <div class="item-img">
+                                            <img src="images/team/img.png" alt="" class="img-responsive">
+                                        </div>
+                                        <div class="item-caption">
+                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                                <div class="item-icons">
+                                                    <img src="{% static 'images\team\luprof2.png' %}" alt="" class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                                <div class="item-title">
+                                                    <h4>Luciano Grossi</h4>
+                                                    <span>Python Developer</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="uni-team-default">
+                                        <div class="item-img">
+                                            <img src="images/team/img1.png" alt="" class="img-responsive">
+                                        </div>
+                                        <div class="item-caption">
+                                            <div class="col-md-3 col-sm-3 col-xs-3 uni-clear-padding">
+                                                <div class="item-icons">
+                                                    <img src="{% static 'images\team\luprof.png' %}" alt="" class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9 col-sm-9 col-xs-9 uni-clear-padding">
+                                                <div class="item-title">
+                                                    <h4>Luciana Sande</h4>
+                                                    <span>Python Developer</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--ICONS BOX 3-->
+                    <div class="uni-shortcode-icons-box-3">
+                        <div class="container">
+                            <div class="uni-services-title">
+                                <div class="new-title "><h3>Tecnologías utilizadas</h3></div>
+                                <div class="uni-underline"></div><br><br>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="new-title">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <a href="https://docs.python.org/3/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-free-code-camp" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
+                                        <div class="item-caption">
+                                            <h4>Python</h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Lenguaje de programación ampliamente utilizado en las aplicaciones web, el desarrollo de software, la ciencia de datos y ML.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <a href="https://docs.djangoproject.com/en/4.1/">
+                                            <div class="item-icons">
+                                                
+                                                <i class="fa fa-rocket" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
+                                        <div class="item-caption">
+                                            <h4>
+                                                Django
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Framework web de alto nivel que permite el desarrollo rápido de sitios web seguros y mantenibles.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <a href="https://www.sqlite.org/docs.html">
+                                            <div class="item-icons">
+                                                <i class="fa fa-database" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
+                                        <div class="item-caption">
+                                            <h4>
+                                                SQLite
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Sistema de gestión de bases de datos relacional compatible con ACID, contenida en una relativamente pequeña​ biblioteca escrita en C.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <a href="https://github.com/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-github" aria-hidden="true" ></i>
+                                            </div>
+                                        </a>
+                                        <div class="item-caption">
+                                            <h4>
+                                                GitHub
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Repositorio online gratuito que permite gestionar proyectos y controlar versiones de código utilizando Git.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <a href="https://www.html6.es/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-html5" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
+                                        <div class="item-caption">
+                                            <h4>
+                                                HTML5 - CSS3
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                HTML5 permite estructurar las páginas web y las CSS3 permiten darles formato y maquetación.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="uni-shortcode-icons-box-3-default">
+                                        <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">
+                                            <div class="item-icons">
+                                                <i class="fa fa-laptop" aria-hidden="true"></i>
+                                            </div>
+                                        </a>
+                                        <div class="item-caption">
+                                            <h4>
+                                                Bootstrap
+                                            </h4>
+                                            <div class="uni-line"></div>
+                                            <p>
+                                                Framework front-end utilizado para desarrollar aplicaciones web y sitios mobile first.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

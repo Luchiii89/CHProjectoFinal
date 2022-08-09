@@ -3,11 +3,11 @@
 
 {% load static %}
 
-{% block title %} Eliminar paciente {% endblock %}
+{% block title %} Eliminar HC {% endblock %}
 
-{% block bannertitle %}<h1>Eliminar paciente</h1>{% endblock %}
+{% block bannertitle %}<h1>Eliminar historia clínica</h1>{% endblock %}
 
-{% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Pacientes</a></li>{% endblock %}
+{% block breadcrumbstitle %}<li><a href="{% url 'listHistory' %}">Historias Clínicas</a></li>{% endblock %}
             
 {% block maincontent %}
 <main id="main" class="clearfix right_sidebar">
@@ -27,9 +27,10 @@
                                                         <div class="woocommerce-billing-fields__field-wrapper">
                                                             <form method="post">
                                                                 {% csrf_token %}
-                                                                <h3>¿Desea eliminar el registro de {{ object.name}} {{ object.surname}}?</h3>
+                                                                <h3>¿Desea eliminar el registro de {{ object.patient}}?</h3>
                                                                 <button class="btn btn-danger" type="submit">Sí, eliminar</button>
-                                                                <a class="btn btn-default" href="{% url 'listPatient' %}">Cancelar</a>
+                                                                <a class="btn btn-default" href="{% url 'listHistory' %}">Cancelar</a>
+                                                                <br>
                                                             </form>
                                                         </div>
                                                     </div>

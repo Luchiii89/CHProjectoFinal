@@ -1,0 +1,49 @@
+
+{% extends 'AppCoder/newPatient.html' %}
+
+{% load static %}
+
+{% block title %} Eliminar Departamento {% endblock %}
+
+{% block bannertitle %}<h1>Eliminar Departamento</h1>{% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'listDepartment' %}">Departamentos</a></li>{% endblock %}
+            
+{% block maincontent %}
+<main id="main" class="clearfix right_sidebar">
+    <div class="uni-checkout-body">
+        <div class="container">
+            <div class="tg-container">
+                <div id="primary">
+                    <div class="entry-thumbnail">
+                        <div class="entry-content-text-wrapper clearfix">
+                            <div class="entry-content-wrapper">
+                                <div class="entry-content">
+                                    <div class="woocommerce">
+                                        <div class="row">
+                                            <div class="vk-checkout-billing-left">
+                                                <div class="col-md-7">
+                                                    <div class="woocommerce-billing-fields">
+                                                        <div class="woocommerce-billing-fields__field-wrapper">
+                                                            <form method="post">
+                                                                {% csrf_token %}
+                                                                <h3>¿Desea eliminar el registro del departamento {{ object.name}}?</h3>
+                                                                <button class="btn btn-danger" type="submit">Sí, eliminar</button>
+                                                                <a class="btn btn-default" href="{% url 'listDepartment' %}">Cancelar</a>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

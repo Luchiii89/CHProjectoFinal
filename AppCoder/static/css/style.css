@@ -1201,7 +1201,8 @@ a:hover {
     border: solid 2px #3f97da;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
-    transition: all 0.5s; }
+    transition: all 0.5s;
+    border-radius: 15px; }
     @media screen and (max-width: 767px) {
       .uni-banner .caption a {
         margin-top: 15px; } }
@@ -1756,7 +1757,7 @@ a:hover {
     font-stretch: normal;
     line-height: 1;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #333333;
     text-transform: uppercase; }
   .uni-about-body .uni-services-title .uni-underline {
@@ -4077,7 +4078,7 @@ a:hover {
 /*SHOP*/
 .uni-shop-body {
   padding: 80px 0;
-  background: #f4f4f4; }
+  background: white; }
 
 .product-filter {
   border-bottom: 1px solid #e0e0e0;
@@ -4116,7 +4117,8 @@ a:hover {
     height: 40px;
     border-radius: 3px;
     border: solid 1px #e0e0e0;
-    padding: 0 15px; }
+    padding: 0 15px;
+    border-radius: 15px }
     @media screen and (max-width: 767px) {
       .product-filter select {
         width: 100%; } }
@@ -7139,5 +7141,24 @@ a:hover {
     background-color: #3f97da;
     color: #fff; }
 
-
-
+.new-button{
+  display: inline-block;
+  font-family: 'Poppins';
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 44px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #337ab7;
+  background-color: white;
+  padding: 0 20px;
+  text-transform: uppercase;
+  border: solid 2px #3f97da;
+  transition: all 0.5s;
+  border-radius: 15px;
+}
+.new-title {
+  text-align: center;
+}

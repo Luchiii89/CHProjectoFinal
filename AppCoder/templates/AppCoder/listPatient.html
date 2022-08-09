@@ -29,34 +29,34 @@
                                             <nav class="main-navigation uni-menu-text">
                                                 <div class="cssmenu">
                                                     <ul>
-                                                        <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
+                                                        <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
                                                             <ul>
-                                                                <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
-                                                                <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Buscar paciente</a></li>
+                                                                <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
+                                                                <li><a href="{% url 'newDepartment' %}">Crear departmento</a></li>
                                                             </ul>
                                                         </li>
                                                         <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
                                                             <ul>
                                                                 <li><a href="{% url 'listDoctor' %}">Listado de doctores</a></li>
                                                                 <li><a href="{% url 'newDoctor' %}">Crear doctor</a></li>
-                                                                <li><a href="{% url 'doctorBySurname' %}">Buscar doctor</a></li>
+                                                                <li><a>Buscar doctor</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li><a href="{% url 'listPatient' %}">Turnos</a></li>
-                                                        <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
+                                                        <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
                                                             <ul>
-                                                                <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Crear departmento</a></li>
+                                                                <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
+                                                                <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
+                                                                <li><a>Buscar paciente</a></li>
                                                             </ul>
                                                         </li>
-                                                        <li class="has-sub"><a href="{% url 'Index' %}">Historias Clínicas</a>
+                                                        <li class="has-sub"><a href="{% url 'listHistory' %}">Historias Clínicas</a>
                                                             <ul>
-                                                                <li><a href="{% url 'listPatient' %}">Crear historia clínica</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Buscar historia clínica</a></li>
-                                                                <li><a href="{% url 'listPatient' %}">Editar historia clínica</a></li>
+                                                                <li><a href="{% url 'listHistory' %}">Listado de departamentos</a></li>
+                                                                <li><a href="{% url 'newHistory' %}">Crear historia clínica</a></li>
+                                                                <li><a>Buscar historia clínica</a></li>
                                                             </ul>
                                                         </li>
+                                                        <li class="has"><a href="{% url 'aboutUs' %}">Nosotros</a>
                                                     </ul>
                                                 </div>
                                             </nav>
@@ -69,7 +69,7 @@
                                                     <i class="fa fa-search" aria-hidden="true"></i>
                                                 </li>
                                                 <li class="uni-btn-appointment">
-                                                    <a href="{% url 'Index' %}">Nuevo turno</a>
+                                                    <a>Nuevo turno</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -116,9 +116,55 @@
                     </div>
                 {% endblock %}
 
+                {% block buscador %}
+                <main id="main" class="site-main">
+                    <div class="uni-shop-body">
+                        <div class="container">
+                            <div id="content">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="uni-single-product-left">
+                                            <div class="uni-siderbar-left">
+                                                <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
+                                                    <div class="vk-newlist-banner-test-search">
+                                                        <input type="text" name="seach" placeholder="Search...">
+                                                        <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="uni-shop-siderbar-right">
+                                            <div class="product-filter">
+                                                <p class="woocommerce-result-count">Showing <span>1–9</span> of <span>45</span> results</p>
+                                                <form class="woocommerce-ordering" method="get">
+                                                    <select name="orderby" class="orderby">
+                                                        <option value="menu_order" selected="selected">Ordenar por</option>
+                                                        <option value="popularity">Nombre</option>
+                                                        <option value="rating">Apellido</option>
+                                                        <option value="date">Fecha de registro</option>
+                                                    </select>
+                                                </form>
+                                                <div class="clearfix"></div>
+                                                <!-- .woocommerce-ordering -->
+                                            </div>
+
+
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                {% endblock %}
+
                 {% block maincontent %}
                 <div id="main-content" class="site-main-content">
-
                         <main id="main" class="site-main">
                             <div class="uni-cart-body">
                                 <div id="post" class="container">
@@ -179,9 +225,12 @@
 
                                                 </table>
                                             </form>
-
+                                            
                                             <div class="uni-search-appointment">
                                                 <ul>
+                                                    <li class="uni-btn-appointment">
+                                                        <a href="{% url 'newPatient' %}">Nuevo paciente</a>
+                                                    </li>
                                                     <li class="uni-btn-appointment">
                                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                                     </li>
@@ -194,8 +243,35 @@
                         </main>
 
                 </div>
+
+                <!--PAGINATION-->
+                <nav class="woocommerce-pagination">
+                    <ul class="loop-pagination">
+                        <li><a class="prev page-numbers" ><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                        <li><a class="page-numbers current">1</a></li>
+                        <li><a class="next page-numbers" ><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                    </ul><!-- .pagination -->
+                </nav><br><br>
                 {% endblock %}
 
+            {% endblock %}
+
+            {% block banner2 %}
+            <div class="uni-banner-default uni-background-1">
+                <div class="container">
+                    <!-- Page title -->
+                    <div class="page-title">
+                        <div class="page-title-inner">
+                        </div>
+                    </div>
+                    <!-- End page title -->
+
+                    <!-- Breadcrumbs -->
+                    <ul class="breadcrumbs">
+                    </ul>
+                    <!-- End breadcrumbs -->
+                </div>
+            </div>
             {% endblock %}
 
             {% block footer %}
