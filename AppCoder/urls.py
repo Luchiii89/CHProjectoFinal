@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.views import View
 import django.contrib.auth.views
 from AppCoder.views import *
-from .views import *
+from AppCoder import views
 from django.views.generic.base import TemplateView
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
@@ -17,8 +17,8 @@ urlpatterns = [
     path('doctor/<pk>', DoctorDetailView.as_view(), name="doctorDetail"),
     path('deleteDoctor/<pk>', DeleteDoctor.as_view(), name="deleteDoctor"),
     path('updateDoctor/<pk>', UpdateDoctor.as_view(), name="updateDoctor"),
-    # path('doctorBySurname/<pk>', GetDoctorBySurname.as_view(), name="getDoctor"),
-    # path('doctorBySurname/', GetDoctorBySurname.as_view(), name="doctorBySurname"),
+    path('getDoctorBySurname', views.getDoctorBySurname, name="getDoctorBySurname"),
+    path('getDoctor/', views.getDoctor, name="getDoctor"),
     
     #PATIENT
     path('newPatient/', NewPatient.as_view(), name="newPatient"),

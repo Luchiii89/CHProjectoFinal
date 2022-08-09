@@ -142,6 +142,20 @@ class GetDoctorBySurname(ListView):
        getDoctor = Doctor.objects.filter(surname__icontains='surname')
        return render(request, self.template_name, {"getDoctor":getDoctor})
 
+
+def getDoctorBySurname(request):
+    return render(request, 'AppCoder/getDoctor.html')
+
+
+def getDoctor(request):
+    if  request.GET["surname"]:
+        surname = request.GET['surname'] 
+        doctores = Doctor.objects.filter(surname__icontains=surname)
+        return render(request, "AppCoder/inicio.html", {"doctores":doctores, "surname":surname})
+    else: 
+        respuesta = "No enviaste datos"
+    return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
+  
   
 #ELIMINAR
 class DeleteDoctor(DeleteView):
@@ -195,3 +209,25 @@ class UpdateHistory(UpdateView):
     fields = ['comments']
     template_name = "AppCoder/newHistory.html"
     success_url = reverse_lazy('listHistory')
+    
+
+# from django.db.models import 
+
+# def listar_libro(request):
+#     busqueda = request.POST.get("buscar") #Recuperamos la busqueda del usuario 
+#     doctores = Doctor.objects.all() #Traemos TODOS los datos de la tabla autores 
+#     carrito = PedidosCliente.objects.filter(id_cliente = request.user.id)
+
+#     if busqueda: #Preguntando si busqueda está llena 
+#         libro = Doctor.objects.filter(
+#             Q(isbn__icontains = busqueda) |
+#             Q(titulo__icontains = busqueda) |
+#             Q(fecha_pub__icontains = busqueda) |
+#             Q(precio__icontains = busqueda)
+#         )
+#     datos = {
+#         'libros': libro,
+#         'carrito': carrito 
+#     }
+    
+#     return render(request, 'libro.html', datos)  

@@ -1,4 +1,4 @@
-{% extends 'AppCoder/base.html' %}
+{% extends 'AppCoder/listPatient.html' %}
 
 {% load static %}
 
@@ -112,80 +112,135 @@
         </div>
         {% endblock %}
 
-    <div id="main-content" class="site-main-content">
+        {% block buscador %}
+        <main id="main" class="site-main">
+            <div class="uni-shop-body">
+                <div class="container">
+                    <div id="content">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="uni-single-product-left">
+                                    <div class="uni-siderbar-left">
+                                        <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
+                                            <div class="vk-newlist-banner-test-search">
+                                                <input type="text" name="seach" placeholder="Search...">
+                                                <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                            </div>
+                                        </form>
 
-            <main id="main" class="site-main">
-                <div class="uni-cart-body">
-                    <div id="post" class="container">
-                        <div class="entry-content">
-                            <div class="woocommerce">
-                                <form class="woocommerce-cart-form" method="post">
-                                    <table class="woocommerce-cart-form__contents table shop_table_responsive">
-                                        <thead>
-                                        <tr>
-                                            <th class="product-remove"></th>
-                                            <th class="product-name">Nombre</th>
-                                            <th class="product-name">Director</th>
-                                            <th class="product-name">Acciones</th>
-                                        </tr>
-                                        </thead>
-                                        {% for dep in departments %}  
-                                        <tbody>
-                                        <tr class="woocommerce-cart-form__cart-item cart_item">
-                                            <td class="product-remove">
-                                                <a href="{% url 'departmentDetail' dep.id %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                            </td>
-                                            <td class="product-name">
-                                                {{dep.name}}
-                                            </td>
-                                            <td class="product-name">
-                                                {{dep.head_of}}
-                                            </td>
-                                            <td class="product-name">
-                                                <div class="uni-element-buttons-small">
-                                                    <div class="uni-shortcode-button-title">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <a href="{% url 'updateDepartment' dep.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
-                                                                    <span class="title">Editar</span>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <a href="{% url 'deleteDepartment' dep.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
-                                                                    <span class="title">Eliminar</span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                        </tbody>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="uni-shop-siderbar-right">
+                                    <div class="product-filter">
+                                        <p class="woocommerce-result-count">Showing <span>1–9</span> of <span>45</span> results</p>
+                                        <form class="woocommerce-ordering" method="get">
+                                            <select name="orderby" class="orderby">
+                                                <option value="menu_order" selected="selected">Ordenar por</option>
+                                                <option value="popularity">Nombre</option>
+                                                <option value="rating">Director</option>
+                                            </select>
+                                        </form>
+                                        <div class="clearfix"></div>
+                                        <!-- .woocommerce-ordering -->
+                                    </div>
 
 
 
-                                    </table>
-                                </form>
-
-                                <div class="uni-search-appointment">
-                                    <ul>
-                                        <li class="uni-btn-appointment">
-                                            <a href="{% url 'newDepartment' %}">Nuevo departamento</a>
-                                        </li>
-                                        <li class="uni-btn-appointment">
-                                            <a href="{% url 'Index' %}">Volver al Inicio</a>
-                                        </li>
-                                    </ul>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
+        </main>
+        {% endblock %}
 
-    </div>
+        <div id="main-content" class="site-main-content">
+
+                <main id="main" class="site-main">
+                    <div class="uni-cart-body">
+                        <div id="post" class="container">
+                            <div class="entry-content">
+                                <div class="woocommerce">
+                                    <form class="woocommerce-cart-form" method="post">
+                                        <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                            <thead>
+                                            <tr>
+                                                <th class="product-remove"></th>
+                                                <th class="product-name">Nombre</th>
+                                                <th class="product-name">Director</th>
+                                                <th class="product-name">Acciones</th>
+                                            </tr>
+                                            </thead>
+                                            {% for dep in departments %}  
+                                            <tbody>
+                                            <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                <td class="product-remove">
+                                                    <a href="{% url 'departmentDetail' dep.id %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                </td>
+                                                <td class="product-name">
+                                                    {{dep.name}}
+                                                </td>
+                                                <td class="product-name">
+                                                    {{dep.head_of}}
+                                                </td>
+                                                <td class="product-name">
+                                                    <div class="uni-element-buttons-small">
+                                                        <div class="uni-shortcode-button-title">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <a href="{% url 'updateDepartment' dep.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                        <span class="title">Editar</span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <a href="{% url 'deleteDepartment' dep.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                        <span class="title">Eliminar</span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            </tbody>
+
+
+
+                                        </table>
+                                    </form>
+
+                                    <div class="uni-search-appointment">
+                                        <ul>
+                                            <li class="uni-btn-appointment">
+                                                <a href="{% url 'newDepartment' %}">Nuevo departamento</a>
+                                            </li>
+                                            <li class="uni-btn-appointment">
+                                                <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+        </div>
+
+        <!--PAGINATION-->
+        <nav class="woocommerce-pagination">
+            <ul class="loop-pagination">
+                <li><a class="prev page-numbers" ><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
+                <li><a class="page-numbers current">1</a></li>
+                <li><a class="next page-numbers" ><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+            </ul><!-- .pagination -->
+        </nav><br><br>
 
     {% endblock %}
 
