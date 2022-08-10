@@ -42,4 +42,7 @@ Para detener la aplicación, ejecutar el comando CTRL+C en la consola.
 
 Cick [acá](https://youtube.com.ar) para ver una desmotración de la página en funcionamiento
 
-## agrego commit 
+## Link al drive con el video y las planillas de prueba:
+
+https://drive.google.com/drive/folders/1Yj0KUP-Q62mYlGxUAAueQIa5zrBaJcOO?usp=sharing
+
