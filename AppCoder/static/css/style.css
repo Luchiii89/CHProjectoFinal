@@ -4940,10 +4940,14 @@ a:hover {
     line-height: 2.14;
     text-align: center;
     color: #22292d;
-    border-bottom: none; }
+    border-bottom: 2px solid #3f97da; }
     @media screen and (max-width: 400px) {
       .uni-cart .woocommerce thead tr th {
         font-size: 10px; } }
+        .woocommerce thead tr th {
+          border-bottom: 2px solid #3f97da;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-size: 100%;}
   .uni-cart .woocommerce thead .product-remove {
     width: 5%; }
   .uni-cart .woocommerce thead .product-name {
@@ -6783,7 +6787,7 @@ a:hover {
   .uni-shortcode-team-1 .owl-theme .owl-dots .owl-dot.active span {
     background-color: #E0E0E0; }
   .uni-home-2-our-doctor .uni-shortcode-team-1  {
-    background-color: #E0E0E0;
+    background-color: white;
   }
 
 .uni-shortcode-team-2 {

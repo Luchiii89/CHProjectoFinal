@@ -63,53 +63,39 @@ def register(request):
     else:
         form = UserRegisterForm()     
     return render(request,"AppCoder/login.html" ,  {"form":form})
-  
+
+
+class UserProfile(DetailView):
+    model = User
+    template_name = "AppCoder/profile.html"
+    
 
 @login_required
 def editarPerfil(request):
     usuario = request.user
     if request.method == 'POST':
         miFormulario = UserEditForm(request.POST) 
-        if miFormulario.is_valid:
+        if miFormulario.is_valid():
                 informacion = miFormulario.cleaned_data
                 usuario.email = informacion['email']
+                usuario.name = informacion["name"]
                 usuario.password1 = informacion['password1']
                 usuario.password2 = informacion['password1']
                 usuario.save()
                 return render(request, "AppCoder/index.html")
-    else: 
-        miFormulario= UserEditForm(initial={ 'email':usuario.email}) 
-        return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
-
-# @login_required()
-# def update_user(request):
-
-#     user = request.user
-
-#     if request.method == "POST":
-#         form = UserEditForm(request.POST)
-
-#         if form.is_valid():
-#             data = form.cleaned_data
-#             user.name = data["name"]
-#             user.email = data["email"]
-#             user.password1 = data["password1"]
-#             user.password2 = data["password2"]
-#             user.save()
-#             return redirect("Home")
-#         else:
-#             form = UserEditForm(initial={"email":user.email})
-#             return render(request, 'accounts/update_user.html', {"title": "Editar usuario", "message": "Editar usuario", "form": form, "errors": ["Datos inválidos"]})
+        else: 
+            miFormulario = UserEditForm(initial={ 'email':usuario.email}) 
+            return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario, "errors": ["Datos inválidos"]})
+    else:
+        miFormulario = UserEditForm(initial={"email":usuario.email})
+        return render(request, 'AppCoder/editarPerfil.html', {"title": "Editar usuario", "message": "Editar usuario", "form": miFormulario})
     
-#     else:
-#         form = UserEditForm(initial={"email":user.email})
-#         return render(request, 'accounts/update_user.html', {"title": "Editar usuario", "message": "Editar usuario", "form": form})
     
 @login_required
 def agregarAvatar(request):
     if request.method == 'POST':
         miFormulario = AvatarFormulario(request.POST, request.FILES) 
-        if miFormulario.is_valid: 
+        if miFormulario.is_valid(): 
                 u = User.objects.get(username=request.user)
                 avatar = Avatar(user=u, imagen=miFormulario.cleaned_data['imagen']) 
                 avatar.save()
@@ -118,46 +104,6 @@ def agregarAvatar(request):
         miFormulario= AvatarFormulario()
     return render(request, "AppCoder/addAvatar.html", {"miFormulario":miFormulario})
 
-
-# @login_required()
-# def profile(request):
-
-#     avatar = Avatar.objects.filter(user=request.user)
-
-#     if len(avatar) > 0:
-#         imagen = avatar[0].imagen.url
-#         return render(request, 'accounts/profile.html', {"image_url": imagen})
-
-#     return render (request, 'accounts/profile.html')
-
-# @login_required()
-# def upload_avatar(request):   
-    
-    
-#     if request.method == "POST":
-
-#         formulario = AvatarForm(request.POST,request.FILES)
-
-#         if formulario.is_valid():
-
-#             usuario = request.user
-
-#             avatar = Avatar.objects.filter(user=usuario)
-
-#             if len(avatar) > 0:
-#                 avatar = avatar[0]
-#                 avatar.imagen = formulario.cleaned_data["imagen"]
-#                 avatar.save()
-
-#             else:
-#                 avatar = Avatar(user=usuario, imagen=formulario.cleaned_data["imagen"])
-#                 avatar.save()
-            
-#         return redirect("Home")
-#     else:
-
-#         formulario = AvatarForm()
-#         return render(request, "accounts/upload_avatar.html", {"title": "Cargar avatar", "message": "Cargar avatar","form": formulario})
 
 #INICIO
 @login_required

@@ -1,31 +1,73 @@
-{% extends "AppCoder/newDoctor.html" %}
+{% extends 'AppCoder/listPatient.html' %}
 
 {% load static %}
 
-{% block contenidoQueCambia %}
+{% block title %} Editar perfil {% endblock %}
+
+{% block bannertitle %}<h1> editar Perfil</h1>{% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Perfil</a></li>{% endblock %}
+
+{% block buscador %}{% endblock %}
+
+{% block maincontent %}
+<main id="main" class="clearfix right_sidebar">
+    <div class="uni-checkout-body">
+        <div class="container">
+            <div class="tg-container">
+                <div id="primary">
+                    <div class="entry-thumbnail">
+                        <div class="entry-content-text-wrapper clearfix">
+                            <div class="entry-content-wrapper">
+                                <div class="entry-content">
+                                    <div class="woocommerce">
+                                        <div class="row">
+                                            <div class="vk-checkout-billing-left">
+                                                <div class="col-md-7">
+                                                    <div class="woocommerce-billing-fields">
+                                                        <div class="woocommerce-billing-fields__field-wrapper">
+
+                                                            
+                                                            {% block contenido %}
+
+                                                                <form action="" method="POST">{% csrf_token %}
+
+                                                                    {% block formtitle %} <h3>Complete el formulario:</h3><br> {% endblock %}
+                                                                    
+                                                                    <table>
+                                                                        {{ miFormulario.as_p }}
+                                                                    </table>
+
+                                                                    <input type="submit" value="Enviar" class="new-button"> 
+
+                                                                    <button type="button" class="new-button">
+                                                                        <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                                                    </button>
+                                                                </form>
+                                                                <br>
+                                                                
+                                                            {% endblock %}
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
 
 
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Formulario - Editar Perfil</h1>
-    <h1>De {{usuario}}</h1>
-    
-
-    <form action="" method="POST">{% csrf_token %}
-
-        <!-- Acá está la magia de Django-->
-        
-        <table>
-
-            {{ miFormulario.as_table }}
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div><!-- .entry-content -->
+                            </div>
+                        </div>
+                    </div>
 
 
-        </table>
-
-
-        <input type="submit", value="Enviar">
-
-    </form>
-
-  
-
+                </div> <!-- Primary end -->
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

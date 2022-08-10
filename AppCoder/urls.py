@@ -15,8 +15,9 @@ urlpatterns = [
     path('login/', login_request, name='login'), 
     path('register/', register, name='register'), 
     path('logout/', LogoutView.as_view(template_name='AppCoder/logout.html'), name='logout'), 
-    path('editarPerfil/', views.editarPerfil, name="EditarPerfil"),
-    path('agregarAvatar/', views.agregarAvatar, name="AgregarAvatar"),
+    path('perfil/<int:pk>/', UserProfile.as_view(), name="perfil"),
+    path('editarPerfil/', views.editarPerfil, name="editarPerfil"),
+    path('agregarAvatar/', views.agregarAvatar, name="AgregarAvatar"), #incompleto
     
     # DOCTOR
     path('newDoctor/', NewDoctor.as_view(), name="newDoctor"),
