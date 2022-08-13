@@ -40,7 +40,7 @@ Para detener la aplicación, ejecutar el comando CTRL+C en la consola.
 
 ## Vídeo de prueba
 
-Cick [acá](https://youtube.com.ar) para ver una desmotración de la página en funcionamiento
+Cick [acá](https://drive.google.com/file/d/1tOtQ3Ea_pnyBgi94_rt_wIgred9Lphg_/view?usp=sharing) para ver una desmotración de la página en funcionamiento
 
 ## Link al drive con el video y las planillas de prueba:
 
