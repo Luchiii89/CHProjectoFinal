@@ -1,2 +1,57 @@
 {% extends 'AppCoder/login.html' %}
 
+{% load static %}
+
+{% block title %} LogOut {% endblock %}
+
+{% block banner %}
+<div class="uni-banner-default uni-background-1">
+    <div class="container">
+        <!-- Page title -->
+        <div class="page-title">
+            <div class="page-title-inner">
+                {% block bannertitle %}<h1>Sesión finalizada</h1>{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="uni-banner-default uni-background-1">
+    <div class="container">
+        <!-- Page title -->
+        <div class="page-title">
+            <div class="page-title-inner">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block banner2 %}
+<div class="uni-banner-default uni-background-1">
+    <div class="container">
+        <!-- Page title -->
+        <div class="page-title">
+            <div class="page-title-inner">
+            </div>
+        </div>
+        <!-- End page title -->
+        <div class="uni-search-appointment">
+            <ul>
+                <li class="uni-btn-appointment">
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                </li>
+                <li class="uni-btn-appointment">
+                    <a >Recuperar contraseña</a>
+                </li>
+                <li class="uni-btn-appointment">
+                    <a href="{% url 'register' %}">Crear cuenta</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block maincontent %}{% endblock %}
+
+{% block footer %}{% endblock %}
