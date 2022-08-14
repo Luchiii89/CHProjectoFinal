@@ -10,7 +10,7 @@
         <!-- Page title -->
         <div class="page-title">
             <div class="page-title-inner">
-                {% block bannertitle %}<h1>Sesión finalizada</h1>{% endblock %}
+                {% block bannertitle %}<h1>Sesión finalizada</h1><br><h2>¡Gracias por visitarnos, esperamos que vuelva pronto!</h2>{% endblock %}
             </div>
         </div>
     </div>
@@ -37,14 +37,11 @@
         <!-- End page title -->
         <div class="uni-search-appointment">
             <ul>
-                <li class="uni-btn-appointment">
-                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                <li class="uni-btn-appointment" style="border:solid 2px white; border-radius:15px; color:white;">
+                    <a href="{% url 'login' %}" style="color:white;">Iniciar sesión</a>
                 </li>
-                <li class="uni-btn-appointment">
-                    <a >Recuperar contraseña</a>
-                </li>
-                <li class="uni-btn-appointment">
-                    <a href="{% url 'register' %}">Crear cuenta</a>
+                <li class="uni-btn-appointment" style="border:solid 2px white; border-radius:15px; color:white;">
+                    <a href="{% url 'register' %}" style="color:white;">Crear cuenta</a>
                 </li>
             </ul>
         </div>

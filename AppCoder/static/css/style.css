@@ -5496,6 +5496,17 @@ a:hover {
       text-align: left;
       color: #ffffff;
       text-transform: uppercase; }
+    .uni-banner-default .page-title h2 {
+      font-family: 'Poppins';
+      font-size: 26px;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.44;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ffffff;
+      text-transform: uppercase; }
   .uni-banner-default .breadcrumbs {
     float: right;
     line-height: 51px; }

@@ -63,7 +63,7 @@ def register(request):
             return render(request,"AppCoder/index.html" ,  {"mensaje":"Usuario Creado :)"})
     else:
         form = UserRegisterForm()     
-    return render(request,"AppCoder/login.html" ,  {"form":form})
+    return render(request,"AppCoder/register.html" ,  {"form":form})
 
 
 class UserProfile(DetailView):
