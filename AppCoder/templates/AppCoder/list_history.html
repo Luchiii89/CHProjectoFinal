@@ -1,0 +1,95 @@
+{% extends 'AppCoder/base_list.html' %}
+
+{% load static %}
+
+{% block title %} Listado de Historias Clínicas {% endblock %}
+
+{% block bannertitle %}<h1>Historias Clínicas</h1>{% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'listHistory' %}">Historias Clínicas</a></li>{% endblock %}
+
+{% block maincontent %}
+<div id="wrapper-container" class="site-wrapper-container">
+    <div id="main-content" class="site-main-content">
+        <div class="site-content-area">
+            <main id="main" class="site-main">
+                <div class="uni-cart-body">
+                    <div id="post" class="container">
+                        <div class="entry-content">
+                            <div class="woocommerce">
+                                <form class="woocommerce-cart-form" method="post">
+                                    <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                        <thead>
+                                        <tr>
+                                            <th class="product-remove"></th>
+                                            <th class="product-name">Número</th>
+                                            <th class="product-name">Paciente</th>
+                                            <th class="product-name">Médico</th>
+                                            <th class="product-name">Fecha de carga</th>
+                                            <th class="product-name">Acciones</th>
+                                        </tr>
+                                        </thead>
+                                        {% for hc in histories %}  
+                                        <tbody>
+                                        <tr class="woocommerce-cart-form__cart-item cart_item">
+                                            <td class="product-remove">
+                                                <a href="{% url 'historyDetail' hc.nro %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            </td>
+                                            <td class="product-name">
+                                                {{hc.nro}}
+                                            </td>
+                                            <td class="product-name">
+                                                {{hc.patient}}
+                                            </td>
+                                            <td class="product-name">
+                                                {{hc.doctor}}
+                                            </td>
+                                            <td class="product-name">
+                                                {{hc.date}}
+                                            </td>
+
+                                            <td class="product-name">
+                                                <div class="uni-element-buttons-small">
+                                                    <div class="uni-shortcode-button-title">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <a href="{% url 'updateHistory' hc.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                    <span class="title">Editar</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <a href="{% url 'deleteHistory' hc.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                    <span class="title">Eliminar</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+
+                                    </table>
+                                </form>
+
+                                <div class="uni-search-appointment">
+                                    <ul>
+                                        <li class="uni-btn-appointment">
+                                            <a href="{% url 'newHistory' %}">Nueva Historia</a>
+                                        </li>
+                                        <li class="uni-btn-appointment">
+                                            <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'AppCoder/listPatient.html' %}
+{% extends 'AppCoder/base_detail.html' %}
 
 {% load static %}
 
@@ -6,7 +6,7 @@
 
 {% block bannertitle %}<h1>Detalles del paciente</h1>{% endblock %}
 
-{% block breadcrumbstitle %}<li><a href="{% url 'listDepartment' %}">Departamentos</a></li>{% endblock %}
+{% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Pacientes</a></li>{% endblock %}
             
 {% block maincontent %}
 <div class="uni-cart">
@@ -23,30 +23,40 @@
                                     <thead>
                                     <tr>
                                         <th class="product-price">Nombre</th>
-                                        <th class="product-price">Director</th>
+                                        <th class="product-price">Apellido</th>
+                                        <th class="product-price">DNI</th>
+                                        <th class="product-price">Género</th>
+                                        <th class="product-price">Dirección</th>
                                         <th class="product-price">Teléfono</th>
                                         <th class="product-price">Email</th>
+                                        <th class="product-price">Fecha de nacimiento</th>
+                                        <th class="product-price">Fecha de registro</th>
                                         <th class="product-quantity">Acciones</th>
                                     </tr>
                                     </thead>    
 
                                     <tbody>
                                         <tr class="woocommerce-cart-form__cart-item cart_item">                                        
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.name}}</span></td>
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.head_of}}</span></td>
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.tel}}</span></td>
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.mail}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.name}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.surname}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.DNI}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.genre}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.address}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.tel}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.mail}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.birth_date}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.register_date}}</span></td>
                                             <td class="product-price">
                                                 <div class="uni-element-buttons-small">
                                                     <div class="uni-shortcode-button-title">
                                                         <div class="row">
-                                                            <div class="col-md-5">
-                                                                <a href="{% url 'updateDepartment' department.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                            <div class="col-md-6">
+                                                                <a href="{% url 'updatePatient' patient.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
                                                                     <span class="title"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                                                                 </a>
                                                             </div>
-                                                            <div class="col-md-5">
-                                                                <a href="{% url 'deleteDepartment' department.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                            <div class="col-md-6">
+                                                                <a href="{% url 'deletePatient' patient.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
                                                                     <span class="title"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                                                 </a>
                                                             </div>
@@ -67,7 +77,7 @@
                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                     </li>
                                     <li class="uni-btn-appointment">
-                                        <a href="{% url 'listDepartment' %}">Volver a la lista</a>
+                                        <a href="{% url 'listPatient' %}">Volver a la lista</a>
                                     </li>
                                 </ul>
                             </div>

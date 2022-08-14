@@ -1,13 +1,13 @@
 
-{% extends 'AppCoder/newPatient.html' %}
+{% extends 'AppCoder/base_forms.html' %}
 
 {% load static %}
 
-{% block title %} Eliminar HC {% endblock %}
+{% block title %} Eliminar médico {% endblock %}
 
-{% block bannertitle %}<h1>Eliminar historia clínica</h1>{% endblock %}
+{% block bannertitle %}<h1>Eliminar médico</h1>{% endblock %}
 
-{% block breadcrumbstitle %}<li><a href="{% url 'listHistory' %}">Historias Clínicas</a></li>{% endblock %}
+{% block breadcrumbstitle %}<li><a href="{% url 'listDoctor' %}">Doctores</a></li>{% endblock %}
             
 {% block maincontent %}
 <main id="main" class="clearfix right_sidebar">
@@ -27,10 +27,9 @@
                                                         <div class="woocommerce-billing-fields__field-wrapper">
                                                             <form method="post">
                                                                 {% csrf_token %}
-                                                                <h3>¿Desea eliminar el registro de {{ object.patient}}?</h3>
+                                                                <h3>¿Desea eliminar el registro del doctor {{ object.name}} {{ object.surname}}?</h3>
                                                                 <button class="btn btn-danger" type="submit">Sí, eliminar</button>
-                                                                <a class="btn btn-default" href="{% url 'listHistory' %}">Cancelar</a>
-                                                                <br>
+                                                                <a class="btn btn-default" href="{% url 'listDoctor' %}">Cancelar</a>
                                                             </form>
                                                         </div>
                                                     </div>

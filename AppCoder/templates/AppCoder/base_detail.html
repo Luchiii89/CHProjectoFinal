@@ -1,0 +1,95 @@
+{% extends 'AppCoder/base_forms.html' %}
+
+{% load static %}
+
+{% block title %} Doctor {% endblock %}
+
+{% block bannertitle %}<h1>Detalles del doctor</h1>{% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'listDoctor' %}">Doctores</a></li>{% endblock %}
+
+{% block maincontent %}
+
+<div class="uni-cart">
+    <div id="wrapper-container" class="site-wrapper-container">
+        <div id="main-content" class="site-main-content">
+            <div class="site-content-area">
+                <main id="main" class="site-main">
+                    <div class="uni-cart-body">
+                        <div id="post" class="container">
+                            <div class="entry-content">
+                                <div class="woocommerce">
+                                    <form class="woocommerce-cart-form" method="post">
+                                        <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                            <thead>
+                                            <tr>
+                                                <th class="product-price">Nombre</th>
+                                                <th class="product-price">Apellido</th>
+                                                <th class="product-price">DNI</th>
+                                                <th class="product-price">Género</th>
+                                                <th class="product-price">Dirección</th>
+                                                <th class="product-price">Teléfono</th>
+                                                <th class="product-price">Email</th>
+                                                <th class="product-price">Licencia</th>
+                                                <th class="product-price">Especialidad</th>
+                                                <th class="product-quantity">Acciones</th>
+                                            </tr>
+                                            </thead>    
+
+                                            <tbody>
+                                                <tr class="woocommerce-cart-form__cart-item cart_item">                                        
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.name}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.surname}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.DNI}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.genre}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.address}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{patient.tel}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.mail}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.license}}</span></td>
+                                                    <td class="product-price"><span class="woocommerce-Price-amount amount">{{doctor.department.name}}</span></td>
+                                                    <td class="product-price">
+                                                        <div class="uni-element-buttons-small">
+                                                            <div class="uni-shortcode-button-title">
+                                                                <div class="row">
+                                                                    <div class="col-md-5">
+                                                                        <a href="{% url 'updateDoctor' doctor.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                            <span class="title"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <a href="{% url 'deleteDoctor' doctor.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                            <span class="title"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </form>
+
+                                    <div class="uni-search-appointment">
+                                        <ul>
+                                            <li class="uni-btn-appointment">
+                                                <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                            </li>
+                                            <li class="uni-btn-appointment">
+                                                <a href="{% url 'listDoctor' %}">Volver a la lista</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+        </div>
+        </div>    
+    </div>
+</div>
+{% endblock %}

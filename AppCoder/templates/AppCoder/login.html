@@ -1,4 +1,4 @@
-{% extends 'AppCoder/listPatient.html' %}
+{% extends 'AppCoder/list_patient.html' %}
 
 {% load static %}
 
@@ -56,9 +56,10 @@
                                                                 <p style="color: red;"> Están mal los datos, revisar</p>
 
                                                                 {% endif %}
+                                                                
                                                                 <form action="" method="POST">{% csrf_token %}
 
-                                                                    {% block formtitle %} <h3>Complete el formulario:</h3><br> {% endblock %}
+                                                                    {% block formtitle %} <h3>Ingrese sus datos:</h3><br> {% endblock %}
                                                                     
                                                                     <table>
                                                                         {{ form.as_p }}
@@ -67,7 +68,7 @@
                                                                     <input type="submit" value="Iniciar sesión" class="new-button"> 
 
                                                                     <button type="button" class="new-button">
-                                                                        <a href="{% url 'Index' %}">Crear una cuenta</a>
+                                                                        <a href="{% url 'register' %}">Crear una cuenta</a>
                                                                     </button>
                                                                 </form>
                                                                 <br>

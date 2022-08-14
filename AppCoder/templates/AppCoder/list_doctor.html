@@ -1,0 +1,98 @@
+{% extends 'AppCoder/base_list.html' %}
+
+{% load static %}
+
+{% block title %} Listado de Doctores {% endblock %}
+
+{% block bannertitle %}<h1>Doctores</h1>{% endblock %}
+
+{% block breadcrumbstitle %}<li><a href="{% url 'listDoctor' %}">Doctores</a></li>{% endblock %}
+
+{% block maincontent %}
+<div id="wrapper-container" class="site-wrapper-container">
+    <div id="main-content" class="site-main-content">
+        <div class="site-content-area">
+            <div id="main-content" class="site-main-content">
+                    <main id="main" class="site-main">
+                        <div class="uni-cart-body">
+                            <div id="post" class="container">
+                                <div class="entry-content">
+                                    <div class="woocommerce">
+                                        <form class="woocommerce-cart-form" method="post">
+                                            <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-remove"></th>
+                                                    <th class="product-name">Nombre</th>
+                                                    <th class="product-name">Apellido</th>
+                                                    <th class="product-name">Especialidad</th>
+                                                    <th class="product-name">Acciones</th>
+                                                </tr>
+                                                </thead>
+                                                {% for doc in doctors %}  
+                                                <tbody>
+                                                <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                    <td class="product-remove">
+                                                        <a href="{% url 'doctorDetail' doc.DNI %}" class="remove"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                                    </td>
+                                                    <td class="product-name">
+                                                        Dr. {{doc.name}}
+                                                    </td>
+                                                    <td class="product-name">
+                                                        {{doc.DNI}}
+                                                    </td>
+                                                    <td class="product-name">
+                                                        {{doc.department.name}}
+                                                    </td>
+
+                                                    <td class="product-name">
+                                                        <div class="uni-element-buttons-small">
+                                                            <div class="uni-shortcode-button-title">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <a href="{% url 'updateDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                            <span class="title">Editar</span>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <a href="{% url 'deleteDoctor' doc.DNI %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                            <span class="title">Eliminar</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                </tbody>
+
+                                            </table>
+                                        </form>
+
+                                        <div class="uni-search-appointment">
+                                            <ul>
+                                                <li class="uni-btn-appointment">
+                                                    <a href="{% url 'newDoctor' %}">Nuevo doctor</a>
+                                                </li>
+                                                <li class="uni-btn-appointment">
+                                                    <a href="{% url 'Index' %}">Volver al Inicio</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+

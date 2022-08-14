@@ -1,12 +1,12 @@
-{% extends 'AppCoder/listPatient.html' %}
+{% extends 'AppCoder/base_detail.html' %}
 
 {% load static %}
 
-{% block title %} Historia Clínica {% endblock %}
+{% block title %} Paciente {% endblock %}
 
-{% block bannertitle %}<h1>Detalles de la Historia Clínica</h1>{% endblock %}
+{% block bannertitle %}<h1>Detalles del paciente</h1>{% endblock %}
 
-{% block breadcrumbstitle %}<li><a href="{% url 'listHistory' %}">Historias Clínicas</a></li>{% endblock %}
+{% block breadcrumbstitle %}<li><a href="{% url 'listDepartment' %}">Departamentos</a></li>{% endblock %}
             
 {% block maincontent %}
 <div class="uni-cart">
@@ -22,31 +22,31 @@
                                 <table class="woocommerce-cart-form__contents table shop_table_responsive">
                                     <thead>
                                     <tr>
-                                        <th class="product-price">Paciente</th>
-                                        <th class="product-price">Médico</th>
-                                        <th class="product-price">Fecha de carga</th>
-                                        <th class="product-name">Comentarios</th>
+                                        <th class="product-price">Nombre</th>
+                                        <th class="product-price">Director</th>
+                                        <th class="product-price">Teléfono</th>
+                                        <th class="product-price">Email</th>
                                         <th class="product-quantity">Acciones</th>
                                     </tr>
                                     </thead>    
 
                                     <tbody>
                                         <tr class="woocommerce-cart-form__cart-item cart_item">                                        
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{history.patient}}</span></td>
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{history.doctor}}</span></td>
-                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{history.date}}</span></td>
-                                            <td class="product-name"><span class="woocommerce-Price-amount amount">{{history.comment}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.name}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.head_of}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.tel}}</span></td>
+                                            <td class="product-price"><span class="woocommerce-Price-amount amount">{{department.mail}}</span></td>
                                             <td class="product-price">
                                                 <div class="uni-element-buttons-small">
                                                     <div class="uni-shortcode-button-title">
                                                         <div class="row">
                                                             <div class="col-md-5">
-                                                                <a href="{% url 'updateHistory' history.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                <a href="{% url 'updateDepartment' department.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
                                                                     <span class="title"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-5">
-                                                                <a href="{% url 'deleteHistory' history.nro %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
+                                                                <a href="{% url 'deleteDepartment' department.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
                                                                     <span class="title"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                                                 </a>
                                                             </div>
@@ -67,7 +67,7 @@
                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                     </li>
                                     <li class="uni-btn-appointment">
-                                        <a href="{% url 'listHistory' %}">Volver a la lista</a>
+                                        <a href="{% url 'listDepartment' %}">Volver a la lista</a>
                                     </li>
                                 </ul>
                             </div>

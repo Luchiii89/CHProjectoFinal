@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %} Perfil {% endblock %}
+{% block title %} Mi Perfil {% endblock %}
 
 <div class="uni-checkout">
     <div id="wrapper-container" class="site-wrapper-container">
@@ -54,10 +54,10 @@
                                                     </ul>
                                                 </li>
                                                 <li class="has"><a href="{% url 'aboutUs' %}">Acerca</a></li>
-                                                <li class="has-sub"><a><i class="fa fa-user-o" aria-hidden="true"></i></a>
+                                                <li class="has-sub"><a><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                                                     <ul>
-                                                        <li><a href="{% url 'perfil' user.id %}">Mi perfil</a></li>
-                                                        <li><a href="{% url 'editarPerfil' %}">Editar</a></li>
+                                                        <li><a href="{% url 'profile' user.id %}">Mi perfil</a></li>
+                                                        <li><a href="{% url 'editarPerfil' user.id %}">Editar</a></li>
                                                         <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                                                     </ul>     
                                                 </li>
@@ -91,7 +91,7 @@
                         <!-- Page title -->
                         <div class="page-title">
                             <div class="page-title-inner">
-                                {% block bannertitle %}<h1>Perfil</h1>{% endblock %}
+                                {% block bannertitle %}<h1> <i class="fa fa-user-circle-o" aria-hidden="true"></i> Mi Perfil </h1>{% endblock %}
                             </div>
                         </div>
                         <!-- End page title -->
@@ -99,7 +99,7 @@
                         <!-- Breadcrumbs -->
                         <ul class="breadcrumbs">
                             {% block breadcrumbsinit %}<li><a href="{% url 'Index' %}">Inicio</a></li>{% endblock %}
-                            {% block breadcrumbstitle %}<li><a href="{% url 'perfil' user.id  %}">Ver perfil</a></li>{% endblock %}
+                            {% block breadcrumbstitle %}<li><a href="{% url 'profile' user.id  %}">Ver perfil</a></li>{% endblock %}
                         </ul>
                         <!-- End breadcrumbs -->
                     </div>
@@ -147,11 +147,6 @@
                                                                                 <span class="title">Editar</span>
                                                                             </a>
                                                                         </div>
-                                                                        <div class="col-md-4">
-                                                                            <a class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-e36060">
-                                                                                <span class="title">Eliminar</span>
-                                                                            </a>
-                                                                        </div>
                                                                     </div>
 
                                                                 </div>
@@ -182,14 +177,6 @@
                 </div>
             </div>
 
-            <!--PAGINATION-->
-            <nav class="woocommerce-pagination">
-                <ul class="loop-pagination">
-                    <li><a class="prev page-numbers" ><i class="fa fa-angle-left" aria-hidden="true"></i></a></li>
-                    <li><a class="page-numbers current">1</a></li>
-                    <li><a class="next page-numbers" ><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                </ul><!-- .pagination -->
-            </nav><br><br>
             {% endblock %}
 
         {% endblock %}

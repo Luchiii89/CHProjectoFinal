@@ -22,6 +22,7 @@ from django.contrib.auth import login, logout, authenticate
 
 #Decorador por defecto
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -70,27 +71,16 @@ class UserProfile(DetailView):
     template_name = "AppCoder/profile.html"
     
 
-@login_required
-def editarPerfil(request):
-    usuario = request.user
-    if request.method == 'POST':
-        miFormulario = UserEditForm(request.POST) 
-        if miFormulario.is_valid():
-                informacion = miFormulario.cleaned_data
-                usuario.email = informacion['email']
-                usuario.name = informacion["name"]
-                usuario.password1 = informacion['password1']
-                usuario.password2 = informacion['password1']
-                usuario.save()
-                return render(request, "AppCoder/index.html")
-        else: 
-            miFormulario = UserEditForm(initial={ 'email':usuario.email}) 
-            return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario, "errors": ["Datos inválidos"]})
-    else:
-        miFormulario = UserEditForm(initial={"email":usuario.email})
-        return render(request, 'AppCoder/editarPerfil.html', {"title": "Editar usuario", "message": "Editar usuario", "form": miFormulario})
-    
-    
+@method_decorator(login_required, name='dispatch')
+class EditProfile(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = "AppCoder/register.html" #chequear y posiblemente mejorar o corregir
+    fields = ["username", "email", "first_name", "last_name"]
+
+    def get_success_url(self):
+        return reverse_lazy("profile", kwargs={"pk": self.request.user.id})
+
+
 @login_required
 def agregarAvatar(request):
     if request.method == 'POST':
@@ -102,7 +92,7 @@ def agregarAvatar(request):
                 return render(request, "AppCoder/index.html") 
     else: 
         miFormulario= AvatarFormulario()
-    return render(request, "AppCoder/addAvatar.html", {"miFormulario":miFormulario})
+    return render(request, "AppCoder/add_avatar.html", {"miFormulario":miFormulario})
 
 
 #INICIO
@@ -112,7 +102,7 @@ def Index(request):
 
 
 class OurServices(TemplateView):
-    template_name = "AppCoder\ourServices.html"
+    template_name = "AppCoder\our_services.html"
     
 
 class About(TemplateView):
@@ -120,55 +110,55 @@ class About(TemplateView):
     
 
 # CREAR
-class NewDoctor(CreateView):
+class NewDoctor(LoginRequiredMixin, CreateView):
     model = Doctor
-    template_name = "AppCoder/newDoctor.html"
+    template_name = "AppCoder/new_doctor.html"
     fields = ['name', 'surname', 'genre', 'DNI', 'license', 'mail', 'tel', 'address', 'department']
 
    
 class NewPatient(LoginRequiredMixin, CreateView):
     model = Patient
-    template_name = "AppCoder/newPatient.html"
+    template_name = "AppCoder/new_patient.html"
     fields = ['name', 'surname', 'genre', 'DNI', 'mail', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
 
 
 class NewDepartment(LoginRequiredMixin, CreateView):
     model = Department
-    template_name = "AppCoder/NewDepartment.html"
+    template_name = "AppCoder/new_department.html"
     fields = ['name', 'mail', 'tel', 'head_of']
 
 
 class NewHistory(LoginRequiredMixin, CreateView):
     model = History
-    template_name = "AppCoder/NewHistory.html"
+    template_name = "AppCoder/new_history.html"
     fields = ['date', 'patient', 'doctor', 'comments']
     
 
 #DETALLE
 class DoctorDetailView(DetailView):
     model = Doctor
-    template_name = "AppCoder/doctorDetail.html" 
+    template_name = "AppCoder/doctor_detail.html" 
 
     
 class PatientDetailView(DetailView):
     model = Patient
-    template_name = "AppCoder/patientDetail.html"
+    template_name = "AppCoder/patient_detail.html"
 
 
 class DepartmentDetailView(DetailView):
     model = Department
-    template_name = "AppCoder/departmentDetail.html"
+    template_name = "AppCoder/department_detail.html"
 
 
 class HistoryDetailView(DetailView):
     model = History
-    template_name = "AppCoder/historyDetail.html"   
+    template_name = "AppCoder/history_detail.html"   
 
 
 # LISTAR
 class ListDoctor(ListView):
     model = Doctor
-    template_name = "AppCoder/listDoctor.html"
+    template_name = "AppCoder/list_doctor.html"
     queryset = Doctor.objects.all()
     context_object_name = 'doctors' 
     ordering = ['surname']
@@ -176,7 +166,7 @@ class ListDoctor(ListView):
 
 class ListPatient(ListView):
     model = Patient
-    template_name = "AppCoder/listPatient.html"
+    template_name = "AppCoder/list_patient.html"
     queryset = Patient.objects.all()
     context_object_name = 'patients' 
     ordering = ['surname']
@@ -184,7 +174,7 @@ class ListPatient(ListView):
 
 class ListDepartment(ListView):
     model = Department
-    template_name = "AppCoder/listDepartment.html"
+    template_name = "AppCoder/list_department.html"
     queryset = Department.objects.all()
     context_object_name = 'departments' 
     ordering = ['name']
@@ -192,7 +182,7 @@ class ListDepartment(ListView):
 
 class ListHistory(ListView):
     model = History
-    template_name = "AppCoder/listHistory.html"
+    template_name = "AppCoder/list_history.html"
     queryset = History.objects.all()
     context_object_name = 'histories' 
     ordering = ['nro']
@@ -201,7 +191,7 @@ class ListHistory(ListView):
 #BUSCAR
 class GetDoctorBySurname(ListView):
     model = Doctor
-    template_name = "AppCoder/getDoctor.html"
+    template_name = "AppCoder/get_doctor.html"
     
     def get(self, request, *args, **kwargs) -> HttpResponse:
        getDoctor = Doctor.objects.filter(surname__icontains='surname')
@@ -209,41 +199,41 @@ class GetDoctorBySurname(ListView):
 
 
 def getDoctorBySurname(request):
-    return render(request, 'AppCoder/getDoctor.html')
+    return render(request, 'AppCoder/get_doctor.html')
 
 
 def getDoctor(request):
     if  request.GET["surname"]:
         surname = request.GET['surname'] 
         doctores = Doctor.objects.filter(surname__icontains=surname)
-        return render(request, "AppCoder/inicio.html", {"doctores":doctores, "surname":surname})
+        return render(request, "AppCoder/index.html", {"doctores":doctores, "surname":surname})
     else: 
         respuesta = "No enviaste datos"
-    return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
+    return render(request, "AppCoder/index.html", {"respuesta":respuesta})
   
   
 #ELIMINAR
 class DeleteDoctor(LoginRequiredMixin, DeleteView):
     model = Doctor
-    template_name = "AppCoder/deleteDoctor.html"
+    template_name = "AppCoder/delete_doctor.html"
     success_url = reverse_lazy('listDoctor')
 
 
 class DeletePatient(LoginRequiredMixin, DeleteView):
     model = Patient
-    template_name = "AppCoder/deletePatient.html"
+    template_name = "AppCoder/delete_patient.html"
     success_url = reverse_lazy('listPatient')
 
 
 class DeleteDepartment(LoginRequiredMixin, DeleteView):
     model = Department
-    template_name = "AppCoder/deleteDepartment.html"
+    template_name = "AppCoder/delete_department.html"
     success_url = reverse_lazy('listDepartment')
 
 
 class DeleteHistory(LoginRequiredMixin, DeleteView):
     model = History
-    template_name = "AppCoder/deleteHistory.html"
+    template_name = "AppCoder/delete_history.html"
     success_url = reverse_lazy('listHistory')
     
 
@@ -251,27 +241,27 @@ class DeleteHistory(LoginRequiredMixin, DeleteView):
 class UpdateDoctor(LoginRequiredMixin, UpdateView):
     model = Doctor
     fields = ['name', 'surname', 'genre', 'DNI', 'license', 'mail', 'tel', 'address', 'department']
-    template_name = "AppCoder/newDoctor.html"
+    template_name = "AppCoder/new_doctor.html"
     success_url = reverse_lazy('listDoctor')
 
 
 class UpdatePatient(LoginRequiredMixin, UpdateView):
     model = Patient
     fields = ['name', 'surname', 'genre', 'DNI', 'register_date','birth_date', 'photo', 'personal_files', 'mail', 'tel', 'address']
-    template_name = "AppCoder/newPatient.html"
+    template_name = "AppCoder/new_patient.html"
     success_url = reverse_lazy('listPatient')
 
 
 class UpdateDepartment(LoginRequiredMixin, UpdateView):
     model = Department
-    fields = ['mail', 'tel', 'head_of']
-    template_name = "AppCoder/newDepartment.html"
+    fields = ['name','mail', 'tel', 'head_of']
+    template_name = "AppCoder/new_department.html"
     success_url = reverse_lazy('listDepartment')
 
 
 class UpdateHistory(LoginRequiredMixin, UpdateView):
     model = History
     fields = ['comments']
-    template_name = "AppCoder/newHistory.html"
+    template_name = "AppCoder/new_history.html"
     success_url = reverse_lazy('listHistory')
     

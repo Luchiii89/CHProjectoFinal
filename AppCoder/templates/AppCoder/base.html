@@ -203,10 +203,10 @@
                                             </ul>
                                         </li>
                                         <li class="has"><a href="{% url 'aboutUs' %}">Acerca</a></li>
-                                        <li class="has-sub"><a><i class="fa fa-user-o" aria-hidden="true"></i></a>
+                                        <li class="has-sub"><a><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                                             <ul>
-                                                <li><a href="{% url 'perfil' user.id %}">Mi perfil</a></li>
-                                                <li><a href="{% url 'editarPerfil' %}">Editar</a></li>
+                                                <li><a href="{% url 'profile' user.id %}">Mi perfil</a></li>
+                                                <li><a href="{% url 'editarPerfil' user.id %}">Editar</a></li>
                                                 <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                                             </ul>     
                                         </li>

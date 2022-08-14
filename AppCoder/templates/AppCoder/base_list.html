@@ -2,8 +2,7 @@
 
 {% load static %}
 
-{% block title %} Pacientes {% endblock %}
-
+{% block title %} Acá va el título de la página {% endblock %}
 
 {% block principal %}
 
@@ -19,7 +18,7 @@
                                     <div class="col-md-2">
                                         <!--LOGO-->
                                         <div class="wrapper-logo">
-                                            {%block logo %} <a class="logo-default" href="{% url 'Index' %}"><img src="{% static 'images/logo.png' %}" alt="" class="img-responsive"></a> {% endblock %}
+                                            <a class="logo-default" href="{% url 'Index' %}"><img src="{% static 'images/logo.png' %}" alt="" class="img-responsive"></a>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -51,16 +50,16 @@
                                                     </li>
                                                     <li class="has-sub"><a href="{% url 'listHistory' %}">Historias Clínicas</a>
                                                         <ul>
-                                                            <li><a href="{% url 'listHistory' %}">Listado de departamentos</a></li>
+                                                            <li><a href="{% url 'listHistory' %}">Listado de historias</a></li>
                                                             <li><a href="{% url 'newHistory' %}">Crear historia clínica</a></li>
                                                             <li><a>Buscar historia clínica</a></li>
                                                         </ul>
                                                     </li>
                                                     <li class="has"><a href="{% url 'aboutUs' %}">Acerca</a></li>
-                                                    <li class="has-sub"><a><i class="fa fa-user-o" aria-hidden="true"></i></a>
+                                                    <li class="has-sub"><a><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                                                         <ul>
-                                                            <li><a href="{% url 'perfil' user.id %}">Mi perfil</a></li>
-                                                            <li><a href="{% url 'editarPerfil' %}">Editar</a></li>
+                                                            <li><a href="{% url 'profile' user.id %}">Mi perfil</a></li>
+                                                            <li><a href="{% url 'editarPerfil' user.id %}">Editar</a></li>
                                                             <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                                                         </ul>     
                                                     </li>
@@ -94,7 +93,7 @@
                             <!-- Page title -->
                             <div class="page-title">
                                 <div class="page-title-inner">
-                                    {% block bannertitle %}<h1>Pacientes</h1>{% endblock %}
+                                    {% block bannertitle %}<h1>Acá va el título del banner azul</h1>{% endblock %}
                                 </div>
                             </div>
                             <!-- End page title -->
@@ -120,7 +119,7 @@
                                             <div class="uni-siderbar-left">
                                                 <form action="http://medicare.vikitheme.com/html/action.php" method="post" accept-charset="utf-8">
                                                     <div class="vk-newlist-banner-test-search">
-                                                        <input type="text" name="seach" placeholder="Search...">
+                                                        <input type="text" name="seach" placeholder="Buscar...">
                                                         <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
                                                     </div>
                                                 </form>
@@ -131,7 +130,7 @@
                                     <div class="col-md-9">
                                         <div class="uni-shop-siderbar-right">
                                             <div class="product-filter">
-                                                <p class="woocommerce-result-count">Showing <span>1–9</span> of <span>45</span> results</p>
+                                                <p class="woocommerce-result-count">Mostrando <span></span><span></span> resultados</p>
                                                 <form class="woocommerce-ordering" method="get">
                                                     <select name="orderby" class="orderby">
                                                         <option value="menu_order" selected="selected">Ordenar por</option>
@@ -242,7 +241,9 @@
                         </div>
                     </div>
                 </div>
+                {% endblock %}
 
+                {% block pagination %}
                 <!--PAGINATION-->
                 <nav class="woocommerce-pagination">
                     <ul class="loop-pagination">
@@ -258,17 +259,7 @@
             {% block banner2 %}
             <div class="uni-banner-default uni-background-1">
                 <div class="container">
-                    <!-- Page title -->
-                    <div class="page-title">
-                        <div class="page-title-inner">
-                        </div>
-                    </div>
-                    <!-- End page title -->
 
-                    <!-- Breadcrumbs -->
-                    <ul class="breadcrumbs">
-                    </ul>
-                    <!-- End breadcrumbs -->
                 </div>
             </div>
             {% endblock %}

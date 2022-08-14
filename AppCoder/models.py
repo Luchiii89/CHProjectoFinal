@@ -25,6 +25,13 @@ class Department(models.Model):
         """
         txt = "{0}"
         return txt.format(self.name)
+    
+    def get_absolute_url(self):
+        """
+        Devuelve la url para acceder a una instancia particular de Patient.
+        """
+        return reverse('listDepartment')
+            #return reverse('model-detail-view', args=[str(self.id)]) LUEGO CAMBIAR POR ALGO SIMILAR A ESTO
 
 
 class Doctor(models.Model):
@@ -93,7 +100,7 @@ class Patient(models.Model):
         """
         Devuelve la url para acceder a una instancia particular de Patient.
         """
-        return HttpResponse
+        return reverse('listPatient')
         #return reverse('model-detail-view', args=[str(self.id)]) LUEGO CAMBIAR POR ALGO SIMILAR A ESTO
 
 
@@ -113,3 +120,10 @@ class History(models.Model):
         """
         txt = "{0} //// Doctor: {1} //// Date: {2}"
         return txt.format(self.patient, self.doctor, self.date)
+
+    def get_absolute_url(self):
+        """
+        Devuelve la url para acceder a una instancia particular de Patient.
+        """
+        return reverse('listHistory')
+        #return reverse('model-detail-view', args=[str(self.id)]) LUEGO CAMBIAR POR ALGO SIMILAR A ESTO
