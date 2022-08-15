@@ -43,17 +43,17 @@ class HistoryForm(forms.Form):
 
 
 class UserRegisterForm(UserCreationForm):
-    username = forms.CharField()
-    email = forms.EmailField()
+    first_name = forms.CharField(label="Nombre")
+    last_name = forms.CharField(label="Apellido")
+    email = forms.EmailField(label="E-mail")
+    username = forms.CharField(label="Usuario")
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput) 
-    last_name = forms.CharField()
-    first_name = forms.CharField()
-    imagen_avatar = forms.ImageField(required=False)
+    password2 = forms.CharField(label='Repita la contraseña', widget=forms.PasswordInput) 
+    imagen_avatar = forms.ImageField(required=False,label="Foto de perfil")
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'last_name', 'first_name'] 
+        fields = ['first_name','last_name', 'email', 'username', 'password1', 'password2'] 
         #Saca los mensajes de ayuda
         help_texts = {k:"" for k in fields}
 

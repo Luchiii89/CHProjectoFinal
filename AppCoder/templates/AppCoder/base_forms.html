@@ -42,12 +42,16 @@
                                                                     <table>
                                                                         {{ form.as_p }}
                                                                     </table>
-
+                                                                    
+                                                                    {% block botoninput %}
                                                                     <input type="submit" value="Enviar" class="new-button"> 
+                                                                    {% endblock %}
 
+                                                                    {% block botonenviar %}
                                                                     <button type="button" class="new-button">
                                                                         <a href="{% url 'Index' %}">Volver al Inicio</a>
                                                                     </button>
+                                                                    {% endblock %}
                                                                 </form>
                                                                 <br>
                                                                 

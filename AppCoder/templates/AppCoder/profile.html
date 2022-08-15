@@ -1,314 +1,88 @@
-{% extends 'AppCoder/base.html' %}
+{% extends 'AppCoder/base_list.html' %}
 
 {% load static %}
 
 {% block title %} Mi Perfil {% endblock %}
 
-<div class="uni-checkout">
+{% block bannertitle %}<h1> <i class="fa fa-user-circle-o" aria-hidden="true"></i> Mi Perfil </h1>{% endblock %}
+
+{% block breadcrumbsinit %}{% endblock %}
+{% block breadcrumbstitle %}{% endblock %}
+
+{% block maincontent %}
+
+    {% block buscador %}
+    {% endblock %}
+
     <div id="wrapper-container" class="site-wrapper-container">
+        <div id="main-content" class="site-main-content">
+            <div class="site-content-area">
+                <main id="main" class="site-main">
+                    <div class="uni-cart-body">
+                        <div id="post" class="container">
+                            <div class="entry-content">
+                                <div class="woocommerce">
+                                    <form class="woocommerce-cart-form" method="post">
+                                        <table class="woocommerce-cart-form__contents table shop_table_responsive">
+                                            <thead>
+                                            <tr>
+                                                <th class="product-name">Nombre de usuario</th>
+                                                <th class="product-name">Email</th>
+                                                <th class="product-name">Contraseña</th>
+                                                <th class="product-name">Acciones</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                <td class="product-name">
+                                                    {{request.user.username}}
+                                                </td>
+                                                <td class="product-name">
+                                                    {{request.user.email}}
+                                                </td>
+                                                <td class="product-name">
+                                                    {{request.user.password1}}
+                                                </td>
 
-        {% block header %}
-            <header>
-                <div class="uni-medicare-header sticky-menu">
-                    <div class="container">
-                        <div class="uni-medicare-header-main">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <!--LOGO-->
-                                    <div class="wrapper-logo">
-                                        {%block logo %} <a class="logo-default" href="{% url 'Index' %}"><img src="{% static 'images/logo-home-2.png' %}" alt="" class="img-responsive"></a> {% endblock %}
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-10">
-                                <!--MENU TEXT-->
-                                <div class="uni-main-menu">
-                                    <nav class="main-navigation uni-menu-text">
-                                        <div class="cssmenu">
-                                            <ul>
-                                                <li class="has-sub"><a href="{% url 'listDepartment' %}">Departamentos</a>
-                                                    <ul>
-                                                        <li><a href="{% url 'listDepartment' %}">Listado de departamentos</a></li>
-                                                        <li><a href="{% url 'newDepartment' %}">Crear departmento</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-sub"><a href="{% url 'listDoctor' %}">Doctores</a>
-                                                    <ul>
-                                                        <li><a href="{% url 'listDoctor' %}">Listado de doctores</a></li>
-                                                        <li><a href="{% url 'newDoctor' %}">Crear doctor</a></li>
-                                                        <li><a>Buscar doctor</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-sub"><a href="{% url 'listPatient' %}">Pacientes</a>
-                                                    <ul>
-                                                        <li><a href="{% url 'listPatient' %}">Listado de pacientes</a></li>
-                                                        <li><a href="{% url 'newPatient' %}">Crear paciente</a></li>
-                                                        <li><a>Buscar paciente</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has-sub"><a href="{% url 'listHistory' %}">Historias Clínicas</a>
-                                                    <ul>
-                                                        <li><a href="{% url 'listHistory' %}">Listado de departamentos</a></li>
-                                                        <li><a href="{% url 'newHistory' %}">Crear historia clínica</a></li>
-                                                        <li><a>Buscar historia clínica</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="has"><a href="{% url 'aboutUs' %}">Acerca</a></li>
-                                                <li class="has-sub"><a><i class="fa fa-user-circle" aria-hidden="true"></i></a>
-                                                    <ul>
-                                                        <li><a href="{% url 'profile' user.id %}">Mi perfil</a></li>
-                                                        <li><a href="{% url 'editarPerfil' user.id %}">Editar</a></li>
-                                                        <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
-                                                    </ul>     
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-                                </div>
+                                                <td class="product-name">
+                                                    <div class="uni-element-buttons-small">
+                                                        <div class="uni-shortcode-button-title">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <a  href="{% url 'editarPerfil' user.id %}" class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
+                                                                        <span class="title">Editar</span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
 
-                                    <!--SEARCH AND APPOINTMENT-->
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </form>
+                                    
+                                    {% block botonesfinales %}
                                     <div class="uni-search-appointment">
                                         <ul>
                                             <li class="uni-btn-appointment">
-                                                <a>Nuevo turno</a>
+                                                <a href="{% url 'Index' %}">Volver al Inicio</a>
                                             </li>
+                                            
                                         </ul>
                                     </div>
+                                    {% endblock %}
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-            </header>
-        {% endblock %}
-
-        {% block content %}
-
-            {% block banner %}
-                <div class="uni-banner-default uni-background-1">
-                    <div class="container">
-                        <!-- Page title -->
-                        <div class="page-title">
-                            <div class="page-title-inner">
-                                {% block bannertitle %}<h1> <i class="fa fa-user-circle-o" aria-hidden="true"></i> Mi Perfil </h1>{% endblock %}
-                            </div>
-                        </div>
-                        <!-- End page title -->
-
-                        <!-- Breadcrumbs -->
-                        <ul class="breadcrumbs">
-                            {% block breadcrumbsinit %}<li><a href="{% url 'Index' %}">Inicio</a></li>{% endblock %}
-                            {% block breadcrumbstitle %}<li><a href="{% url 'profile' user.id  %}">Ver perfil</a></li>{% endblock %}
-                        </ul>
-                        <!-- End breadcrumbs -->
-                    </div>
-                </div>
-            {% endblock %}
-            <br>
-            {% block maincontent %}
-            
-            <div id="wrapper-container" class="site-wrapper-container">
-                <div id="main-content" class="site-main-content">
-                    <div class="site-content-area">
-                        <main id="main" class="site-main">
-                            <div class="uni-cart-body">
-                                <div id="post" class="container">
-                                    <div class="entry-content">
-                                        <div class="woocommerce">
-                                            <form class="woocommerce-cart-form" method="post">
-                                                <table class="woocommerce-cart-form__contents table shop_table_responsive">
-                                                    <thead>
-                                                    <tr>
-                                                        <th class="product-name">Nombre de usuario</th>
-                                                        <th class="product-name">Email</th>
-                                                        <th class="product-name">Contraseña</th>
-                                                        <th class="product-name">Acciones</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr class="woocommerce-cart-form__cart-item cart_item">
-                                                        <td class="product-name">
-                                                            {{request.user.username}}
-                                                        </td>
-                                                        <td class="product-name">
-                                                            {{request.user.email}}
-                                                        </td>
-                                                        <td class="product-name">
-                                                            {{request.user.password1}}
-                                                        </td>
-
-                                                        <td class="product-name">
-                                                            <div class="uni-element-buttons-small">
-                                                                <div class="uni-shortcode-button-title">
-                                                                    <div class="row">
-                                                                        <div class="col-md-4">
-                                                                            <a class="vk-btn  vk-btn-xs vk-btn-default text-uppercase bg-3f97da">
-                                                                                <span class="title">Editar</span>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-
-                                                </table>
-                                            </form>
-                                            
-                                            {% block botonesfinales %}
-                                            <div class="uni-search-appointment">
-                                                <ul>
-                                                    <li class="uni-btn-appointment">
-                                                        <a href="{% url 'Index' %}">Volver al Inicio</a>
-                                                    </li>
-                                                    
-                                                </ul>
-                                            </div>
-                                            {% endblock %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </main>
-                    </div>
-                </div>
-            </div>
-
-            {% endblock %}
-
-        {% endblock %}
-
-        {% block banner2 %}
-        <div class="uni-banner-default uni-background-1">
-            <div class="container">
-                <!-- Page title -->
-                <div class="page-title">
-                    <div class="page-title-inner">
-                    </div>
-                </div>
-                <!-- End page title -->
-
-                <!-- Breadcrumbs -->
-                <ul class="breadcrumbs">
-                </ul>
-                <!-- End breadcrumbs -->
+                </main>
             </div>
         </div>
-        {% endblock %}
-
-        {% block footer %}
-        <footer class="site-footer footer-default">
-            <div class="footer-main-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-main-content-elements">
-                            <div class="footer-main-content-element col-md-3 col-sm-6">
-                                <aside class="widget">
-                                    <div class="widget-title uni-uppercase"><a href="{% url 'Index' %}"><img src="{% static 'images/logowhite.png' %}" alt="" class="img-responsive"></a></div>
-                                    <div class="widget-content">
-                                        <p>
-                                            Somos una Institución asistencial creada a principios de los años 60, cuyo objetivo esencial es “asistir y acompañar” a la persona enferma y su entorno.
-                                        </p>
-                                        <br>
-                                        <div class="uni-info-contact">
-                                            <ul>
-                                                <li> <i class="fa fa-map-marker" aria-hidden="true"></i> Av. San Martín 7845, San Justo</li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i> 4553-0120 / 4553-0122</li>
-                                                <li><i class="fa fa-envelope-o" aria-hidden="true"></i> medicareplus@medicare.com.ar</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
-                            <div class="footer-main-content-element col-md-3 col-sm-6">
-                                <aside class="widget">
-                                    <h3 class="widget-title uni-uppercase">Accesos directos</h3>
-                                    <div class="widget-content">
-                                        <div class="uni-quick-link">
-                                            <ul>
-                                                <li><a href="{% url 'Index' %}"><span>+</span> Inicio</a></li>
-                                                <li><a href="{% url 'aboutUs' %}"><span>+</span> Acerca de nosotros</a></li>
-                                                <li><a><span>+</span> Servicios</a></li>
-                                                <li><a><span>+</span> Turnos</a></li>
-                                                <li><a><span>+</span> Notas</a></li>
-                                                <li><a><span>+</span> Contacto</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
-                            <div class="footer-main-content-element col-md-3 col-sm-6">
-                                <aside class="widget">
-                                    <h3 class="widget-title uni-uppercase">Testimonios</h3>
-                                    <div class="widget-content">
-                                        <div class="uni-footer-latest-post">
-                                            <ul>
-                                                <li>
-                                                    <h4><a>Excelente atención, amabilidad y calidad humana.</a></h4>
-                                                    <span class="time">Lucía, 12 de Junio de 2020</span>
-                                                </li>
-                                                <li>
-                                                    <h4><a>No puedo describir lo feliz que estoy con el trato que recibí</a></h4>
-                                                    <span class="time">Margos, 23 de Agosto de 2021</span>
-                                                </li>
-                                                <li>
-                                                    <h4><a>Muy recomendable, un tramuatólogo de 5 estrellas según mi experiencia.</a></h4>
-                                                    <span class="time">Gregorio, 9 de Enero de 2022</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
-                            <div class="footer-main-content-element col-md-3 col-sm-6">
-                                <aside class="widget">
-                                    <h3 class="widget-title uni-uppercase">Boletín <span> informativo</span></h3>
-                                    <div class="widget-content">
-                                        <div class="uni-footer-newletter">
-                                            <div class="input-group">
-                                                <input type="email" class="form-control" placeholder="Ingrese su e.mail">
-                                                <button class="btn btn-sub" type="submit">Suscribirse</button>
-                                            </div>
-                                            <div class="uni-social">
-                                                <h4>Seguinos</h4>
-                                                <ul>
-                                                    <li><a href="https://facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                    <li><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                    <li><a href="https://google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                    <li><a href="https://youtube.com/"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                                    <li><a href="https://instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright-area">
-                <div class="container">
-                    <div class="copyright-content">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="copyright-text"> <a href="{% url 'Index' %}">Templateshub</a></p>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="copyright-menu">
-                                    <li><a href="{% url 'Index' %}">Términos de uso</a></li>
-                                    <li><a href="{% url 'Index' %}">Políticas de privacidad</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        {% endblock %}
-
     </div>
-</div>
+
+{% endblock %}
+
+{% block pagination %}{% endblock %}

@@ -41,9 +41,9 @@ def login_request(request):
                 login(request, user)
                 return render(request, 'AppCoder/index.html',{'mensaje':f'Bienvenido - {usuario}'})
             else:
-                return render(request, 'AppCoder/login.html',{'mensaje':f'Error Acceso Denegado'})
+                return render(request, 'AppCoder/login_error.html',{'mensaje':f'Error Acceso Denegado'})
         else:
-            return render(request, 'AppCoder/login.html',{'mensaje':'Error Formulario Erróneo'})
+            return render(request, 'AppCoder/login_error.html',{'mensaje':'Error Formulario Erróneo'})
     else:
         form = AuthenticationForm()
         return render(request, 'AppCoder/login.html',{'form':form})
@@ -74,13 +74,14 @@ class UserProfile(DetailView):
 @method_decorator(login_required, name='dispatch')
 class EditProfile(LoginRequiredMixin, UpdateView):
     model = User
-    template_name = "AppCoder/register.html" #chequear y posiblemente mejorar o corregir
+    template_name = "AppCoder/edit_profile.html" #chequear y posiblemente mejorar o corregir
     fields = ["username", "email", "first_name", "last_name"]
+    # success_url = reverse_lazy('listPatient')
 
     def get_success_url(self):
         return reverse_lazy("profile", kwargs={"pk": self.request.user.id})
 
-
+    
 @login_required
 def agregarAvatar(request):
     if request.method == 'POST':

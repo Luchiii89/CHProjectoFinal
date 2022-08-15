@@ -1,4 +1,4 @@
-{% extends 'AppCoder/list_patient.html' %}
+{% extends 'AppCoder/base_forms.html' %}
 
 {% load static %}
 
@@ -6,67 +6,17 @@
 
 {% block bannertitle %}<h1> editar Perfil</h1>{% endblock %}
 
-{% block breadcrumbstitle %}<li><a href="{% url 'listPatient' %}">Perfil</a></li>{% endblock %}
+{% block breadcrumbstitle %}<li><a href="{% url 'profile' user.id %}">Perfil</a></li>{% endblock %}
 
-{% block buscador %}{% endblock %}
+{% block formtitle %} <h3>Ingrese los datos que desea modificar:</h3><br> {% endblock %}
 
-{% block maincontent %}
-<main id="main" class="clearfix right_sidebar">
-    <div class="uni-checkout-body">
-        <div class="container">
-            <div class="tg-container">
-                <div id="primary">
-                    <div class="entry-thumbnail">
-                        <div class="entry-content-text-wrapper clearfix">
-                            <div class="entry-content-wrapper">
-                                <div class="entry-content">
-                                    <div class="woocommerce">
-                                        <div class="row">
-                                            <div class="vk-checkout-billing-left">
-                                                <div class="col-md-7">
-                                                    <div class="woocommerce-billing-fields">
-                                                        <div class="woocommerce-billing-fields__field-wrapper">
-
-                                                            
-                                                            {% block contenido %}
-
-                                                                <form action="" method="POST">{% csrf_token %}
-
-                                                                    
-                                                                    <table>
-                                                                        {{ miFormulario.as_p }}
-                                                                    </table>
-
-                                                                    <input type="submit" value="Enviar" class="new-button"> 
-
-                                                                    <button type="button" class="new-button">
-                                                                        <a href="{% url 'Index' %}">Volver al Inicio</a>
-                                                                    </button>
-                                                                </form>
-                                                                <br>
-                                                                
-                                                            {% endblock %}
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                </div><!-- .entry-content -->
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div> <!-- Primary end -->
-            </div>
-        </div>
-    </div>
-</main>
+{% block botoninput %}
+<input type="submit" value="Guardar" class="new-button"> 
 {% endblock %}
+
+{% block botonenviar %}
+<button type="button" class="new-button">
+    <a href="{% url 'Index' %}">Volver al inicio</a>
+</button>
+{% endblock %}
+

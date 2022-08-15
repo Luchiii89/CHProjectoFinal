@@ -2,9 +2,18 @@
 
 {% load static %}
 
-
 {% block title %} Registrarse {% endblock %}
 
 {% block bannertitle %} <h1>Crear una cuenta</h1> {% endblock %}
+
+{% block botoninput %}
+<input type="submit" value="Crear" class="new-button"> 
+{% endblock %}
+
+{% block botonenviar %}
+<button type="button" class="new-button">
+    <a href="{% url 'login' %}">Iniciar sesión</a>
+</button>
+{% endblock %}
 
 {% block footer %}{% endblock %}
